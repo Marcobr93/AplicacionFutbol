@@ -99,6 +99,21 @@ public class FutbolApp {
         }
     }
 
+    public void AppClasificacion(){
+        int opcion;
+
+        while ((opcion = menuClasificacion() ) !=0){
+            switch (opcion){
+                case 1:
+
+                    break;
+                case 2:
+
+                    break;
+            }
+        }
+    }
+
 
     private int menuCompeticion(){
         Scanner scanner = new Scanner(System.in);
@@ -190,17 +205,40 @@ public class FutbolApp {
         System.out.println("**************************************");
         System.out.println("* 1 - Ordenar por posición           *");
         System.out.println("* 2 - Ordenar por nombre             *");
-        System.out.println("* 3 - Ordenar por altura             *");
-        System.out.println("* 4 - Ordenar por edad               *");
-        System.out.println("* 5 - Ordenar por partidos jugados   *");
-        System.out.println("* 6 - Ordenar por tarjetas amarillas *");
-        System.out.println("* 7 - Ordenar por tarjetas rojas     *");
-        System.out.println("* 8 - Ordenar por dorsal             *");
-        System.out.println("* 9 - Ordenar por goles              *");
-        System.out.println("* 10- Ordenar por goles en propia    *");
-        System.out.println("* 11- Ordenar por goles recibidos    *");
+        System.out.println("* 3 - Ordenar por dorsal             *");
+        System.out.println("* 4 - Ordenar por altura             *");
+        System.out.println("* 5 - Ordenar por peso               *");
+        System.out.println("* 6 - Ordenar por edad               *");
+        System.out.println("* 7 - Ordenar por partidos jugados   *");
+        System.out.println("* 8 - Ordenar por tarjetas amarillas *");
+        System.out.println("* 9 - Ordenar por tarjetas rojas     *");
+        System.out.println("* 10- Ordenar por goles              *");
+        System.out.println("* 11- Ordenar por goles en propia    *");
+        System.out.println("* 12- Ordenar por goles recibidos    *");
         System.out.println("* 0 - Salir                          *");
         System.out.println("**************************************");
+        System.out.println("Opción: ");
+
+        opcion = scanner.nextInt();
+
+        return opcion;
+    }
+
+    private int menuClasificacion() {
+        Scanner scanner = new Scanner(System.in);
+        int opcion;
+
+        System.out.println("****************************************");
+        System.out.println("* 1 - Ordenar por puntos               *");
+        System.out.println("* 2 - Ordenar por nombre               *");
+        System.out.println("* 3 - Ordenar por partidos jugados     *");
+        System.out.println("* 4 - Ordenar por tarjetas amarillas   *");
+        System.out.println("* 5 - Ordenar por tarjetas rojas       *");
+        System.out.println("* 6 - Ordenar por goles a favor        *");
+        System.out.println("* 7 - Ordenar por goles en contra      *");
+        System.out.println("* 8 - Ordenar por diferencia de goles  *");
+        System.out.println("* 0 - Salir                            *");
+        System.out.println("****************************************");
         System.out.println("Opción: ");
 
         opcion = scanner.nextInt();
