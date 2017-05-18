@@ -4,13 +4,13 @@ package com.company.Model;
  * Created by MarcoAntonio on 15/05/2017.
  */
 public class Partido {
-    private String EquipoLocal;
-    private String EquipoVisitante;
-    private String Estadio;
-    private String Arbitro;
+    private String equipoLocal;
+    private String equipoVisitante;
+    private String estadio;
+    private String arbitro;
     private Competicion competicion;
-    private int GolLocal;
-    private int GolVisitante;
+    private int golLocal;
+    private int golVisitante;
 
     // Constructores
 
@@ -18,56 +18,56 @@ public class Partido {
     }
 
     public Partido(String equipoLocal, String equipoVisitante, Competicion competicion, int golLocal, int golVisitante) {
-        EquipoLocal = equipoLocal;
-        EquipoVisitante = equipoVisitante;
-        this.competicion = competicion;
-        GolLocal = golLocal;
-        GolVisitante = golVisitante;
+        this.setEquipoLocal(equipoLocal);
+        this.setEquipoVisitante(equipoVisitante);
+        this.setCompeticion(competicion);
+        this.setGolLocal(golLocal);
+        this.setGolVisitante(golVisitante);
     }
 
     public Partido(String equipoLocal, String equipoVisitante, String estadio, String arbitro, Competicion competicion, int golLocal, int golVisitante) {
-        EquipoLocal = equipoLocal;
-        EquipoVisitante = equipoVisitante;
-        Estadio = estadio;
-        Arbitro = arbitro;
-        this.competicion = competicion;
-        GolLocal = golLocal;
-        GolVisitante = golVisitante;
+        this.setEquipoLocal(equipoLocal);
+        this.setEquipoVisitante(equipoVisitante);
+        this.setEstadio(estadio);
+        this.setArbitro(arbitro);
+        this.setCompeticion(competicion);
+        this.setGolLocal(golLocal);
+        this.setGolVisitante(golVisitante);
     }
 
     // Accesores
 
 
     public String getEquipoLocal() {
-        return EquipoLocal;
+        return equipoLocal;
     }
 
     public void setEquipoLocal(String equipoLocal) {
-        EquipoLocal = equipoLocal;
+        this.equipoLocal = equipoLocal;
     }
 
     public String getEquipoVisitante() {
-        return EquipoVisitante;
+        return equipoVisitante;
     }
 
     public void setEquipoVisitante(String equipoVisitante) {
-        EquipoVisitante = equipoVisitante;
+        this.equipoVisitante = equipoVisitante;
     }
 
     public String getEstadio() {
-        return Estadio;
+        return estadio;
     }
 
     public void setEstadio(String estadio) {
-        Estadio = estadio;
+        this.estadio = estadio;
     }
 
     public String getArbitro() {
-        return Arbitro;
+        return arbitro;
     }
 
     public void setArbitro(String arbitro) {
-        Arbitro = arbitro;
+        this.arbitro = arbitro;
     }
 
     public Competicion getCompeticion() {
@@ -79,18 +79,21 @@ public class Partido {
     }
 
     public int getGolLocal() {
-        return GolLocal;
+        return golLocal;
     }
 
     public void setGolLocal(int golLocal) {
-        GolLocal = golLocal;
+        this.golLocal = golLocal;
     }
 
     public int getGolVisitante() {
-        return GolVisitante;
+        return golVisitante;
     }
 
     public void setGolVisitante(int golVisitante) {
-        GolVisitante = golVisitante;
+        this.golVisitante = golVisitante;
     }
+
+    // Comparadores
+
 }
