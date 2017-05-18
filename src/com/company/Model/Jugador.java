@@ -8,19 +8,20 @@ import java.util.Objects;
  * Created by MarcoAntonio on 15/05/2017.
  */
 public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
-   protected String nombreJugador;
-   protected Posicion posicion;
-   protected Boolean capitan;
-   protected double altura;
-   protected double peso;
-   protected int dorsal;
-   protected int edad;
-   protected int partidosJugados;
-   protected int tarjetasAmarillas;
-   protected int tarjetasRoja;
-   protected int goles;
-   protected int golesEnPropia;
-   protected int golesRecibidos;
+   private String nombreJugador;
+   private String apellidosJugador;
+   private Posicion posicion;
+   private Boolean capitan;
+   private double altura;
+   private double peso;
+   private int dorsal;
+   private int edad;
+   private int partidosJugados;
+   private int tarjetasAmarillas;
+   private int tarjetasRoja;
+   private int goles;
+   private int golesEnPropia;
+   private int golesRecibidos;
 
 
    // Constructores
@@ -28,8 +29,9 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
    public Jugador() {
    }
 
-   public Jugador(String nombreJugador, Posicion posicion, Boolean capitan, double altura, double peso, int dorsal, int edad, int partidosJugados, int tarjetasAmarillas, int tarjetasRoja, int goles, int golesEnPropia, int golesRecibidos) {
+   public Jugador(String nombreJugador, String apellidosJugador, Posicion posicion, Boolean capitan, double altura, double peso, int dorsal, int edad, int partidosJugados, int tarjetasAmarillas, int tarjetasRoja, int goles, int golesEnPropia, int golesRecibidos) {
       this.setNombreJugador(nombreJugador);
+      this.setApellidosJugador(apellidosJugador);
       this.setPosicion(posicion);
       this.setCapitan(capitan);
       this.setAltura(altura);
@@ -44,8 +46,7 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
       this.setGolesRecibidos(golesRecibidos);
    }
 
-
-// Accesores
+   // Accesores
 
 
    public String getNombreJugador() {
@@ -54,6 +55,14 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
 
    public void setNombreJugador(String nombreJugador) {
       this.nombreJugador = nombreJugador;
+   }
+
+   public String getApellidosJugador() {
+      return apellidosJugador;
+   }
+
+   public void setApellidosJugador(String apellidoJugador) {
+      this.apellidosJugador = apellidoJugador;
    }
 
    public Posicion getPosicion() {
@@ -190,10 +199,35 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
    }
 
 
+
+   /**
+    * Ordena y muestra todos los jugadores por su nombre
+    */
+   public static Comparator<Jugador> comparadorPorNombre = new Comparator<Jugador>() {
+      @Override
+      public int compare(Jugador jugador1, Jugador jugador2) {
+         int res = jugador1.getNombreJugador().compareToIgnoreCase(jugador2.getNombreJugador());
+         return res;
+      }
+   };
+
+   /**
+    * Ordena y muestra todos los jugadores por sus apellidos
+    */
+   public static Comparator<Jugador> comparadorPorApellidos = new Comparator<Jugador>() {
+      @Override
+      public int compare(Jugador jugador1, Jugador jugador2) {
+         int res = jugador1.getApellidosJugador().compareToIgnoreCase(jugador2.getApellidosJugador());
+         return res;
+      }
+   };
+
+
    public static Comparator<Jugador> comparadorPorPosicion = new Comparator<Jugador>() {
       @Override
-      public int compare(Jugador j1, Jugador j2) {
-         return 0;
+      public int compare(Jugador jugador1, Jugador jugador2) {
+         int res = jugador1.getPosicion().compareTo(jugador2.getPosicion());
+         return res;
       }
    };
 

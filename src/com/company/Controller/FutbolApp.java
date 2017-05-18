@@ -114,6 +114,21 @@ public class FutbolApp {
         }
     }
 
+    public void AppInformacionEquipo(){
+        int opcion;
+
+        while ((opcion = menuInformacionEquipo() ) !=0){
+            switch (opcion){
+                case 1:
+
+                    break;
+                case 2:
+
+                    break;
+            }
+        }
+    }
+
 
     private int menuCompeticion(){
         Scanner scanner = new Scanner(System.in);
@@ -198,6 +213,22 @@ public class FutbolApp {
         return opcion;
     }
 
+    private int menuInformacionEquipo(){
+        Scanner scanner = new Scanner(System.in);
+        int opcion;
+
+        System.out.println("************************");
+        System.out.println("* 2 - Añadir equipo    *");
+        System.out.println("* 3 - Eliminar equipo  *");
+        System.out.println("* 0 - Salir            *");
+        System.out.println("************************");
+        System.out.println("Opción: ");
+
+        opcion = scanner.nextInt();
+
+        return opcion;
+    }
+
     private int menuPlantilla() {
         Scanner scanner = new Scanner(System.in);
         int opcion;
@@ -215,6 +246,8 @@ public class FutbolApp {
         System.out.println("* 10- Ordenar por goles              *");
         System.out.println("* 11- Ordenar por goles en propia    *");
         System.out.println("* 12- Ordenar por goles recibidos    *");
+        System.out.println("* 13- Añadir jugador                 *");
+        System.out.println("* 14- Borrar jugador                 *");
         System.out.println("* 0 - Salir                          *");
         System.out.println("**************************************");
         System.out.println("Opción: ");
