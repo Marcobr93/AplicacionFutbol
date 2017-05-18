@@ -24,7 +24,7 @@ public class FutbolApp {
         }
     }
 
-    public void AppPrimeraDivision(){
+    public void AppPrimeraSegundaDivision(){
         int opcion;
 
         while ((opcion = menuPrimeraSegundaDivision() ) !=0){
@@ -39,25 +39,10 @@ public class FutbolApp {
         }
     }
 
-    public void AppCopaDelRey(){
+    public void AppEleccionEquipo(){
         int opcion;
 
-        while ((opcion = menuCopaDelRey() ) !=0){
-            switch (opcion){
-                case 1:
-
-                    break;
-                case 2:
-
-                    break;
-            }
-        }
-    }
-
-    public void AppTrofeos(){
-        int opcion;
-
-        while ((opcion = menuTrofeos() ) !=0){
+        while ((opcion = menuEleccionEquipo() ) !=0){
             switch (opcion){
                 case 1:
 
@@ -114,10 +99,25 @@ public class FutbolApp {
         }
     }
 
-    public void AppInformacionEquipo(){
+    public void AppCalendario(){
         int opcion;
 
-        while ((opcion = menuInformacionEquipo() ) !=0){
+        while ((opcion = menuCalendario() ) !=0){
+            switch (opcion){
+                case 1:
+
+                    break;
+                case 2:
+
+                    break;
+            }
+        }
+    }
+
+    public void AppTrofeos(){
+        int opcion;
+
+        while ((opcion = menuTrofeos() ) !=0){
             switch (opcion){
                 case 1:
 
@@ -130,6 +130,8 @@ public class FutbolApp {
     }
 
 
+
+
     private int menuCompeticion(){
         Scanner scanner = new Scanner(System.in);
         int opcion;
@@ -137,7 +139,6 @@ public class FutbolApp {
         System.out.println("*************************");
         System.out.println("* 1 - Primera División  *");
         System.out.println("* 2 - Segunda División  *");
-        System.out.println("* 3 - Copa del Rey      *");
         System.out.println("* 0 - Salir             *");
         System.out.println("*************************");
         System.out.println("Opción: ");
@@ -154,7 +155,8 @@ public class FutbolApp {
         System.out.println("*********************");
         System.out.println("* 1 - Equipos       *");
         System.out.println("* 2 - Clasificación *");
-        System.out.println("* 3 - Trofeos       *");
+        System.out.println("* 3 - Calendario    *");
+        System.out.println("* 4 - Trofeos       *");
         System.out.println("* 0 - Salir         *");
         System.out.println("*********************");
         System.out.println("Opción: ");
@@ -164,32 +166,16 @@ public class FutbolApp {
         return opcion;
     }
 
-    private int menuCopaDelRey(){
+    private int menuEleccionEquipo(){
         Scanner scanner = new Scanner(System.in);
         int opcion;
 
-        System.out.println("*********************");
-        System.out.println("* 1 - Equipos       *");
-        System.out.println("* 2 - Eliminatorias *");
-        System.out.println("* 3 - Trofeos       *");
-        System.out.println("* 0 - Salir         *");
-        System.out.println("********************");
-        System.out.println("Opción: ");
-
-        opcion = scanner.nextInt();
-
-        return opcion;
-    }
-
-    private int menuTrofeos(){
-        Scanner scanner = new Scanner(System.in);
-        int opcion;
-
-        System.out.println("****************");
-        System.out.println("* 1 - Pichichi *");
-        System.out.println("* 2 - Zamora   *");
-        System.out.println("* 0 - Salir    *");
-        System.out.println("****************");
+        System.out.println("************************");
+        System.out.println("* 1 - Elegir equipo    *");
+        System.out.println("* 2 - Añadir equipo    *");
+        System.out.println("* 3 - Eliminar equipo  *");
+        System.out.println("* 0 - Salir            *");
+        System.out.println("************************");
         System.out.println("Opción: ");
 
         opcion = scanner.nextInt();
@@ -206,22 +192,6 @@ public class FutbolApp {
         System.out.println("* 2 - Plantilla              *");
         System.out.println("* 0 - Salir                  *");
         System.out.println("******************************");
-        System.out.println("Opción: ");
-
-        opcion = scanner.nextInt();
-
-        return opcion;
-    }
-
-    private int menuInformacionEquipo(){
-        Scanner scanner = new Scanner(System.in);
-        int opcion;
-
-        System.out.println("************************");
-        System.out.println("* 2 - Añadir equipo    *");
-        System.out.println("* 3 - Eliminar equipo  *");
-        System.out.println("* 0 - Salir            *");
-        System.out.println("************************");
         System.out.println("Opción: ");
 
         opcion = scanner.nextInt();
@@ -278,4 +248,78 @@ public class FutbolApp {
 
         return opcion;
     }
+
+    private int menuCalendario(){
+        Scanner scanner = new Scanner(System.in);
+        int opcion;
+
+        System.out.println("************************");
+        System.out.println("* 1 - Ver jornada      *");
+        System.out.println("* 2 - Añadir jornada   *");
+        System.out.println("* 3 - Eliminar jornada *");
+        System.out.println("* 0 - Salir            *");
+        System.out.println("************************");
+        System.out.println("Opción: ");
+
+        opcion = scanner.nextInt();
+
+        return opcion;
+    }
+
+    private int menuTrofeos(){
+        Scanner scanner = new Scanner(System.in);
+        int opcion;
+
+        System.out.println("****************");
+        System.out.println("* 1 - Pichichi *");
+        System.out.println("* 2 - Zamora   *");
+        System.out.println("* 0 - Salir    *");
+        System.out.println("****************");
+        System.out.println("Opción: ");
+
+        opcion = scanner.nextInt();
+
+        return opcion;
+    }
 }
+
+
+
+
+
+/*
+
+   public void AppCopaDelRey(){
+        int opcion;
+
+        while ((opcion = menuCopaDelRey() ) !=0){
+            switch (opcion){
+                case 1:
+
+                    break;
+                case 2:
+
+                    break;
+            }
+        }
+    }
+
+
+
+    private int menuCopaDelRey(){
+        Scanner scanner = new Scanner(System.in);
+        int opcion;
+
+        System.out.println("*********************");
+        System.out.println("* 1 - Equipos       *");
+        System.out.println("* 2 - Eliminatorias *");
+        System.out.println("* 3 - Trofeos       *");
+        System.out.println("* 0 - Salir         *");
+        System.out.println("********************");
+        System.out.println("Opción: ");
+
+        opcion = scanner.nextInt();
+
+        return opcion;
+    }
+    */

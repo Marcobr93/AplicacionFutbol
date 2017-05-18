@@ -309,10 +309,10 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
 
       if ( this.getClass() != obj.getClass() ) { return false; }
 
-      Jugador j = (Jugador) obj;
+      Jugador jugador = (Jugador) obj;
 
-      // Se consideran dos jugadores iguales si tienen el mismo nombre
-      return Objects.equals(this.getNombreJugador(), j.getNombreJugador());
+      // Se consideran dos jugadores iguales si tienen el mismo dorsal
+      return Objects.equals(this.getDorsal(), jugador.getDorsal());
    }
 
 }
