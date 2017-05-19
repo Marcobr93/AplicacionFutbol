@@ -15,7 +15,7 @@ public class Partido extends Equipo {
     private int golLocal;
     private int golVisitante;
     private int jornada;
-    private int numeroPartido;  //respecto a esa jornada, esto nos permitirá poder borrar los partidos de una jornada
+    private int numeroPartido;
 
     // Constructores
 

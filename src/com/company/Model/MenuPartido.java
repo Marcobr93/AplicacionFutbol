@@ -21,14 +21,16 @@ public class MenuPartido {
     }
 
     public void listaPartidos(){
+        int indice = 0;
+
         for (Partido partido: partidos){
-            System.out.println(partido);
+            System.out.println((indice++) + " - " + partido);
         }
     }
 
     public void eliminarPartido(){
         Scanner scanner = new Scanner(System.in);
-        String numero;
+        int numero;
 
         Iterator<Partido> itPartido = partidos.iterator();
 
@@ -36,13 +38,13 @@ public class MenuPartido {
 
         System.out.println();
 
-        System.out.println("Introduzca el dorsal del jugador que desea borrar");
-        numero = scanner.next();
+        System.out.println("Introduzca el índice del partido que desea borrar");
+        numero = scanner.nextInt();
 
         while (itPartido.hasNext()){
             Partido partido = itPartido.next();
 
-            if (numero.equals(partido.getNumeroPartido())){
+            if (numero == partido.getIndice()){
                 itPartido.remove();
             }
         }

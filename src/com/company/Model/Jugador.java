@@ -1,6 +1,5 @@
 package com.company.Model;
 
-import java.security.PublicKey;
 import java.util.Comparator;
 import java.util.Objects;
 
@@ -11,7 +10,6 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
    private String nombreJugador;
    private String apellidosJugador;
    private Posicion posicion;
-   private Boolean capitan;
    private double altura;
    private double peso;
    private int dorsal;
@@ -29,11 +27,25 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
    public Jugador() {
    }
 
-   public Jugador(String nombreJugador, String apellidosJugador, Posicion posicion, Boolean capitan, double altura, double peso, int dorsal, int edad, int partidosJugados, int tarjetasAmarillas, int tarjetasRoja, int goles, int golesEnPropia, int golesRecibidos) {
+   public Jugador(String nombreJugador, String apellidosJugador, double altura, double peso, int dorsal, int edad, int partidosJugados, int tarjetasAmarillas, int tarjetasRoja, int goles, int golesEnPropia, int golesRecibidos) {
+      this.setNombreJugador(nombreJugador);
+      this.setApellidosJugador(apellidosJugador);
+      this.setAltura(altura);
+      this.setPeso(peso);
+      this.setDorsal(dorsal);
+      this.setEdad(edad);
+      this.setPartidosJugados(partidosJugados);
+      this.setTarjetasAmarillas(tarjetasAmarillas);
+      this.setTarjetasRoja(tarjetasRoja);
+      this.setGoles(goles);
+      this.setGolesEnPropia(golesEnPropia);
+      this.setGolesRecibidos(golesRecibidos);
+   }
+
+   public Jugador(String nombreJugador, String apellidosJugador, Posicion posicion, double altura, double peso, int dorsal, int edad, int partidosJugados, int tarjetasAmarillas, int tarjetasRoja, int goles, int golesEnPropia, int golesRecibidos) {
       this.setNombreJugador(nombreJugador);
       this.setApellidosJugador(apellidosJugador);
       this.setPosicion(posicion);
-      this.setCapitan(capitan);
       this.setAltura(altura);
       this.setPeso(peso);
       this.setDorsal(dorsal);
@@ -71,14 +83,6 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
 
    public void setPosicion(Posicion posicion) {
       this.posicion = posicion;
-   }
-
-   public Boolean getCapitan() {
-      return capitan;
-   }
-
-   public void setCapitan(Boolean capitan) {
-      this.capitan = capitan;
    }
 
    public double getAltura() {
@@ -166,7 +170,6 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
       return "Jugador{" +
               "nombreJugador='" + nombreJugador + '\'' +
               ", posicion=" + posicion +
-              ", capitan=" + capitan +
               ", altura=" + altura +
               ", peso=" + peso +
               ", dorsal=" + dorsal +

@@ -1,5 +1,9 @@
 package com.company.Controller;
 
+import com.company.Model.Equipo;
+import com.company.Model.Jugador;
+import com.company.Model.Posicion;
+
 import java.util.Scanner;
 
 /**
@@ -129,7 +133,98 @@ public class FutbolApp {
         }
     }
 
+/*
+    private Jugador preguntarInformacionJugador(){
+        Scanner scanner = new Scanner(System.in);
+        String nombreJugador;
+        String apellidosJugador;
+        Posicion posicion;
+        double altura;
+        double peso;
+        int dorsal;
+        int edad;
+        int partidosJugados;
+        int tarjetasAmarillas;
+        int tarjetasRoja;
+        int goles;
+        int golesEnPropia;
+        int golesRecibidos;
 
+        do {
+            System.out.println("Nombre del jugador: ");
+            nombreJugador = scanner.next().trim().replaceAll("\\s+", " ");
+        } while (nombreJugador.equals(""));
+
+        do {
+            System.out.println("Apellido del jugador: ");
+            apellidosJugador = scanner.next().trim().replaceAll("\\s+", " ");
+        } while (apellidosJugador.equals(""));
+
+        do {
+            System.out.println("Posición del jugador: ");
+            String posicion = scanner.next();
+            Posicion.valueOf(posicion);
+        }while (posicion.equals(""));
+
+        do {
+            System.out.println("Altura del jugador: ");
+            altura = scanner.nextDouble();
+        } while (altura < 0.0);
+
+        do {
+            System.out.println("Peso del jugador: ");
+            peso = scanner.nextDouble();
+        } while (peso < 0.0);
+
+        do {
+            System.out.println("Dorsal del jugador: ");
+            dorsal = scanner.nextInt();
+        } while (dorsal < 0);
+
+        do {
+            System.out.println("Edad del jugador: ");
+            edad = scanner.nextInt();
+        } while (edad < 0);
+
+        do {
+            System.out.println("Partidos jugados del jugador: ");
+            partidosJugados = scanner.nextInt();
+        } while (partidosJugados < 0);
+
+        do {
+            System.out.println("Tarjetas amarillas del jugador: ");
+            tarjetasAmarillas = scanner.nextInt();
+        } while (tarjetasAmarillas < 0);
+
+        do {
+            System.out.println("Tarjetas rojas del jugador: ");
+            tarjetasRoja = scanner.nextInt();
+        } while (tarjetasRoja < 0);
+
+        do {
+            System.out.println("Goles del jugador: ");
+            goles = scanner.nextInt();
+        } while (goles < 0);
+
+        do {
+            System.out.println("Goles en propia del jugador: ");
+            golesEnPropia = scanner.nextInt();
+        } while (golesEnPropia < 0);
+
+        do {
+            System.out.println("Goles recibidos del jugador: ");
+            golesRecibidos = scanner.nextInt();
+        } while (golesRecibidos < 0);
+
+        return new Jugador(nombreJugador,apellidosJugador,posicion,altura,peso,dorsal,edad,partidosJugados,tarjetasAmarillas,tarjetasRoja,goles,golesEnPropia,golesRecibidos);
+    }
+*/
+
+    private Equipo preguntarInformacionEquipo(){
+
+
+        return new Equipo();
+    }
 
 
     private int menuCompeticion(){
@@ -139,6 +234,8 @@ public class FutbolApp {
         System.out.println("*************************");
         System.out.println("* 1 - Primera División  *");
         System.out.println("* 2 - Segunda División  *");
+        System.out.println("* 3 - Buscar Equipo     *");
+        System.out.println("* 4 - Buscar Jugador  *");
         System.out.println("* 0 - Salir             *");
         System.out.println("*************************");
         System.out.println("Opción: ");

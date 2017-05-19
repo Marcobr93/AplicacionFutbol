@@ -1,5 +1,7 @@
 package com.company.Model;
 
+import com.company.Controller.FutbolApp;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -21,7 +23,7 @@ public class MenuJugador {
 
     public void eliminarJugador(){
         Scanner scanner = new Scanner(System.in);
-        String dorsal;
+        int dorsal;
 
         Iterator<Jugador> itJugador = jugadores.iterator();
 
@@ -30,20 +32,21 @@ public class MenuJugador {
         System.out.println();
 
         System.out.println("Introduzca el dorsal del jugador que desea borrar");
-        dorsal = scanner.next();
+        dorsal = scanner.nextInt();
 
         while (itJugador.hasNext()){
             Jugador jugador = itJugador.next();
 
-            if (dorsal.equals(jugador.getDorsal())){
+            if (dorsal == jugador.getDorsal()){
                 itJugador.remove();
             }
         }
     }
 
     public void listaJugadores(){
+        int indice = 0;
         for (Jugador jugador: jugadores){
-            System.out.println(jugador);
+            System.out.println((indice++) + " - " + jugador);
         }
     }
 

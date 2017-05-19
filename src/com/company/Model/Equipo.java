@@ -1,5 +1,6 @@
 package com.company.Model;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Objects;
 
@@ -14,6 +15,7 @@ public class Equipo extends Jugador{
    private int añoFundacion;
    private int puntos;
    private Competicion competicion;
+   private int indice = 0;
 
 
    // Constructores
@@ -21,7 +23,7 @@ public class Equipo extends Jugador{
    public Equipo() {
    }
 
-   public Equipo(String nombreEquipo, String presidente, String entrenador, String estadio, int añoFundacion, int puntos, Competicion competicion) {
+   public Equipo(String nombreEquipo, String presidente, String entrenador, String estadio, int añoFundacion, int puntos, Competicion competicion, int indice) {
       this.setNombreEquipo(nombreEquipo);
       this.setPresidente(presidente);
       this.setEntrenador(entrenador);
@@ -29,6 +31,7 @@ public class Equipo extends Jugador{
       this.setAñoFundacion(añoFundacion);
       this.setPuntos(puntos);
       this.setCompeticion(competicion);
+      this.setIndice(indice);
    }
 
    // Accesores
@@ -94,6 +97,13 @@ public class Equipo extends Jugador{
       return getGoles() - getGolesRecibidos();
    }
 
+   public int getIndice() {
+      return indice;
+   }
+
+   public void setIndice(int indice) {
+      this.indice = indice;
+   }
 
    @Override
    public String toString() {

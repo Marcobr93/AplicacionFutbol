@@ -43,8 +43,10 @@ public class MenuEquipo {
     }
 
     public void listaEquipos(){
+        int indice = 0;
+
         for (Equipo equipo: equipos){
-            System.out.println(equipo);
+            System.out.println((indice++) + " - " + equipo);
         }
     }
 
