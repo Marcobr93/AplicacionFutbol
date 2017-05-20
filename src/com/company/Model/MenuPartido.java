@@ -21,10 +21,8 @@ public class MenuPartido {
     }
 
     public void listaPartidos(){
-        int indice = 0;
-
         for (Partido partido: partidos){
-            System.out.println((indice++) + " - " + partido);
+            System.out.println(partido);
         }
     }
 
@@ -38,13 +36,13 @@ public class MenuPartido {
 
         System.out.println();
 
-        System.out.println("Introduzca el índice del partido que desea borrar");
+        System.out.println("Introduzca el número del partido que desea borrar");
         numero = scanner.nextInt();
 
         while (itPartido.hasNext()){
             Partido partido = itPartido.next();
 
-            if (numero == partido.getIndice()){
+            if (numero == partido.getNumeroPartido()){
                 itPartido.remove();
             }
         }

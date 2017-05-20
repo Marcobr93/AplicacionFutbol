@@ -15,7 +15,7 @@ public class Equipo extends Jugador{
    private int añoFundacion;
    private int puntos;
    private Competicion competicion;
-   private int indice = 0;
+   private ArrayList<Jugador> jugadores;
 
 
    // Constructores
@@ -23,7 +23,16 @@ public class Equipo extends Jugador{
    public Equipo() {
    }
 
-   public Equipo(String nombreEquipo, String presidente, String entrenador, String estadio, int añoFundacion, int puntos, Competicion competicion, int indice) {
+   public Equipo(String nombreEquipo, String presidente, String entrenador, String estadio, int añoFundacion, int puntos) {
+      this.setNombreEquipo(nombreEquipo);
+      this.setPresidente(presidente);
+      this.setEntrenador(entrenador);
+      this.setEstadio(estadio);
+      this.setAñoFundacion(añoFundacion);
+      this.setPuntos(puntos);
+   }
+
+   public Equipo(String nombreEquipo, String presidente, String entrenador, String estadio, int añoFundacion, int puntos, Competicion competicion) {
       this.setNombreEquipo(nombreEquipo);
       this.setPresidente(presidente);
       this.setEntrenador(entrenador);
@@ -31,7 +40,17 @@ public class Equipo extends Jugador{
       this.setAñoFundacion(añoFundacion);
       this.setPuntos(puntos);
       this.setCompeticion(competicion);
-      this.setIndice(indice);
+   }
+
+   public Equipo(String nombreEquipo, String presidente, String entrenador, String estadio, int añoFundacion, int puntos, Competicion competicion, ArrayList<Jugador> jugadores) {
+      this.setNombreEquipo(nombreEquipo);
+      this.setPresidente(presidente);
+      this.setEntrenador(entrenador);
+      this.setEstadio(estadio);
+      this.setAñoFundacion(añoFundacion);
+      this.setPuntos(puntos);
+      this.setCompeticion(competicion);
+      this.setJugadores(jugadores);
    }
 
    // Accesores
@@ -97,12 +116,12 @@ public class Equipo extends Jugador{
       return getGoles() - getGolesRecibidos();
    }
 
-   public int getIndice() {
-      return indice;
+   public ArrayList<Jugador> getJugadores() {
+      return jugadores;
    }
 
-   public void setIndice(int indice) {
-      this.indice = indice;
+   public void setJugadores(ArrayList<Jugador> jugadores) {
+      this.jugadores = jugadores;
    }
 
    @Override
@@ -114,6 +133,7 @@ public class Equipo extends Jugador{
               ", estadio='" + estadio + '\'' +
               ", añoFundacion=" + añoFundacion +
               ", puntos=" + puntos +
+              ", competicion=" + competicion +
               '}';
    }
 
@@ -196,5 +216,11 @@ public class Equipo extends Jugador{
 
       // Se consideran dos equipos iguales si tienen el mismo nombre
       return Objects.equals(this.getNombreEquipo(), equipo.getNombreEquipo());
+   }
+
+   // Métodos
+
+   public void añadirJugadores(Jugador jugador){
+      jugadores.add(jugador);
    }
 }

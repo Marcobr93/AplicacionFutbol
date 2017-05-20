@@ -1,8 +1,7 @@
 package com.company.Controller;
 
-import com.company.Model.Equipo;
-import com.company.Model.Jugador;
-import com.company.Model.Posicion;
+import com.company.Model.*;
+import javafx.geometry.Pos;
 
 import java.util.Scanner;
 
@@ -10,6 +9,28 @@ import java.util.Scanner;
  * Created by MarcoAntonio on 15/05/2017.
  */
 public class FutbolApp {
+
+    private MenuEquipo menuEquipo;
+    private MenuJugador menuJugador;
+    private MenuPartido menuPartido;
+
+
+    public FutbolApp(){
+        menuEquipo = new MenuEquipo();
+        cargarEquipos();
+        menuJugador = new MenuJugador();
+        cargarJugadores();
+    }
+
+    private void cargarEquipos(){
+        menuEquipo.añadirEquipo(new Equipo("Real Madrid", "Florentino Pérez", "Zinedine Zidane", "Santiago Bernabéu", 1902, 90, Competicion.PRIMERA));
+        menuEquipo.añadirEquipo(new Equipo("F.C Barcelona", "Bartomeu", "Luis Enrique", "Campo Nuevo", 1899, 87, Competicion.PRIMERA));
+    }
+
+    private void cargarJugadores(){
+        menuJugador.añadirJugador(new Jugador("Marco", "Asensio Willemsen",Posicion.MediaPunta,false, 1.80, 75.00, 20, 21, 23, 0, 0, 3, 0, 0, 7));
+        menuJugador.añadirJugador(new Jugador("Sergio", "Busquets Burgos",Posicion.Centrocampista,false, 1.89, 76.00, 5, 28, 32, 8, 0, 3, 0, 0, 4));
+    }
 
     //Inicializacion
 
@@ -19,10 +40,10 @@ public class FutbolApp {
         while ((opcion = menuCompeticion() ) !=0){
             switch (opcion){
                 case 1:
-
+                    AppPrimeraSegundaDivision();
                     break;
                 case 2:
-
+                    AppPrimeraSegundaDivision();
                     break;
             }
         }
@@ -133,12 +154,11 @@ public class FutbolApp {
         }
     }
 
-/*
+
     private Jugador preguntarInformacionJugador(){
         Scanner scanner = new Scanner(System.in);
         String nombreJugador;
         String apellidosJugador;
-        Posicion posicion;
         double altura;
         double peso;
         int dorsal;
@@ -149,6 +169,7 @@ public class FutbolApp {
         int goles;
         int golesEnPropia;
         int golesRecibidos;
+        int asistencias;
 
         do {
             System.out.println("Nombre del jugador: ");
@@ -160,11 +181,6 @@ public class FutbolApp {
             apellidosJugador = scanner.next().trim().replaceAll("\\s+", " ");
         } while (apellidosJugador.equals(""));
 
-        do {
-            System.out.println("Posición del jugador: ");
-            String posicion = scanner.next();
-            Posicion.valueOf(posicion);
-        }while (posicion.equals(""));
 
         do {
             System.out.println("Altura del jugador: ");
@@ -216,14 +232,57 @@ public class FutbolApp {
             golesRecibidos = scanner.nextInt();
         } while (golesRecibidos < 0);
 
-        return new Jugador(nombreJugador,apellidosJugador,posicion,altura,peso,dorsal,edad,partidosJugados,tarjetasAmarillas,tarjetasRoja,goles,golesEnPropia,golesRecibidos);
+        do {
+            System.out.println("Asistenciass del jugador: ");
+            asistencias = scanner.nextInt();
+        } while (asistencias < 0);
+
+
+        return new Jugador(nombreJugador,apellidosJugador,altura,peso,dorsal,edad,partidosJugados,tarjetasAmarillas,tarjetasRoja,goles,golesEnPropia,golesRecibidos,asistencias);
     }
-*/
+
 
     private Equipo preguntarInformacionEquipo(){
+        Scanner scanner = new Scanner(System.in);
+        String nombreEquipo;
+        String presidente;
+        String entrenador;
+        String estadio;
+        int añoFundacion;
+        int puntos;
+
+        do {
+            System.out.println("Nombre del equipo: ");
+            nombreEquipo = scanner.next().trim().replaceAll("\\s+", " ");
+        } while (nombreEquipo.equals(""));
+
+        do {
+            System.out.println("Presidente del equipo: ");
+            presidente = scanner.next().trim().replaceAll("\\s+", " ");
+        } while (presidente.equals(""));
+
+        do {
+            System.out.println("Entrenador del equipo: ");
+            entrenador = scanner.next().trim().replaceAll("\\s+", " ");
+        } while (entrenador.equals(""));
+
+        do {
+            System.out.println("Estadio del equipo: ");
+            estadio = scanner.next().trim().replaceAll("\\s+", " ");
+        } while (estadio.equals(""));
+
+        do {
+            System.out.println("Año de fundación del equipo: ");
+            añoFundacion = scanner.nextInt();
+        } while (añoFundacion < 0);
+
+        do {
+            System.out.println("Puntos del equipo: ");
+            puntos = scanner.nextInt();
+        } while (puntos < 0);
 
 
-        return new Equipo();
+        return new Equipo(nombreEquipo, presidente, entrenador, estadio, añoFundacion, puntos);
     }
 
 
@@ -314,7 +373,7 @@ public class FutbolApp {
         System.out.println("* 11- Ordenar por goles en propia    *");
         System.out.println("* 12- Ordenar por goles recibidos    *");
         System.out.println("* 13- Añadir jugador                 *");
-        System.out.println("* 14- Borrar jugador                 *");
+        System.out.println("* 14- Eliminar jugador               *");
         System.out.println("* 0 - Salir                          *");
         System.out.println("**************************************");
         System.out.println("Opción: ");

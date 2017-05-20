@@ -12,6 +12,7 @@ public class MenuEquipo {
 
     public ArrayList<Equipo> equipos = new ArrayList<>();
 
+
     // Métodos
 
     public void añadirEquipo(Equipo equipo){
@@ -20,6 +21,7 @@ public class MenuEquipo {
         }
     }
 
+/*
     public void eliminarEquipo(){
         Scanner scanner = new Scanner(System.in);
         String nombre;
@@ -30,7 +32,7 @@ public class MenuEquipo {
 
         System.out.println();
 
-        System.out.println("Introduzca el dorsal del jugador que desea borrar");
+        System.out.println("Introduzca el nombre del equipo que desea borrar");
         nombre = scanner.next();
 
         while (itEquipo.hasNext()){
@@ -39,6 +41,40 @@ public class MenuEquipo {
             if (nombre.equals(equipo.getNombreEquipo())){
                 itEquipo.remove();
             }
+        }
+    }
+*/
+
+    public void eliminarEquipo(ArrayList<Equipo> equipos){
+        Scanner input = new Scanner(System.in);
+        int indice;
+
+        do {
+            System.out.println("introduzca el índice del equipo que desea borrar: ");
+            indice = input.nextInt();
+        }while (!indiceCorrecto(indice, equipos));
+
+        equipos.remove(indice);
+    }
+
+    public void elegirEquipo(ArrayList<Equipo> equipos){
+        listaEquipos();
+        Scanner input = new Scanner(System.in);
+        int indice;
+
+        do{
+            System.out.println("Elija un equipo");
+            indice = input.nextInt();
+        }while (!indiceCorrecto(indice, equipos));
+
+        equipos.contains(indice);
+    }
+
+    public static boolean indiceCorrecto(int indice, ArrayList<Equipo> equipos){
+        if(indice >= 0 && indice < equipos.size()){
+            return true;
+        }else{
+            return false;
         }
     }
 

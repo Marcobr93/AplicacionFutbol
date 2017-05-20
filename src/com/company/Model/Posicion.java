@@ -13,21 +13,21 @@ public enum Posicion {
     Extremo("Extremo"),
     Delantero("Delantero");
 
-    private final String Posicion;
+    private final String posicion;
     
     // Constructores
 
     Posicion() {
-        Posicion = "Sin posición específica";
+        posicion = "Sin posición específica";
     }
 
     Posicion(String posicion) {
-        Posicion = posicion;
+        this.posicion = posicion;
     }
 
     // Accesores
 
     public String getPosicion() {
-        return Posicion;
+        return posicion;
     }
 }

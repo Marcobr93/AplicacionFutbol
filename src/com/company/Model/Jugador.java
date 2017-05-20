@@ -10,6 +10,7 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
    private String nombreJugador;
    private String apellidosJugador;
    private Posicion posicion;
+   private boolean capitan;
    private double altura;
    private double peso;
    private int dorsal;
@@ -20,6 +21,7 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
    private int goles;
    private int golesEnPropia;
    private int golesRecibidos;
+   private int asistencias;
 
 
    // Constructores
@@ -27,7 +29,7 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
    public Jugador() {
    }
 
-   public Jugador(String nombreJugador, String apellidosJugador, double altura, double peso, int dorsal, int edad, int partidosJugados, int tarjetasAmarillas, int tarjetasRoja, int goles, int golesEnPropia, int golesRecibidos) {
+   public Jugador(String nombreJugador, String apellidosJugador, double altura, double peso, int dorsal, int edad, int partidosJugados, int tarjetasAmarillas, int tarjetasRoja, int goles, int golesEnPropia, int golesRecibidos, int asistencias) {
       this.setNombreJugador(nombreJugador);
       this.setApellidosJugador(apellidosJugador);
       this.setAltura(altura);
@@ -40,12 +42,14 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
       this.setGoles(goles);
       this.setGolesEnPropia(golesEnPropia);
       this.setGolesRecibidos(golesRecibidos);
+      this.setAsistencias(asistencias);
    }
 
-   public Jugador(String nombreJugador, String apellidosJugador, Posicion posicion, double altura, double peso, int dorsal, int edad, int partidosJugados, int tarjetasAmarillas, int tarjetasRoja, int goles, int golesEnPropia, int golesRecibidos) {
+   public Jugador(String nombreJugador, String apellidosJugador, Posicion posicion, boolean capitan, double altura, double peso, int dorsal, int edad, int partidosJugados, int tarjetasAmarillas, int tarjetasRoja, int goles, int golesEnPropia, int golesRecibidos, int asistencias) {
       this.setNombreJugador(nombreJugador);
       this.setApellidosJugador(apellidosJugador);
       this.setPosicion(posicion);
+      this.setCapitan(capitan);
       this.setAltura(altura);
       this.setPeso(peso);
       this.setDorsal(dorsal);
@@ -56,7 +60,9 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
       this.setGoles(goles);
       this.setGolesEnPropia(golesEnPropia);
       this.setGolesRecibidos(golesRecibidos);
+      this.setAsistencias(asistencias);
    }
+
 
    // Accesores
 
@@ -83,6 +89,14 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
 
    public void setPosicion(Posicion posicion) {
       this.posicion = posicion;
+   }
+
+   public boolean isCapitan() {
+      return capitan;
+   }
+
+   public void setCapitan(boolean capitan) {
+      this.capitan = capitan;
    }
 
    public double getAltura() {
@@ -164,6 +178,15 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
    public void setGolesRecibidos(int golesRecibidos) {
       this.golesRecibidos = golesRecibidos;
    }
+
+   public int getAsistencias() {
+      return asistencias;
+   }
+
+   public void setAsistencias(int asistencias) {
+      this.asistencias = asistencias;
+   }
+
 
    @Override
    public String toString() {
