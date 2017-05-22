@@ -1,8 +1,12 @@
 package com.company;
 
+import com.company.Controller.FutbolApp;
+
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+        FutbolApp futbolApp = new FutbolApp();
+
+        futbolApp.AppCompeticion();
     }
 }

@@ -17,7 +17,6 @@ public class Partido extends Equipo {
     private int golVisitante;
     private int jornada;
     private int numeroPartido;
-    private ArrayList<Equipo> equipos;
 
     // Constructores
 
@@ -32,7 +31,7 @@ public class Partido extends Equipo {
         this.setNumeroPartido(numeroPartido);
     }
 
-    public Partido(String equipoLocal, String equipoVisitante, String estadio, String arbitro, Competicion competicion, int golLocal, int golVisitante, int jornada, int numeroPartido, ArrayList<Equipo> equipos) {
+    public Partido(String equipoLocal, String equipoVisitante, String estadio, String arbitro, Competicion competicion, int golLocal, int golVisitante, int jornada, int numeroPartido) {
         this.setEquipoLocal(equipoLocal);
         this.setEquipoVisitante(equipoVisitante);
         this.setEstadio(estadio);
@@ -42,7 +41,6 @@ public class Partido extends Equipo {
         this.setGolVisitante(golVisitante);
         this.setJornada(jornada);
         this.setNumeroPartido(numeroPartido);
-        this.setEquipos(equipos);
     }
 
     // Accesores
@@ -120,13 +118,6 @@ public class Partido extends Equipo {
         this.numeroPartido = numeroPartido;
     }
 
-    public ArrayList<Equipo> getEquipos() {
-        return equipos;
-    }
-
-    public void setEquipos(ArrayList<Equipo> equipos) {
-        this.equipos = equipos;
-    }
 
     @Override
     public String toString() {
@@ -204,7 +195,5 @@ public class Partido extends Equipo {
 
     // Métodos
 
-    public void añadirPartidos(Equipo equipo){
-        equipos.add(equipo);
-    }
+
 }

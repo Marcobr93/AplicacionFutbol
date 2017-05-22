@@ -169,6 +169,13 @@ public class Equipo extends Jugador{
       }
    };
 
+   public static Comparator<Equipo> comparadorPorPartidosJugados = new Comparator<Equipo>() {
+      @Override
+      public int compare(Equipo equipo1, Equipo equipo2) {
+         return (equipo2.getPartidosJugados() - equipo1.getPartidosJugados());
+      }
+   };
+
    public static Comparator<Equipo> comparadorPorGolesAFavor = new Comparator<Equipo>() {
       @Override
       public int compare(Equipo equipo1, Equipo equipo2) {

@@ -10,7 +10,7 @@ public enum Competicion {
     SEGUNDA("Segunda División");
 
     private ArrayList<Equipo> equipos;
-
+    public ArrayList<Competicion> competiciones = new ArrayList<>();
     private final String competicion;
 
     // Constructores
@@ -41,11 +41,41 @@ public enum Competicion {
         equipos.add(equipo);
     }
 
+    /**
+     * Método para añadir equipos a Primera División
+     * @param equipo
+     */
     public void añadirEquiposPrimeraDivision(Equipo equipo){
         PRIMERA.añadirEquipos(equipo);
     }
 
+    /**
+     * Método para añadir equipos a Segunda División
+     * @param equipo
+     */
     public void añadirEquiposSegundaDivision(Equipo equipo){
         SEGUNDA.añadirEquipos(equipo);
+    }
+
+    /**
+     * Método que te muestra los equipos de Primera División
+     */
+    public void primeraDivision(){
+        int indice = 0;
+
+        for (Competicion competicion: PRIMERA.competiciones){
+            System.out.println((indice++) + " - " + competicion);
+        }
+    }
+
+    /**
+     * Método que te muestra los equipos de Seguda División
+     */
+    public void segundaDivision(){
+        int indice = 0;
+
+        for (Competicion competicion: SEGUNDA.competiciones){
+            System.out.println((indice++) + " - " + competicion);
+        }
     }
 }

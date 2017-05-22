@@ -15,8 +15,8 @@ public class MenuEquipo {
 
     // Métodos
 
-    public void añadirEquipo(Equipo equipo){
-        if(equipo != null){
+    public void añadirEquipo(Equipo equipo) {
+        if (equipo != null) {
             equipos.add(equipo);
         }
     }
@@ -45,94 +45,134 @@ public class MenuEquipo {
     }
 */
 
-    public void eliminarEquipo(ArrayList<Equipo> equipos){
+    public void eliminarEquipo() {
         Scanner input = new Scanner(System.in);
         int indice;
 
         do {
             System.out.println("introduzca el índice del equipo que desea borrar: ");
             indice = input.nextInt();
-        }while (!indiceCorrecto(indice, equipos));
+        } while (!indiceCorrecto(indice, equipos));
 
         equipos.remove(indice);
     }
 
-    public void elegirEquipo(ArrayList<Equipo> equipos){
+
+    public void mostrarInformacionEquipo() {
+        for (Equipo equipo : equipos) {
+            System.out.println(equipo);
+        }
+    }
+
+    public void elegirEquipo() {
         listaEquipos();
         Scanner input = new Scanner(System.in);
         int indice;
 
-        do{
+        do {
             System.out.println("Elija un equipo");
             indice = input.nextInt();
-        }while (!indiceCorrecto(indice, equipos));
+        } while (!indiceCorrecto(indice, equipos));
 
         equipos.contains(indice);
     }
 
-    public static boolean indiceCorrecto(int indice, ArrayList<Equipo> equipos){
-        if(indice >= 0 && indice < equipos.size()){
+    public static boolean indiceCorrecto(int indice, ArrayList<Equipo> equipos) {
+        if (indice >= 0 && indice < equipos.size()) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-    public void listaEquipos(){
+    public void listaEquipos() {
         int indice = 0;
 
-        for (Equipo equipo: equipos){
+        for (Equipo equipo : equipos) {
             System.out.println((indice++) + " - " + equipo);
         }
     }
 
     // Ordenación
 
-    public void ordenacionPorNombre(){
+    public void ordenacionPorNombre() {
         Collections.sort(equipos, Equipo.comparadorPorNombre);
 
         listaEquipos();
     }
 
-    public void ordenacionPorCompeticion(){
+    public void ordenacionPorCompeticion() {
         Collections.sort(equipos, Equipo.comparadorPorCompeticion);
 
         listaEquipos();
     }
 
-    public void ordenacionPorPuntos(){
+    public void ordenacionPorPuntos() {
         Collections.sort(equipos, Equipo.comparadorPorPuntos);
 
         listaEquipos();
     }
 
-    public void ordenacionPorGolesAFavor(){
+    public void ordenacionPorPartidosJugados() {
+        Collections.sort(equipos, Equipo.comparadorPorPartidosJugados);
+    }
+
+    public void ordenacionPorGolesAFavor() {
         Collections.sort(equipos, Equipo.comparadorPorGolesAFavor);
 
         listaEquipos();
     }
 
-    public void ordenacionPorGolesEnContra(){
+    public void ordenacionPorGolesEnContra() {
         Collections.sort(equipos, Equipo.comparadorPorGolesEnContra);
 
         listaEquipos();
     }
 
-    public void ordenacionPorDiferenciaDeGoles(){
+    public void ordenacionPorDiferenciaDeGoles() {
         Collections.sort(equipos, Equipo.comparadorPorDiferenciaDeGoles);
 
         listaEquipos();
     }
 
-    public void ordenacionPorTarjetasAmarillas(){
+    public void ordenacionPorTarjetasAmarillas() {
         Collections.sort(equipos, Equipo.comparadorPorTarjetasAmarillas);
 
         listaEquipos();
     }
 
-    public void ordenacionPorTarjeasRojas(){
+    public void ordenacionPorTarjeasRojas() {
         Collections.sort(equipos, Equipo.comparadorPorTarjetasRojas);
 
         listaEquipos();
     }
 }
+
+/*
+ public void elegirEquipo(ArrayList<Equipo> equipos) {
+        listaEquipos();
+        Scanner input = new Scanner(System.in);
+        int indice;
+
+        do {
+            System.out.println("Elija un equipo");
+            indice = input.nextInt();
+        } while (!indiceCorrecto(indice, equipos));
+
+        equipos.contains(indice);
+    }
+ */
+
+/*
+public void eliminarEquipo(ArrayList<Equipo> equipos) {
+        Scanner input = new Scanner(System.in);
+        int indice;
+
+        do {
+            System.out.println("introduzca el índice del equipo que desea borrar: ");
+            indice = input.nextInt();
+        } while (!indiceCorrecto(indice, equipos));
+
+        equipos.remove(indice);
+    }
+ */

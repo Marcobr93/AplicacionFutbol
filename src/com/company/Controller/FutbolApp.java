@@ -13,12 +13,13 @@ public class FutbolApp {
     private MenuEquipo menuEquipo;
     private MenuJugador menuJugador;
     private MenuPartido menuPartido;
+    private Competicion competicion;
 
 
     public FutbolApp(){
         menuEquipo = new MenuEquipo();
-        cargarEquipos();
         menuJugador = new MenuJugador();
+        cargarEquipos();
         cargarJugadores();
     }
 
@@ -40,25 +41,40 @@ public class FutbolApp {
         while ((opcion = menuCompeticion() ) !=0){
             switch (opcion){
                 case 1:
-                    AppPrimeraSegundaDivision();
+                    AppPrimeraDivision();
                     break;
                 case 2:
-                    AppPrimeraSegundaDivision();
+                    AppSegundaDivision();
                     break;
             }
         }
     }
 
-    public void AppPrimeraSegundaDivision(){
+    public void AppPrimeraDivision(){
         int opcion;
 
         while ((opcion = menuPrimeraSegundaDivision() ) !=0){
             switch (opcion){
                 case 1:
-
+                    competicion.primeraDivision();
                     break;
                 case 2:
+                    AppClasificacion();
+                    break;
+            }
+        }
+    }
 
+    public void AppSegundaDivision(){
+        int opcion;
+
+        while ((opcion = menuPrimeraSegundaDivision() ) !=0){
+            switch (opcion){
+                case 1:
+                    competicion.segundaDivision();
+                    break;
+                case 2:
+                    AppClasificacion();
                     break;
             }
         }
@@ -70,11 +86,13 @@ public class FutbolApp {
         while ((opcion = menuEleccionEquipo() ) !=0){
             switch (opcion){
                 case 1:
-
+                    menuEquipo.elegirEquipo();
                     break;
                 case 2:
-
+                    menuEquipo.añadirEquipo(preguntarInformacionEquipo());
                     break;
+                case 3:
+                    menuEquipo.eliminarEquipo();
             }
         }
     }
@@ -115,10 +133,28 @@ public class FutbolApp {
         while ((opcion = menuClasificacion() ) !=0){
             switch (opcion){
                 case 1:
-
+                    menuEquipo.ordenacionPorPuntos();
                     break;
                 case 2:
-
+                    menuEquipo.ordenacionPorNombre();
+                    break;
+                case 3:
+                    menuEquipo.ordenacionPorPartidosJugados();
+                    break;
+                case 4:
+                    menuEquipo.ordenacionPorTarjetasAmarillas();
+                    break;
+                case 5:
+                    menuEquipo.ordenacionPorTarjeasRojas();
+                    break;
+                case 6:
+                    menuEquipo.ordenacionPorGolesAFavor();
+                    break;
+                case 7:
+                    menuEquipo.ordenacionPorGolesEnContra();
+                    break;
+                case 8:
+                    menuEquipo.ordenacionPorDiferenciaDeGoles();
                     break;
             }
         }
