@@ -13,10 +13,13 @@ import java.util.Scanner;
 public class MenuJugador {
     public ArrayList<Jugador> jugadores = new ArrayList<>();
 
+    Equipo equipo;
+
     // Métodos
 
     public void añadirJugador(Jugador jugador){
-        if(jugador != null){
+
+        if (jugador.getEquipo().equals(equipo.getNombreEquipo())) {
             jugadores.add(jugador);
         }
     }
@@ -126,6 +129,18 @@ public class MenuJugador {
 
     public void ordenacionPorGolesRecibidos(){
         Collections.sort(jugadores, Jugador.comparadorPorGolesRecibidos);
+
+        listaJugadores();
+    }
+
+    public void ordenacionPorAsistencias(){
+        Collections.sort(jugadores, Jugador.comparadorPorAsistencias);
+
+        listaJugadores();
+    }
+
+    public void ordenacionPorEquipo(){
+        Collections.sort(jugadores, Jugador.comparadorPorEquipo);
 
         listaJugadores();
     }

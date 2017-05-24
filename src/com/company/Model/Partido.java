@@ -51,7 +51,11 @@ public class Partido extends Equipo {
     }
 
     public void setEquipoLocal(String equipoLocal) {
-        this.equipoLocal = equipoLocal;
+        if (equipoLocal.equals("")) {
+            this.equipoLocal = "Desconocido";
+        }else {
+            this.equipoLocal = equipoLocal;
+        }
     }
 
     public String getEquipoVisitante() {
@@ -59,7 +63,11 @@ public class Partido extends Equipo {
     }
 
     public void setEquipoVisitante(String equipoVisitante) {
-        this.equipoVisitante = equipoVisitante;
+        if (equipoVisitante.equals("")) {
+            this.equipoVisitante = "Desconocido";
+        }else {
+            this.equipoVisitante = equipoVisitante;
+        }
     }
 
     public String getEstadio() {
@@ -67,7 +75,11 @@ public class Partido extends Equipo {
     }
 
     public void setEstadio(String estadio) {
-        this.estadio = estadio;
+        if (estadio.equals("")) {
+            this.estadio = "Desconocido";
+        }else {
+            this.estadio = estadio;
+        }
     }
 
     public String getArbitro() {
@@ -75,7 +87,11 @@ public class Partido extends Equipo {
     }
 
     public void setArbitro(String arbitro) {
-        this.arbitro = arbitro;
+        if (arbitro.equals("")) {
+            this.arbitro = "Desconocido";
+        }else {
+            this.arbitro = arbitro;
+        }
     }
 
     public Competicion getCompeticion() {
@@ -91,7 +107,11 @@ public class Partido extends Equipo {
     }
 
     public void setGolLocal(int golLocal) {
-        this.golLocal = golLocal;
+        if (golLocal < 0){
+            this.golLocal = 0;
+        }else{
+            this.golLocal = golLocal;
+        }
     }
 
     public int getGolVisitante() {
@@ -99,7 +119,11 @@ public class Partido extends Equipo {
     }
 
     public void setGolVisitante(int golVisitante) {
-        this.golVisitante = golVisitante;
+        if (golVisitante < 0){
+            this.golVisitante = 0;
+        }else{
+            this.golVisitante = golVisitante;
+        }
     }
 
     public int getJornada() {
@@ -107,7 +131,11 @@ public class Partido extends Equipo {
     }
 
     public void setJornada(int jornada) {
-        this.jornada = jornada;
+        if (jornada < 0){
+            this.jornada = 0;
+        }else{
+            this.jornada = jornada;
+        }
     }
 
     public int getNumeroPartido() {
@@ -115,7 +143,11 @@ public class Partido extends Equipo {
     }
 
     public void setNumeroPartido(int numeroPartido) {
-        this.numeroPartido = numeroPartido;
+        if (numeroPartido < 0){
+            this.numeroPartido = 0;
+        }else{
+            this.numeroPartido = numeroPartido;
+        }
     }
 
 

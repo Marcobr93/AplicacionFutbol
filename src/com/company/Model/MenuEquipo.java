@@ -1,8 +1,6 @@
 package com.company.Model;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.Scanner;
 
 /**
@@ -12,38 +10,17 @@ public class MenuEquipo {
 
     public ArrayList<Equipo> equipos = new ArrayList<>();
 
-
     // Métodos
 
-    public void añadirEquipo(Equipo equipo) {
-        if (equipo != null) {
-            equipos.add(equipo);
-        }
-    }
-
 /*
-    public void eliminarEquipo(){
-        Scanner scanner = new Scanner(System.in);
-        String nombre;
+    public void listaEquipos() {
+        int indice = 0;
 
-        Iterator<Equipo> itEquipo = equipos.iterator();
-
-        listaEquipos();
-
-        System.out.println();
-
-        System.out.println("Introduzca el nombre del equipo que desea borrar");
-        nombre = scanner.next();
-
-        while (itEquipo.hasNext()){
-            Equipo equipo = itEquipo.next();
-
-            if (nombre.equals(equipo.getNombreEquipo())){
-                itEquipo.remove();
-            }
+        for (Equipo equipo : equipos) {
+            System.out.println((indice++) + " - " + equipo);
         }
     }
-*/
+
 
     public void eliminarEquipo() {
         Scanner input = new Scanner(System.in);
@@ -64,8 +41,7 @@ public class MenuEquipo {
         }
     }
 
-    public void elegirEquipo() {
-        listaEquipos();
+    public Equipo elegirEquipo() {
         Scanner input = new Scanner(System.in);
         int indice;
 
@@ -75,8 +51,9 @@ public class MenuEquipo {
         } while (!indiceCorrecto(indice, equipos));
 
         equipos.contains(indice);
+        return null;
     }
-
+*/
     public static boolean indiceCorrecto(int indice, ArrayList<Equipo> equipos) {
         if (indice >= 0 && indice < equipos.size()) {
             return true;
@@ -85,16 +62,9 @@ public class MenuEquipo {
         }
     }
 
-    public void listaEquipos() {
-        int indice = 0;
-
-        for (Equipo equipo : equipos) {
-            System.out.println((indice++) + " - " + equipo);
-        }
-    }
 
     // Ordenación
-
+/*
     public void ordenacionPorNombre() {
         Collections.sort(equipos, Equipo.comparadorPorNombre);
 
@@ -146,6 +116,7 @@ public class MenuEquipo {
 
         listaEquipos();
     }
+*/
 }
 
 /*
@@ -175,4 +146,59 @@ public void eliminarEquipo(ArrayList<Equipo> equipos) {
 
         equipos.remove(indice);
     }
+
  */
+
+/*
+    public void añadirEquiposPrimeraDivision(Equipo equipo){
+        PRIMERA.añadirEquipos(equipo);
+    }
+
+
+    public void añadirEquiposSegundaDivision(Equipo equipo){
+        SEGUNDA.añadirEquipos(equipo);
+    }
+
+
+    public void primeraDivision(){
+        int indice = 0;
+
+        for (Competicion competicion: PRIMERA.competiciones){
+            System.out.println((indice++) + " - " + competicion);
+        }
+    }
+
+
+    public void segundaDivision(){
+        int indice = 0;
+
+        for (Competicion competicion: SEGUNDA.competiciones){
+            System.out.println((indice++) + " - " + competicion);
+        }
+    }
+    */
+
+
+/*
+    public void eliminarEquipo(){
+        Scanner scanner = new Scanner(System.in);
+        String nombre;
+
+        Iterator<Equipo> itEquipo = equipos.iterator();
+
+        listaEquipos();
+
+        System.out.println();
+
+        System.out.println("Introduzca el nombre del equipo que desea borrar");
+        nombre = scanner.next();
+
+        while (itEquipo.hasNext()){
+            Equipo equipo = itEquipo.next();
+
+            if (nombre.equals(equipo.getNombreEquipo())){
+                itEquipo.remove();
+            }
+        }
+    }
+*/

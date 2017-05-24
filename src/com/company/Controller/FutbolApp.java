@@ -1,7 +1,6 @@
 package com.company.Controller;
 
 import com.company.Model.*;
-import javafx.geometry.Pos;
 
 import java.util.Scanner;
 
@@ -12,25 +11,28 @@ public class FutbolApp {
 
     private MenuEquipo menuEquipo;
     private MenuJugador menuJugador;
-    private MenuPartido menuPartido;
-    private Competicion competicion;
+    private MenuEquipoPrimera menuEquipoPrimera;
+    private MenuEquipoSegunda menuEquipoSegunda;
 
 
     public FutbolApp(){
         menuEquipo = new MenuEquipo();
         menuJugador = new MenuJugador();
+        menuEquipoPrimera = new MenuEquipoPrimera();
+        menuEquipoSegunda = new MenuEquipoSegunda();
         cargarEquipos();
         cargarJugadores();
     }
 
     private void cargarEquipos(){
-        menuEquipo.añadirEquipo(new Equipo("Real Madrid", "Florentino Pérez", "Zinedine Zidane", "Santiago Bernabéu", 1902, 90, Competicion.PRIMERA));
-        menuEquipo.añadirEquipo(new Equipo("F.C Barcelona", "Bartomeu", "Luis Enrique", "Campo Nuevo", 1899, 87, Competicion.PRIMERA));
+        menuEquipoPrimera.añadirEquipoPrimera(new Equipo("Real Madrid", "Florentino Pérez", "Zinedine Zidane", "Santiago Bernabéu", 1902, 90, Competicion.PRIMERA));
+        menuEquipoPrimera.añadirEquipoPrimera(new Equipo("F.C Barcelona", "Bartomeu", "Luis Enrique", "Campo Nuevo", 1899, 87, Competicion.PRIMERA));
+        menuEquipoSegunda.añadirEquipoSegunda(new Equipo("Cádiz C.F", "Manuel Vizcaíno", "Álvaro Cervera", "Ramón de Carranza", 1910, 87, Competicion.SEGUNDA));
     }
 
     private void cargarJugadores(){
-        menuJugador.añadirJugador(new Jugador("Marco", "Asensio Willemsen",Posicion.MediaPunta,false, 1.80, 75.00, 20, 21, 23, 0, 0, 3, 0, 0, 7));
-        menuJugador.añadirJugador(new Jugador("Sergio", "Busquets Burgos",Posicion.Centrocampista,false, 1.89, 76.00, 5, 28, 32, 8, 0, 3, 0, 0, 4));
+        menuJugador.añadirJugador(new Jugador("Marco", "Asensio Willemsen",Posicion.MediaPunta,false, 1.80, 75.00, 20, 21, 23, 0, 0, 3, 0, 0, 7,"Real Madrid"));
+        menuJugador.añadirJugador(new Jugador("Sergio", "Busquets Burgos",Posicion.Centrocampista,false, 1.89, 76.00, 5, 28, 32, 8, 0, 3, 0, 0, 4, "F.C Barcelona"));
     }
 
     //Inicializacion
@@ -56,10 +58,10 @@ public class FutbolApp {
         while ((opcion = menuPrimeraSegundaDivision() ) !=0){
             switch (opcion){
                 case 1:
-                    competicion.primeraDivision();
+                    AppEleccionEquipoPrimera();
                     break;
                 case 2:
-                    AppClasificacion();
+                    AppClasificacionPrimera();
                     break;
             }
         }
@@ -71,28 +73,53 @@ public class FutbolApp {
         while ((opcion = menuPrimeraSegundaDivision() ) !=0){
             switch (opcion){
                 case 1:
-                    competicion.segundaDivision();
+                    AppEleccionEquipoSegunda();
                     break;
                 case 2:
-                    AppClasificacion();
+                    AppClasificacionSegunda();
                     break;
             }
         }
     }
 
-    public void AppEleccionEquipo(){
+    public void AppEleccionEquipoPrimera(){
         int opcion;
 
         while ((opcion = menuEleccionEquipo() ) !=0){
             switch (opcion){
                 case 1:
-                    menuEquipo.elegirEquipo();
+                    menuEquipoPrimera.listaEquiposPrimera();
+                    menuEquipoPrimera.elegirEquipoPrimera();
+                    AppEquipos();
                     break;
                 case 2:
-                    menuEquipo.añadirEquipo(preguntarInformacionEquipo());
+                    menuEquipoPrimera.añadirEquipoPrimera(preguntarInformacionEquipo());
                     break;
                 case 3:
-                    menuEquipo.eliminarEquipo();
+                    menuEquipoPrimera.listaEquiposPrimera();
+                    menuEquipoPrimera.eliminarEquipo();
+                    break;
+            }
+        }
+    }
+
+    public void AppEleccionEquipoSegunda(){
+        int opcion;
+
+        while ((opcion = menuEleccionEquipo() ) !=0){
+            switch (opcion){
+                case 1:
+                    menuEquipoSegunda.listaEquiposSegunda();
+                    menuEquipoSegunda.elegirEquipo();
+                    AppEquipos();
+                    break;
+                case 2:
+                    menuEquipoSegunda.añadirEquipoSegunda(preguntarInformacionEquipo());
+                    break;
+                case 3:
+                    menuEquipoSegunda.listaEquiposSegunda();
+                    menuEquipoSegunda.eliminarEquipo();
+                    break;
             }
         }
     }
@@ -106,7 +133,7 @@ public class FutbolApp {
 
                     break;
                 case 2:
-
+                AppPlantilla();
                     break;
             }
         }
@@ -118,43 +145,112 @@ public class FutbolApp {
         while ((opcion = menuPlantilla() ) !=0){
             switch (opcion){
                 case 1:
-
+                menuJugador.ordenacionPorNombre();
                     break;
                 case 2:
-
+                menuJugador.ordenacionPorApellidos();
+                    break;
+                case 3:
+                    menuJugador.ordenacionPorPosicion();
+                    break;
+                case 4:
+                    menuJugador.ordenacionPorDorsal();
+                    break;
+                case 5:
+                    menuJugador.ordenacionPorAltura();
+                    break;
+                case 6:
+                    menuJugador.ordenacionPorPeso();
+                    break;
+                case 7:
+                    menuJugador.ordenacionPorEdad();
+                    break;
+                case 8:
+                    menuJugador.ordenacionPorPartidosJugados();
+                    break;
+                case 9:
+                    menuJugador.ordenacionPorTarjetasAmarillas();
+                    break;
+                case 10:
+                    menuJugador.ordenacionPorTarjetasRojas();
+                    break;
+                case 11:
+                    menuJugador.ordenacionPorGoles();
+                    break;
+                case 12:
+                    menuJugador.ordenacionPorGolesEnPropia();
+                    break;
+                case 13:
+                    menuJugador.ordenacionPorGolesRecibidos();
+                    break;
+                case 14:
+                    menuJugador.ordenacionPorAsistencias();
                     break;
             }
         }
     }
 
-    public void AppClasificacion(){
+    public void AppClasificacionPrimera(){
         int opcion;
 
         while ((opcion = menuClasificacion() ) !=0){
             switch (opcion){
                 case 1:
-                    menuEquipo.ordenacionPorPuntos();
+                    menuEquipoPrimera.ordenacionPorPuntos();
                     break;
                 case 2:
-                    menuEquipo.ordenacionPorNombre();
+                    menuEquipoPrimera.ordenacionPorNombre();
                     break;
                 case 3:
-                    menuEquipo.ordenacionPorPartidosJugados();
+                    menuEquipoPrimera.ordenacionPorPartidosJugados();
                     break;
                 case 4:
-                    menuEquipo.ordenacionPorTarjetasAmarillas();
+                    menuEquipoPrimera.ordenacionPorTarjetasAmarillas();
                     break;
                 case 5:
-                    menuEquipo.ordenacionPorTarjeasRojas();
+                    menuEquipoPrimera.ordenacionPorTarjeasRojas();
                     break;
                 case 6:
-                    menuEquipo.ordenacionPorGolesAFavor();
+                    menuEquipoPrimera.ordenacionPorDiferenciaDeGoles();
                     break;
                 case 7:
-                    menuEquipo.ordenacionPorGolesEnContra();
+                    menuEquipoPrimera.ordenacionPorGolesAFavor();
                     break;
                 case 8:
-                    menuEquipo.ordenacionPorDiferenciaDeGoles();
+                    menuEquipoPrimera.ordenacionPorGolesEnContra();
+                    break;
+            }
+        }
+    }
+
+    public void AppClasificacionSegunda(){
+        int opcion;
+
+        while ((opcion = menuClasificacion() ) !=0){
+            switch (opcion){
+                case 1:
+                    menuEquipoSegunda.ordenacionPorPuntos();
+                    break;
+                case 2:
+                    menuEquipoSegunda.ordenacionPorNombre();
+                    break;
+                case 3:
+                    menuEquipoSegunda.ordenacionPorPartidosJugados();
+                    break;
+                case 4:
+                    menuEquipoSegunda.ordenacionPorTarjetasAmarillas();
+                    break;
+                case 5:
+                    menuEquipoSegunda.ordenacionPorTarjeasRojas();
+                    break;
+                case 6:
+                    menuEquipoSegunda.ordenacionPorDiferenciaDeGoles();
+                    break;
+                case 7:
+                    menuEquipoSegunda.ordenacionPorGolesAFavor();
+                    break;
+                case 8:
+                    menuEquipoSegunda.ordenacionPorGolesEnContra();
                     break;
             }
         }
@@ -195,6 +291,8 @@ public class FutbolApp {
         Scanner scanner = new Scanner(System.in);
         String nombreJugador;
         String apellidosJugador;
+        Posicion posicion;
+        boolean capitan;
         double altura;
         double peso;
         int dorsal;
@@ -206,6 +304,7 @@ public class FutbolApp {
         int golesEnPropia;
         int golesRecibidos;
         int asistencias;
+        String equipo;
 
         do {
             System.out.println("Nombre del jugador: ");
@@ -216,6 +315,13 @@ public class FutbolApp {
             System.out.println("Apellido del jugador: ");
             apellidosJugador = scanner.next().trim().replaceAll("\\s+", " ");
         } while (apellidosJugador.equals(""));
+
+
+            System.out.println("Posición del jugador: ");
+            posicion = Posicion.Centrocampista;
+
+            System.out.println("¿Es capitán el jugador?: ");
+            capitan = false;
 
 
         do {
@@ -273,8 +379,12 @@ public class FutbolApp {
             asistencias = scanner.nextInt();
         } while (asistencias < 0);
 
+        do {
+            System.out.println("Equipo del jugador: ");
+            equipo = scanner.next().trim().replaceAll("\\s+", " ");
+        } while (equipo.equals(""));
 
-        return new Jugador(nombreJugador,apellidosJugador,altura,peso,dorsal,edad,partidosJugados,tarjetasAmarillas,tarjetasRoja,goles,golesEnPropia,golesRecibidos,asistencias);
+        return new Jugador(nombreJugador,apellidosJugador,posicion,capitan,altura,peso,dorsal,edad,partidosJugados,tarjetasAmarillas,tarjetasRoja,goles,golesEnPropia,golesRecibidos,asistencias,equipo);
     }
 
 
@@ -286,6 +396,7 @@ public class FutbolApp {
         String estadio;
         int añoFundacion;
         int puntos;
+        Competicion competicion;
 
         do {
             System.out.println("Nombre del equipo: ");
@@ -317,8 +428,11 @@ public class FutbolApp {
             puntos = scanner.nextInt();
         } while (puntos < 0);
 
+            System.out.println("Competición del equipo: ");
+            competicion = Competicion.PRIMERA;
 
-        return new Equipo(nombreEquipo, presidente, entrenador, estadio, añoFundacion, puntos);
+
+        return new Equipo(nombreEquipo, presidente, entrenador, estadio, añoFundacion, puntos, competicion);
     }
 
 

@@ -61,7 +61,11 @@ public class Equipo extends Jugador{
    }
 
    public void setNombreEquipo(String nombreEquipo) {
-      this.nombreEquipo = nombreEquipo;
+      if (nombreEquipo.equals("")) {
+         this.nombreEquipo = "Desconocido";
+      }else {
+         this.nombreEquipo = nombreEquipo;
+      }
    }
 
    public String getPresidente() {
@@ -69,7 +73,11 @@ public class Equipo extends Jugador{
    }
 
    public void setPresidente(String presidente) {
-      this.presidente = presidente;
+      if (presidente.equals("")) {
+         this.presidente = "Desconocido";
+      }else {
+         this.presidente = presidente;
+      }
    }
 
    public String getEntrenador() {
@@ -77,7 +85,11 @@ public class Equipo extends Jugador{
    }
 
    public void setEntrenador(String entrenador) {
-      this.entrenador = entrenador;
+      if (entrenador.equals("")) {
+         this.entrenador = "Desconocido";
+      }else {
+         this.entrenador = entrenador;
+      }
    }
 
    public String getEstadio() {
@@ -85,7 +97,11 @@ public class Equipo extends Jugador{
    }
 
    public void setEstadio(String estadio) {
-      this.estadio = estadio;
+      if (estadio.equals("")) {
+         this.estadio = "Desconocido";
+      }else {
+         this.estadio = estadio;
+      }
    }
 
    public int getAñoFundacion() {
@@ -93,7 +109,11 @@ public class Equipo extends Jugador{
    }
 
    public void setAñoFundacion(int añoFundacion) {
-      this.añoFundacion = añoFundacion;
+      if ( añoFundacion < 1880 || añoFundacion > 2017){
+         this.añoFundacion = 1950;
+      }else{
+         this.añoFundacion = añoFundacion;
+      }
    }
 
    public int getPuntos() {
@@ -101,7 +121,11 @@ public class Equipo extends Jugador{
    }
 
    public void setPuntos(int puntos) {
-      this.puntos = puntos;
+      if (puntos < 0){
+         this.puntos = 0;
+      }else{
+         this.puntos = puntos;
+      }
    }
 
    public Competicion getCompeticion() {
@@ -211,6 +235,8 @@ public class Equipo extends Jugador{
       }
    };
 
+
+
    @Override
    public boolean equals(Object obj) {
       if( this == obj ) { return true; }
@@ -223,11 +249,5 @@ public class Equipo extends Jugador{
 
       // Se consideran dos equipos iguales si tienen el mismo nombre
       return Objects.equals(this.getNombreEquipo(), equipo.getNombreEquipo());
-   }
-
-   // Métodos
-
-   public void añadirJugadores(Jugador jugador){
-      jugadores.add(jugador);
    }
 }
