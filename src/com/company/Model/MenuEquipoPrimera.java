@@ -2,88 +2,20 @@ package com.company.Model;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Scanner;
 
 /**
  * Created by marco on 22/05/2017.
  */
 public class MenuEquipoPrimera extends MenuEquipo{
-    public ArrayList<Equipo> equiposPrimera = new ArrayList<>();
 
-    // Constructores
 
+    // Constructor
 
     public MenuEquipoPrimera() {
     }
 
-    public MenuEquipoPrimera(ArrayList<Equipo> equiposPrimera) {
-        this.equiposPrimera = equiposPrimera;
+    public MenuEquipoPrimera(ArrayList<Equipo> equipos) {
     }
-
-
-    // Accesores
-
-    public ArrayList<Equipo> getEquiposPrimera() {
-        return equiposPrimera;
-    }
-
-    public void setEquiposPrimera(ArrayList<Equipo> equiposPrimera) {
-        this.equiposPrimera = equiposPrimera;
-    }
-
-    // Métodos
-
-    public void añadirEquipoPrimera(Equipo equipo) {
-        if (equipo.getCompeticion().equals(Competicion.PRIMERA)) {
-            equiposPrimera.add(equipo);
-        }
-    }
-
-    public void eliminarEquipo() {
-        Scanner input = new Scanner(System.in);
-        int indice;
-
-        do {
-            System.out.println("introduzca el índice del equipo que desea borrar: ");
-            indice = input.nextInt();
-        } while (!indiceCorrecto(indice, equiposPrimera));
-
-        equiposPrimera.remove(indice);
-    }
-
-    public void listaEquiposPrimera(){
-        int indice = 0;
-
-        for (Equipo equipo: equiposPrimera) {
-            System.out.println((indice++) + " - " + equipo);
-        }
-    }
-
-    public Equipo elegirEquipoPrimera() {
-        Scanner input = new Scanner(System.in);
-        int indice;
-        Equipo equipoElegido;
-
-        do {
-            System.out.println("Elija un equipo");
-            indice = input.nextInt();
-        } while (!indiceCorrecto(indice, equiposPrimera));
-
-
-        equipoElegido = equiposPrimera.get(indice);
-
-        System.out.println(equipoElegido);
-
-        return equipoElegido;
-
-    }
-
-
-    public void mostrarInformacionEquipoPrimera(Equipo equipoElegido) {
-            System.out.println(equipoElegido);
-
-    }
-
 
 
     // Ordenación
@@ -153,5 +85,53 @@ public void elegirEquipo() {
         } while (!indiceCorrecto(indice, equiposPrimera));
 
         equiposPrimera.contains(indice);
+    }
+ */
+/*
+ public void añadirEquipoPrimera(Equipo equipo) {
+        if (equipo.getCompeticion().equals(Competicion.PRIMERA)) {
+            equiposPrimera.add(equipo);
+        }
+    }
+
+
+    public void eliminarEquipo() {
+        Scanner input = new Scanner(System.in);
+        int indice;
+
+        do {
+            System.out.println("introduzca el índice del equipo que desea borrar: ");
+            indice = input.nextInt();
+        } while (!indiceCorrecto(indice, equiposPrimera));
+
+        equiposPrimera.remove(indice);
+    }
+
+
+
+    public Equipo elegirEquipoPrimera() {
+        Scanner input = new Scanner(System.in);
+        int indice;
+        Equipo equipoElegido;
+
+        do {
+            System.out.println("Elija un equipo");
+            indice = input.nextInt();
+        } while (!indiceCorrecto(indice, equiposPrimera));
+
+
+        equipoElegido = equiposPrimera.get(indice);
+
+        System.out.println(equipoElegido);
+
+        return equipoElegido;
+
+    }
+
+
+    public void mostrarInformacionEquipoPrimera() {
+        for (Equipo equipo : equiposPrimera) {
+            System.out.println(equipo);
+        }
     }
  */

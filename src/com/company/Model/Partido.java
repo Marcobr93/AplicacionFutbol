@@ -8,78 +8,66 @@ import java.util.Objects;
  * Created by MarcoAntonio on 15/05/2017.
  */
 public class Partido extends Equipo {
-    private String equipoLocal;
-    private String equipoVisitante;
+    private Equipo equipoLocal;
+    private Equipo equipoVisitante;
     private String estadio;
     private String arbitro;
     private Competicion competicion;
     private int golLocal;
     private int golVisitante;
     private int jornada;
-    private int numeroPartido;
 
     // Constructores
 
     public Partido() {
     }
 
-    public Partido(String equipoLocal, String equipoVisitante, int golLocal, int golVisitante, int numeroPartido) {
-        this.setEquipoLocal(equipoLocal);
-        this.setEquipoVisitante(equipoVisitante);
-        this.setGolLocal(golLocal);
-        this.setGolVisitante(golVisitante);
-        this.setNumeroPartido(numeroPartido);
+    public Partido(Equipo equipoLocal, Equipo equipoVisitante, Competicion competicion, int golLocal, int golVisitante) {
+        this.equipoLocal = equipoLocal;
+        this.equipoVisitante = equipoVisitante;
+        this.competicion = competicion;
+        this.golLocal = golLocal;
+        this.golVisitante = golVisitante;
     }
 
-    public Partido(String equipoLocal, String equipoVisitante, String estadio, String arbitro, Competicion competicion, int golLocal, int golVisitante, int jornada, int numeroPartido) {
-        this.setEquipoLocal(equipoLocal);
-        this.setEquipoVisitante(equipoVisitante);
-        this.setEstadio(estadio);
-        this.setArbitro(arbitro);
-        this.setCompeticion(competicion);
-        this.setGolLocal(golLocal);
-        this.setGolVisitante(golVisitante);
-        this.setJornada(jornada);
-        this.setNumeroPartido(numeroPartido);
+    public Partido(Equipo equipoLocal, Equipo equipoVisitante, String estadio, String arbitro, Competicion competicion, int golLocal, int golVisitante, int jornada) {
+        this.equipoLocal = equipoLocal;
+        this.equipoVisitante = equipoVisitante;
+        this.estadio = estadio;
+        this.arbitro = arbitro;
+        this.competicion = competicion;
+        this.golLocal = golLocal;
+        this.golVisitante = golVisitante;
+        this.jornada = jornada;
     }
 
     // Accesores
 
 
-    public String getEquipoLocal() {
+    public Equipo getEquipoLocal() {
         return equipoLocal;
     }
 
-    public void setEquipoLocal(String equipoLocal) {
-        if (equipoLocal.equals("")) {
-            this.equipoLocal = "Desconocido";
-        }else {
-            this.equipoLocal = equipoLocal;
-        }
+    public void setEquipoLocal(Equipo equipoLocal) {
+        this.equipoLocal = equipoLocal;
     }
 
-    public String getEquipoVisitante() {
+    public Equipo getEquipoVisitante() {
         return equipoVisitante;
     }
 
-    public void setEquipoVisitante(String equipoVisitante) {
-        if (equipoVisitante.equals("")) {
-            this.equipoVisitante = "Desconocido";
-        }else {
-            this.equipoVisitante = equipoVisitante;
-        }
+    public void setEquipoVisitante(Equipo equipoVisitante) {
+        this.equipoVisitante = equipoVisitante;
     }
 
+    @Override
     public String getEstadio() {
         return estadio;
     }
 
+    @Override
     public void setEstadio(String estadio) {
-        if (estadio.equals("")) {
-            this.estadio = "Desconocido";
-        }else {
-            this.estadio = estadio;
-        }
+        this.estadio = estadio;
     }
 
     public String getArbitro() {
@@ -87,17 +75,15 @@ public class Partido extends Equipo {
     }
 
     public void setArbitro(String arbitro) {
-        if (arbitro.equals("")) {
-            this.arbitro = "Desconocido";
-        }else {
-            this.arbitro = arbitro;
-        }
+        this.arbitro = arbitro;
     }
 
+    @Override
     public Competicion getCompeticion() {
         return competicion;
     }
 
+    @Override
     public void setCompeticion(Competicion competicion) {
         this.competicion = competicion;
     }
@@ -107,11 +93,7 @@ public class Partido extends Equipo {
     }
 
     public void setGolLocal(int golLocal) {
-        if (golLocal < 0){
-            this.golLocal = 0;
-        }else{
-            this.golLocal = golLocal;
-        }
+        this.golLocal = golLocal;
     }
 
     public int getGolVisitante() {
@@ -119,11 +101,7 @@ public class Partido extends Equipo {
     }
 
     public void setGolVisitante(int golVisitante) {
-        if (golVisitante < 0){
-            this.golVisitante = 0;
-        }else{
-            this.golVisitante = golVisitante;
-        }
+        this.golVisitante = golVisitante;
     }
 
     public int getJornada() {
@@ -131,25 +109,41 @@ public class Partido extends Equipo {
     }
 
     public void setJornada(int jornada) {
-        if (jornada < 0){
-            this.jornada = 0;
-        }else{
-            this.jornada = jornada;
-        }
+        this.jornada = jornada;
     }
 
-    public int getNumeroPartido() {
-        return numeroPartido;
+
+    public static Comparator<Partido> getComparadorPorLocal() {
+        return comparadorPorLocal;
     }
 
-    public void setNumeroPartido(int numeroPartido) {
-        if (numeroPartido < 0){
-            this.numeroPartido = 0;
-        }else{
-            this.numeroPartido = numeroPartido;
-        }
+    public static void setComparadorPorLocal(Comparator<Partido> comparadorPorLocal) {
+        Partido.comparadorPorLocal = comparadorPorLocal;
     }
 
+    public static Comparator<Partido> getComparadorPorVisitante() {
+        return comparadorPorVisitante;
+    }
+
+    public static void setComparadorPorVisitante(Comparator<Partido> comparadorPorVisitante) {
+        Partido.comparadorPorVisitante = comparadorPorVisitante;
+    }
+
+    public static Comparator<Partido> getComparadorPorEstadio() {
+        return comparadorPorEstadio;
+    }
+
+    public static void setComparadorPorEstadio(Comparator<Partido> comparadorPorEstadio) {
+        Partido.comparadorPorEstadio = comparadorPorEstadio;
+    }
+
+    public static Comparator<Partido> getComparadorPorJornada() {
+        return comparadorPorJornada;
+    }
+
+    public static void setComparadorPorJornada(Comparator<Partido> comparadorPorJornada) {
+        Partido.comparadorPorJornada = comparadorPorJornada;
+    }
 
     @Override
     public String toString() {
@@ -162,7 +156,6 @@ public class Partido extends Equipo {
                 ", golLocal=" + golLocal +
                 ", golVisitante=" + golVisitante +
                 ", jornada=" + jornada +
-                ", numeroPartido=" + numeroPartido +
                 '}';
     }
 
@@ -174,7 +167,7 @@ public class Partido extends Equipo {
     public static Comparator<Partido> comparadorPorLocal = new Comparator<Partido>() {
         @Override
         public int compare(Partido partido1, Partido partido2) {
-            int res = partido1.getEquipoLocal().compareToIgnoreCase(partido2.getEquipoLocal());
+            int res = partido1.getEquipoLocal().getNombreEquipo().compareToIgnoreCase(partido2.getEquipoLocal().getNombreEquipo());
             return res;
         }
     };
@@ -185,7 +178,7 @@ public class Partido extends Equipo {
     public static Comparator<Partido> comparadorPorVisitante = new Comparator<Partido>() {
         @Override
         public int compare(Partido partido1, Partido partido2) {
-            int res = partido1.getEquipoVisitante().compareToIgnoreCase(partido2.getEquipoVisitante());
+            int res = partido1.getEquipoVisitante().getNombreEquipo().compareToIgnoreCase(partido2.getEquipoVisitante().getNombreEquipo());
             return res;
         }
     };
@@ -211,6 +204,20 @@ public class Partido extends Equipo {
         }
     };
 
+    public static Comparator<Partido> comparadorPorGolesLocal = new Comparator<Partido>() {
+        @Override
+        public int compare(Partido partido1, Partido partido2) {
+            return (partido2.getGolLocal() - partido1.getGolLocal());
+        }
+    };
+
+    public static Comparator<Partido> comparadorPorGolesVisitante = new Comparator<Partido>() {
+        @Override
+        public int compare(Partido partido1, Partido partido2) {
+            return (partido2.getGolVisitante() - partido1.getGolVisitante());
+        }
+    };
+
     @Override
     public boolean equals(Object obj) {
         if( this == obj ) { return true; }
@@ -222,10 +229,6 @@ public class Partido extends Equipo {
         Partido partido = (Partido) obj;
 
         // Se consideran dos equipos iguales si tienen el mismo nombre
-        return Objects.equals(this.getNumeroPartido(), partido.getNumeroPartido());
+        return Objects.equals(this.getEquipoLocal(), partido.getEquipoVisitante());
     }
-
-    // Métodos
-
-
 }

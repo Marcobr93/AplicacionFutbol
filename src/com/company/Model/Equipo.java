@@ -1,8 +1,6 @@
 package com.company.Model;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Created by MarcoAntonio on 15/05/2017.
@@ -16,6 +14,7 @@ public class Equipo extends Jugador{
    private int puntos;
    private Competicion competicion;
    private ArrayList<Jugador> jugadores;
+   private String nombreCompeticion;
 
 
    // Constructores
@@ -51,6 +50,16 @@ public class Equipo extends Jugador{
       this.setPuntos(puntos);
       this.setCompeticion(competicion);
       this.setJugadores(jugadores);
+   }
+
+   public Equipo(String nombreEquipo, String presidente, String entrenador, String estadio, int añoFundacion, int puntos, String nombreCompeticion) {
+      this.setNombreEquipo(nombreEquipo);
+      this.setPresidente(presidente);
+      this.setEntrenador(entrenador);
+      this.setEstadio(estadio);
+      this.setAñoFundacion(añoFundacion);
+      this.setPuntos(puntos);
+      this.setNombreCompeticion(nombreCompeticion);
    }
 
    // Accesores
@@ -148,6 +157,14 @@ public class Equipo extends Jugador{
       this.jugadores = jugadores;
    }
 
+   public String getNombreCompeticion() {
+      return nombreCompeticion;
+   }
+
+   public void setNombreCompeticion(String nombreCompeticion) {
+      this.nombreCompeticion = nombreCompeticion;
+   }
+
    @Override
    public String toString() {
       return "Equipo{" +
@@ -236,7 +253,6 @@ public class Equipo extends Jugador{
    };
 
 
-
    @Override
    public boolean equals(Object obj) {
       if( this == obj ) { return true; }
@@ -250,4 +266,6 @@ public class Equipo extends Jugador{
       // Se consideran dos equipos iguales si tienen el mismo nombre
       return Objects.equals(this.getNombreEquipo(), equipo.getNombreEquipo());
    }
+
+
 }

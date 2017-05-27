@@ -34,38 +34,6 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
    }
 
    /**
-    * Constructor sin el atributo capitán y posición que son los que no puede introducir el usuario por pantalla
-    * @param nombreJugador
-    * @param apellidosJugador
-    * @param altura
-    * @param peso
-    * @param dorsal
-    * @param edad
-    * @param partidosJugados
-    * @param tarjetasAmarillas
-    * @param tarjetasRoja
-    * @param goles
-    * @param golesEnPropia
-    * @param golesRecibidos
-    * @param asistencias
-    */
-   public Jugador(String nombreJugador, String apellidosJugador, double altura, double peso, int dorsal, int edad, int partidosJugados, int tarjetasAmarillas, int tarjetasRoja, int goles, int golesEnPropia, int golesRecibidos, int asistencias) {
-      this.setNombreJugador(nombreJugador);
-      this.setApellidosJugador(apellidosJugador);
-      this.setAltura(altura);
-      this.setPeso(peso);
-      this.setDorsal(dorsal);
-      this.setEdad(edad);
-      this.setPartidosJugados(partidosJugados);
-      this.setTarjetasAmarillas(tarjetasAmarillas);
-      this.setTarjetasRoja(tarjetasRoja);
-      this.setGoles(goles);
-      this.setGolesEnPropia(golesEnPropia);
-      this.setGolesRecibidos(golesRecibidos);
-      this.setAsistencias(asistencias);
-   }
-
-   /**
     * Constructor con todos los atributos
     * @param nombreJugador
     * @param apellidosJugador
@@ -100,6 +68,24 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
       this.setGolesRecibidos(golesRecibidos);
       this.setAsistencias(asistencias);
       this.setEquipo(equipo);
+   }
+
+   public Jugador(String nombreJugador, String apellidosJugador, Posicion posicion, double altura, double peso, int dorsal, int edad, int partidosJugados, int tarjetasAmarillas, int tarjetasRoja, int goles, int golesEnPropia, int golesRecibidos, int asistencias,  boolean capitan) {
+      this.setNombreJugador(nombreJugador);
+      this.setApellidosJugador(apellidosJugador);
+      this.setPosicion(posicion);
+      this.setAltura(altura);
+      this.setPeso(peso);
+      this.setDorsal(dorsal);
+      this.setEdad(edad);
+      this.setPartidosJugados(partidosJugados);
+      this.setTarjetasAmarillas(tarjetasAmarillas);
+      this.setTarjetasRoja(tarjetasRoja);
+      this.setGoles(goles);
+      this.setGolesEnPropia(golesEnPropia);
+      this.setGolesRecibidos(golesRecibidos);
+      this.setAsistencias(asistencias);
+      this.setCapitan(capitan);
    }
 
 

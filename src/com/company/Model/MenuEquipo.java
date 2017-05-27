@@ -1,37 +1,136 @@
 package com.company.Model;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by marco on 19/05/2017.
  */
-public class MenuEquipo {
+public class MenuEquipo  {
 
     public ArrayList<Equipo> equipos = new ArrayList<>();
+    public ArrayList<Equipo> equiposPrimera = new ArrayList<>();
+    public ArrayList<Equipo> equiposSegunda = new ArrayList<>();
 
-    // Métodos
 
-/*
-    public void listaEquipos() {
-        int indice = 0;
+    // Constructores
 
-        for (Equipo equipo : equipos) {
-            System.out.println((indice++) + " - " + equipo);
-        }
+    public MenuEquipo() {
+    }
+
+    public MenuEquipo(ArrayList<Equipo> equipos) {
+        this.equipos = equipos;
     }
 
 
-    public void eliminarEquipo() {
-        Scanner input = new Scanner(System.in);
-        int indice;
+    // Métodos
+
+    public void llenarPrimeraOSegunda(){
+
+        for (Equipo equipo: equipos) {
+            if (equipo.getCompeticion().equals(Competicion.PRIMERA)){
+                equiposPrimera.add(equipo);
+            }else if (equipo.getCompeticion().equals(Competicion.SEGUNDA)){
+                equiposSegunda.add(equipo);
+            }
+        }
+    }
+
+    public boolean existeEnArrayEquipo(String nombreEquipo){
+        for (Equipo equipo: equipos) {
+           if (equipo.getNombreEquipo().equals(nombreEquipo)){
+               return true;
+           }
+        }
+        return false;
+    }
+
+    public Competicion crearEquipo(){
+        Scanner scanner = new Scanner(System.in);
+
+        String nombreEquipo;
+        String presidente;
+        String entrenador;
+        String estadio;
+        int añoFundacion;
+        int puntos;
+        String nombreCompeticion;
+        Competicion competicion = null;
+        Equipo equipo;
+
 
         do {
-            System.out.println("introduzca el índice del equipo que desea borrar: ");
-            indice = input.nextInt();
-        } while (!indiceCorrecto(indice, equipos));
+            System.out.println("Nombre del equipo: ");
+            nombreEquipo = scanner.next().trim().replaceAll("\\s+", " ");
+            if (existeEnArrayEquipo(nombreEquipo)){
+                System.out.println("El nombre del equipo ya existe");
+                scanner.nextLine();
+            }
+        } while (existeEnArrayEquipo(nombreEquipo));
 
-        equipos.remove(indice);
+        do {
+            System.out.println("Presidente del equipo: ");
+            presidente = scanner.next().trim().replaceAll("\\s+", " ");
+        } while (presidente.equals(""));
+
+        do {
+            System.out.println("Entrenador del equipo: ");
+            entrenador = scanner.next().trim().replaceAll("\\s+", " ");
+        } while (entrenador.equals(""));
+
+        do {
+            System.out.println("Estadio del equipo: ");
+            estadio = scanner.next().trim().replaceAll("\\s+", " ");
+        } while (estadio.equals(""));
+
+        do {
+            System.out.println("Año de fundación del equipo: ");
+            añoFundacion = scanner.nextInt();
+        } while (añoFundacion < 0);
+
+        do {
+            System.out.println("Puntos del equipo: ");
+            puntos = scanner.nextInt();
+        } while (puntos < 0);
+
+        System.out.println("Competición del equipo: ");
+        nombreCompeticion = scanner.next();
+        if (nombreCompeticion.toLowerCase().replace(" ", "").equals("primera")){
+             competicion = Competicion.PRIMERA;
+        }else if(nombreCompeticion.toLowerCase().replace(" ", "").equals("segunda")){
+            competicion = Competicion.SEGUNDA;
+        }
+
+        equipo = new Equipo(nombreEquipo, presidente, entrenador, estadio, añoFundacion, puntos, competicion);
+
+        if (equipo!= null) {
+            equipos.add(equipo);
+        }
+        return competicion;
+    }
+
+    public void eliminarEquipo() {
+        boolean eliminado = false;
+        String nombre;
+        Scanner scanner = new Scanner(System.in);
+
+        for (Equipo equipo: equipos){
+            System.out.println(equipo);
+        }
+        System.out.println("");
+        System.out.printf("Introduzca el nombre del equipo: ");
+        nombre = scanner.nextLine().replace(" ","").replace("-", "");
+
+        Iterator<Equipo> iTEquipo = equipos.iterator();
+        while (iTEquipo.hasNext() ){
+            Equipo equipo = iTEquipo.next();
+            if (equipo.getNombreEquipo().replace(" ","").replace("-", "").equals(nombre)) {
+                iTEquipo.remove();
+                eliminado=true;
+            }
+        }
+        if (eliminado==false) {
+            System.out.println("El nombre del equipo introducido no existe, introduzca uno de nuevo");
+        }
     }
 
 
@@ -44,16 +143,42 @@ public class MenuEquipo {
     public Equipo elegirEquipo() {
         Scanner input = new Scanner(System.in);
         int indice;
-
+        Equipo equipoElegido;
         do {
             System.out.println("Elija un equipo");
             indice = input.nextInt();
         } while (!indiceCorrecto(indice, equipos));
+        equipoElegido = equipos.get(indice);
 
-        equipos.contains(indice);
-        return null;
+        return equipoElegido;
     }
-*/
+
+
+    public void listaEquipos(){
+        int indice = 0;
+
+        for (Equipo equipo: equipos) {
+            System.out.println((indice++) + " - " + equipo);
+        }
+    }
+
+    public void listaEquiposPrimera(){
+        int indice = 0;
+
+        for (Equipo equipo: equiposPrimera) {
+            System.out.println((indice++) + " - " + equipo);
+        }
+    }
+
+    public void listaEquiposSegunda(){
+        int indice = 0;
+
+        for (Equipo equipo: equiposSegunda) {
+            System.out.println((indice++) + " - " + equipo);
+        }
+    }
+
+
     public static boolean indiceCorrecto(int indice, ArrayList<Equipo> equipos) {
         if (indice >= 0 && indice < equipos.size()) {
             return true;
@@ -64,7 +189,7 @@ public class MenuEquipo {
 
 
     // Ordenación
-/*
+
     public void ordenacionPorNombre() {
         Collections.sort(equipos, Equipo.comparadorPorNombre);
 
@@ -116,89 +241,6 @@ public class MenuEquipo {
 
         listaEquipos();
     }
-*/
 }
 
-/*
- public void elegirEquipo(ArrayList<Equipo> equipos) {
-        listaEquipos();
-        Scanner input = new Scanner(System.in);
-        int indice;
 
-        do {
-            System.out.println("Elija un equipo");
-            indice = input.nextInt();
-        } while (!indiceCorrecto(indice, equipos));
-
-        equipos.contains(indice);
-    }
- */
-
-/*
-public void eliminarEquipo(ArrayList<Equipo> equipos) {
-        Scanner input = new Scanner(System.in);
-        int indice;
-
-        do {
-            System.out.println("introduzca el índice del equipo que desea borrar: ");
-            indice = input.nextInt();
-        } while (!indiceCorrecto(indice, equipos));
-
-        equipos.remove(indice);
-    }
-
- */
-
-/*
-    public void añadirEquiposPrimeraDivision(Equipo equipo){
-        PRIMERA.añadirEquipos(equipo);
-    }
-
-
-    public void añadirEquiposSegundaDivision(Equipo equipo){
-        SEGUNDA.añadirEquipos(equipo);
-    }
-
-
-    public void primeraDivision(){
-        int indice = 0;
-
-        for (Competicion competicion: PRIMERA.competiciones){
-            System.out.println((indice++) + " - " + competicion);
-        }
-    }
-
-
-    public void segundaDivision(){
-        int indice = 0;
-
-        for (Competicion competicion: SEGUNDA.competiciones){
-            System.out.println((indice++) + " - " + competicion);
-        }
-    }
-    */
-
-
-/*
-    public void eliminarEquipo(){
-        Scanner scanner = new Scanner(System.in);
-        String nombre;
-
-        Iterator<Equipo> itEquipo = equipos.iterator();
-
-        listaEquipos();
-
-        System.out.println();
-
-        System.out.println("Introduzca el nombre del equipo que desea borrar");
-        nombre = scanner.next();
-
-        while (itEquipo.hasNext()){
-            Equipo equipo = itEquipo.next();
-
-            if (nombre.equals(equipo.getNombreEquipo())){
-                itEquipo.remove();
-            }
-        }
-    }
-*/
