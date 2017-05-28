@@ -11,22 +11,27 @@ import java.util.Scanner;
 public class FutbolApp {
     public ArrayList<Jugador> jugadores = new ArrayList<>();
     public ArrayList<Equipo> equipos = new ArrayList<>();
+    public ArrayList<Partido> partidos = new ArrayList<>();
 
      MenuEquipo menuEquipo;
      MenuEquipoPrimera menuEquipoPrimera;
      MenuEquipoSegunda menuEquipoSegunda;
      MenuJugador menuJugador;
+     MenuPartido menuPartido;
 
 
 
     public FutbolApp() {
         menuEquipo = new MenuEquipo(equipos);
-        menuEquipoPrimera = new MenuEquipoPrimera();
+        menuEquipoPrimera = new MenuEquipoPrimera(equipos);
         menuEquipoSegunda = new MenuEquipoSegunda(equipos);
-        menuJugador = new MenuJugador(jugadores, equipos);
+        menuJugador = new MenuJugador(jugadores);
+        menuPartido = new MenuPartido(partidos);
+
 
         cargarEquipos();
         cargarJugadores();
+        cargarEquipos();
     }
 
     private void cargarEquipos() {
@@ -37,13 +42,22 @@ public class FutbolApp {
 
     private void cargarJugadores() {
         jugadores.add(new Jugador("Marco", "Asensio Willemsen", Posicion.MediaPunta, false, 1.80, 75.00, 20, 21, 23, 0, 0, 3, 0, 0, 7, "Real Madrid"));
-        jugadores.add(new Jugador("Sergio", "Busquets Burgos", Posicion.Centrocampista, false, 1.89, 76.00, 5, 28, 32, 8, 0, 3, 0, 0, 4, "Barcelona"));
+        jugadores.add(new Jugador("Cristiano", "Ronaldo", Posicion.MediaPunta, false, 1.80, 75.00, 7, 25, 23, 0, 0, 8, 7, 0, 10, "Real Madrid"));
+        jugadores.add(new Jugador("Sergio", "Busquets Burgos", Posicion.Centrocampista, false, 1.89, 76.00, 5, 28, 32, 8, 0, 2, 0, 0, 4, "Barcelona"));
+        jugadores.add(new Jugador("Paco", "wew erw", Posicion.Centrocampista, false, 1.89, 76.00, 5, 28, 32, 8, 0, 7, 0, 0, 4, "Cádiz F.C"));
+    }
+
+    private void cargarPartidos(){
+        partidos.add(new Partido("Real Madrid", "Barcelona","Santiago Bernagéu","Pepito", Competicion.PRIMERA, 5, 0,20));
+        partidos.add(new Partido("Real Madrid", "Sevilla","Santiago Bernagéu","Paco", Competicion.PRIMERA, 3, 1,10));
+        partidos.add(new Partido("Betis", "Real Madrid","Benito Villamarín","Juan", Competicion.PRIMERA, 2, 5,30));
     }
 
     //Inicializacion
 
     public void AppCompeticion() {
         int opcion;
+
         menuEquipo.llenarPrimeraOSegunda();
 
         while ((opcion = menuCompeticion()) != 0) {
@@ -53,6 +67,12 @@ public class FutbolApp {
                     break;
                 case 2:
                     AppSegundaDivision();
+                    break;
+                case 3:
+                    menuEquipo.buscarEquipos();
+                    break;
+                case 4:
+                    menuJugador.buscarJugador();
                     break;
             }
         }
@@ -68,6 +88,12 @@ public class FutbolApp {
                     break;
                 case 2:
                     AppClasificacionPrimera();
+                    break;
+                case 3:
+                    AppPartidos();
+                    break;
+                case 4:
+                    menuJugador.ordenacionPorGoles();
                     break;
             }
         }
@@ -91,16 +117,17 @@ public class FutbolApp {
     public void AppEleccionEquipoPrimera() {
         int opcion;
 
+
         while ((opcion = menuEleccionEquipo()) != 0) {
             switch (opcion) {
                 case 1:
-                    menuEquipo.listaEquiposPrimera();
-                    AppEquipos(menuEquipo.elegirEquipo());
+                    menuJugador.buscarEquipo();
                     break;
                 case 2:
                     menuEquipo.crearEquipo();
                     break;
                 case 3:
+                    menuEquipo.listaEquiposPrimera();
                     menuEquipo.eliminarEquipo();
                     break;
                 case 4:
@@ -116,13 +143,14 @@ public class FutbolApp {
         while ((opcion = menuEleccionEquipo()) != 0) {
             switch (opcion) {
                 case 1:
-                   menuEquipo.listaEquiposSegunda();
-                   AppEquipos(menuEquipo.elegirEquipo());
+
+                    AppEquipos();
                     break;
                 case 2:
                     menuEquipo.crearEquipo();
                     break;
                 case 3:
+                    menuEquipo.listaEquiposSegunda();
                     menuEquipo.eliminarEquipo();
                     break;
                 case 4:
@@ -132,7 +160,7 @@ public class FutbolApp {
         }
     }
 
-    public void AppEquipos(Equipo equipo) {
+    public void AppEquipos() {
         int opcion;
 
         while ((opcion = menuEquipos()) != 0) {
@@ -141,6 +169,7 @@ public class FutbolApp {
                     menuEquipo.mostrarInformacionEquipo();
                     break;
                 case 2:
+                    menuJugador.elegirEquipo();
                     AppPlantilla();
                     break;
             }
@@ -269,17 +298,36 @@ public class FutbolApp {
 //     }
 // }
 
-    public void AppCalendario() {
+    public void AppPartidos() {
+        int opcion;
+
+        while ((opcion = menuPartidos()) != 0) {
+            switch (opcion) {
+                case 1:
+                    AppCalendario();
+                    break;
+                case 2:
+                    menuPartido.crearPartido();
+                    break;
+                case 4:
+                    menuPartido.eliminarPartido();
+            }
+        }
+    }
+
+    public void AppCalendario(){
         int opcion;
 
         while ((opcion = menuCalendario()) != 0) {
             switch (opcion) {
                 case 1:
-
+                    menuPartido.listaPartidos();
                     break;
                 case 2:
-
+                    menuPartido.buscarPorJornada();
                     break;
+                case 3:
+                    menuPartido.buscarPorEquipo();
             }
         }
     }
@@ -308,7 +356,7 @@ public class FutbolApp {
         System.out.println("* 1 - Primera División  *");
         System.out.println("* 2 - Segunda División  *");
         System.out.println("* 3 - Buscar Equipo     *");
-        System.out.println("* 4 - Buscar Jugador  *");
+        System.out.println("* 4 - Buscar Jugador    *");
         System.out.println("* 0 - Salir             *");
         System.out.println("*************************");
         System.out.println("Opción: ");
@@ -325,7 +373,7 @@ public class FutbolApp {
         System.out.println("*********************");
         System.out.println("* 1 - Equipos       *");
         System.out.println("* 2 - Clasificación *");
-        System.out.println("* 3 - Calendario    *");
+        System.out.println("* 3 - Partidos    *");
         System.out.println("* 4 - Trofeos       *");
         System.out.println("* 0 - Salir         *");
         System.out.println("*********************");
@@ -422,16 +470,33 @@ public class FutbolApp {
         return opcion;
     }
 
-    private int menuCalendario() {
+    private int menuPartidos() {
         Scanner scanner = new Scanner(System.in);
         int opcion;
 
         System.out.println("************************");
-        System.out.println("* 1 - Ver jornada      *");
+        System.out.println("* 1 - Ver jornadas     *");
         System.out.println("* 2 - Añadir jornada   *");
         System.out.println("* 3 - Eliminar jornada *");
         System.out.println("* 0 - Salir            *");
         System.out.println("************************");
+        System.out.println("Opción: ");
+
+        opcion = scanner.nextInt();
+
+        return opcion;
+    }
+
+    private int menuCalendario() {
+        Scanner scanner = new Scanner(System.in);
+        int opcion;
+
+        System.out.println("**************************");
+        System.out.println("* 1 - Todos los partidos *");
+        System.out.println("* 2 - Buscar jornada     *");
+        System.out.println("* 3 - Buscar equipo      *");
+        System.out.println("* 0 - Salir              *");
+        System.out.println("**************************");
         System.out.println("Opción: ");
 
         opcion = scanner.nextInt();

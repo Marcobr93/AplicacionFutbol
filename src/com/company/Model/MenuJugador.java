@@ -38,22 +38,24 @@ public class MenuJugador {
         return false;
     }
 
+
     public void llenarEquipoDeJugadores(Jugador jugador){
 
         for (Equipo equipo: equipos) {
             if (equipo.getNombreEquipo().equals(jugador.getEquipo())){
-                equipo.getJugadores().add(jugador);
+                equipos.add((Equipo) jugador);
             }
         }
     }
 
-    public Posicion crearJugador(){
+    public void crearJugador(){
 
         Scanner scanner = new Scanner(System.in);
         String nombreJugador;
         String apellidosJugador;
         Posicion posicion = null;
         String posicionElegida;
+        String capitanString;
         boolean capitan;
         double altura;
         double peso;
@@ -67,6 +69,7 @@ public class MenuJugador {
         int golesRecibidos;
         int asistencias;
         String equipoNombre;
+        Equipo equipo = null;
         Jugador jugador;
 
         do {
@@ -100,7 +103,13 @@ public class MenuJugador {
             posicion = Posicion.Delantero;
         }
 
-        capitan = false;
+        System.out.println("Introduzca si es o no el jugadir capitán del equipo");
+        capitanString = scanner.next();
+        if (capitanString.toLowerCase().replace("í", "i").equals("si")) {
+            capitan = true;
+        }else {
+            capitan = false;
+        }
 
 
         do {
@@ -165,14 +174,21 @@ public class MenuJugador {
                 System.out.println("El jugador ya existe en ese equipo");
                 scanner.nextLine();
             }
+
+            for (Equipo equip : equipos) {
+                if (equip.getNombreEquipo().toLowerCase().replace(" ", "").equals(equipoNombre.toLowerCase().replace(" ", ""))) {
+                    equipo = equip;
+                }
+            }
         }while (existeJugadorEnArrayEquipo(equipoNombre));
 
-        jugador = new Jugador(nombreJugador,apellidosJugador,posicion,capitan,altura,peso,dorsal,edad,partidosJugados,tarjetasAmarillas,tarjetasRoja,goles,golesEnPropia,golesRecibidos,asistencias,equipoNombre);
+
+        jugador = new Jugador(nombreJugador,apellidosJugador,posicion,capitan,altura,peso,dorsal,edad,partidosJugados,tarjetasAmarillas,tarjetasRoja,goles,golesEnPropia,golesRecibidos,asistencias,equipo);
 
         if (jugador!= null) {
-            llenarEquipoDeJugadores(jugador);
+            jugadores.add(jugador);
         }
-        return posicion;
+        llenarEquipoDeJugadores(jugador);
     }
 
     public void eliminarJugador(){
@@ -197,12 +213,85 @@ public class MenuJugador {
         }
     }
 
+    public void buscarJugador() {
+        String nombre;
+        int indice = 0;
+        Scanner input = new Scanner(System.in);
+
+        for (Jugador jugador: jugadores){
+           System.out.println(jugador.getNombreJugador() + " " + jugador.getApellidosJugador());
+        }
+
+        System.out.println();
+        System.out.printf("Introduzca el nombre del jugador: ");
+        nombre = input.nextLine().toLowerCase().replace(" ","").replace("-", "");
+
+        for (Jugador jugador: jugadores){
+            if (nombre.equals(jugador.getNombreJugador().toLowerCase().replace(" ","").replace("-", ""))) {
+                System.out.println(jugador);
+                indice++;
+            }
+        }
+        if(indice==0) {
+            System.out.println("No existe el jugador");
+        }
+    }
+
+    public void buscarEquipo() {
+        int index=0;
+        String equipo;
+        Scanner input = new Scanner(System.in);
+
+        for (Equipo equipoe: equipos) {
+            System.out.println(equipoe);
+        }
+
+        System.out.println();
+        System.out.printf("Introduzca el equipo del jugador: ");
+        equipo = input.nextLine().toLowerCase().replace(" ","").replace("-", "");
+
+        for (Jugador jugador: jugadores){
+            try {
+                if (equipo.equals(jugador.getEquipo().getNombreEquipo().toLowerCase().replace(" ","").replace("-", ""))) {
+                    System.out.println(jugador);
+                    index++;
+                }
+            } catch (NullPointerException e) {
+                break;
+            }
+        }
+        if (index==0) {
+            System.out.println("No hay");
+        }
+
+        System.out.println();
+        input.nextLine();
+        System.out.println("Pulse Enter para continuar");
+        input.nextLine();
+    }
+
     public void listaJugadores(){
         int indice = 0;
         for (Jugador jugador: jugadores){
             System.out.println((indice++) + " - " + jugador);
         }
     }
+
+    public void elegirEquipo() {
+        Scanner scanner = new Scanner(System.in);
+        String nombreIntroducido;
+
+        System.out.println();
+        System.out.printf("Introduzca el nombre del equipo: ");
+        nombreIntroducido = scanner.nextLine().toLowerCase().replace(" ","").replace("-", "");
+
+        for (Jugador jugador: jugadores){
+            if (nombreIntroducido.equals(jugador.getEquipo())) {
+                System.out.println(jugador);
+            }
+        }
+    }
+
 
     // Ordenación
 
@@ -311,4 +400,15 @@ if (jugador!= null) {
                 equipos.add((Equipo) jugador);
             }
         }
+ */
+
+/*
+public void llenarEquipoDeJugadores(Jugador jugador){
+
+        for (Equipo equipo: equipos) {
+            if (equipo.getNombreEquipo().equals(jugador.getEquipo())){
+                equipo.getJugadores().add(jugador);
+            }
+        }
+    }
  */

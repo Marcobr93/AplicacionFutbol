@@ -9,7 +9,9 @@ import java.util.Objects;
  */
 public class Partido extends Equipo {
     private Equipo equipoLocal;
+    private String nombreEquipoLocal;
     private Equipo equipoVisitante;
+    private String nombreEquipoVisitante;
     private String estadio;
     private String arbitro;
     private Competicion competicion;
@@ -33,6 +35,17 @@ public class Partido extends Equipo {
     public Partido(Equipo equipoLocal, Equipo equipoVisitante, String estadio, String arbitro, Competicion competicion, int golLocal, int golVisitante, int jornada) {
         this.equipoLocal = equipoLocal;
         this.equipoVisitante = equipoVisitante;
+        this.estadio = estadio;
+        this.arbitro = arbitro;
+        this.competicion = competicion;
+        this.golLocal = golLocal;
+        this.golVisitante = golVisitante;
+        this.jornada = jornada;
+    }
+
+    public Partido(String nombreEquipoLocal, String nombreEquipoVisitante, String estadio, String arbitro, Competicion competicion, int golLocal, int golVisitante, int jornada) {
+        this.nombreEquipoLocal = nombreEquipoLocal;
+        this.nombreEquipoVisitante = nombreEquipoVisitante;
         this.estadio = estadio;
         this.arbitro = arbitro;
         this.competicion = competicion;
@@ -145,11 +158,27 @@ public class Partido extends Equipo {
         Partido.comparadorPorJornada = comparadorPorJornada;
     }
 
+    public String getNombreEquipoLocal() {
+        return nombreEquipoLocal;
+    }
+
+    public void setNombreEquipoLocal(String nombreEquipoLocal) {
+        this.nombreEquipoLocal = nombreEquipoLocal;
+    }
+
+    public String getNombreEquipoVisitante() {
+        return nombreEquipoVisitante;
+    }
+
+    public void setNombreEquipoVisitante(String nombreEquipoVisitante) {
+        this.nombreEquipoVisitante = nombreEquipoVisitante;
+    }
+
     @Override
     public String toString() {
         return "Partido{" +
-                "equipoLocal='" + equipoLocal + '\'' +
-                ", equipoVisitante='" + equipoVisitante + '\'' +
+                "nombreEquipoLocal='" + nombreEquipoLocal + '\'' +
+                ", nombreEquipoVisitante='" + nombreEquipoVisitante + '\'' +
                 ", estadio='" + estadio + '\'' +
                 ", arbitro='" + arbitro + '\'' +
                 ", competicion=" + competicion +
