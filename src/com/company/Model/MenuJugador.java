@@ -19,11 +19,9 @@ public class MenuJugador {
     public MenuJugador() {
     }
 
-    public MenuJugador(ArrayList<Jugador> jugadores) {
-        this.jugadores = jugadores;
-    }
 
-    public MenuJugador(ArrayList<Jugador> jugadores, ArrayList<Equipo> equipos) {
+    public MenuJugador(ArrayList<Equipo> equipos) {
+        this.equipos = equipos;
     }
 
 

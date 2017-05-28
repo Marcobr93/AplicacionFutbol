@@ -9,9 +9,8 @@ import java.util.Scanner;
  * Created by MarcoAntonio on 15/05/2017.
  */
 public class FutbolApp {
-    public ArrayList<Jugador> jugadores = new ArrayList<>();
+
     public ArrayList<Equipo> equipos = new ArrayList<>();
-    public ArrayList<Partido> partidos = new ArrayList<>();
 
      MenuEquipo menuEquipo;
      MenuEquipoPrimera menuEquipoPrimera;
@@ -25,32 +24,32 @@ public class FutbolApp {
         menuEquipo = new MenuEquipo(equipos);
         menuEquipoPrimera = new MenuEquipoPrimera(equipos);
         menuEquipoSegunda = new MenuEquipoSegunda(equipos);
-        menuJugador = new MenuJugador(jugadores);
-        menuPartido = new MenuPartido(partidos);
+        menuJugador = new MenuJugador(equipos);
+        menuPartido = new MenuPartido(equipos);
 
 
         cargarEquipos();
         cargarJugadores();
-        cargarEquipos();
+        cargarPartidos();
     }
 
     private void cargarEquipos() {
-        equipos.add(new Equipo("Real Madrid", "Florentino Pérez", "Zinedine Zidane", "Santiago Bernabéu", 1902, 90, Competicion.PRIMERA));
-        equipos.add(new Equipo("Barcelona", "Bartomeu", "Luis Enrique", "Campo Nuevo", 1899, 87, Competicion.PRIMERA));
-        equipos.add(new Equipo("Cádiz C.F", "Manuel Vizcaíno", "Álvaro Cervera", "Ramón de Carranza", 1910, 87, Competicion.SEGUNDA));
+        menuEquipo.equipos.add(new Equipo("Real Madrid", "Florentino Pérez", "Zinedine Zidane", "Santiago Bernabéu", 1902, 90, Competicion.PRIMERA));
+        menuEquipo.equipos.add(new Equipo("Barcelona", "Bartomeu", "Luis Enrique", "Campo Nuevo", 1899, 87, Competicion.PRIMERA));
+        menuEquipo.equipos.add(new Equipo("Cádiz C.F", "Manuel Vizcaíno", "Álvaro Cervera", "Ramón de Carranza", 1910, 87, Competicion.SEGUNDA));
     }
 
     private void cargarJugadores() {
-        jugadores.add(new Jugador("Marco", "Asensio Willemsen", Posicion.MediaPunta, false, 1.80, 75.00, 20, 21, 23, 0, 0, 3, 0, 0, 7, "Real Madrid"));
-        jugadores.add(new Jugador("Cristiano", "Ronaldo", Posicion.MediaPunta, false, 1.80, 75.00, 7, 25, 23, 0, 0, 8, 7, 0, 10, "Real Madrid"));
-        jugadores.add(new Jugador("Sergio", "Busquets Burgos", Posicion.Centrocampista, false, 1.89, 76.00, 5, 28, 32, 8, 0, 2, 0, 0, 4, "Barcelona"));
-        jugadores.add(new Jugador("Paco", "wew erw", Posicion.Centrocampista, false, 1.89, 76.00, 5, 28, 32, 8, 0, 7, 0, 0, 4, "Cádiz F.C"));
+        menuJugador.jugadores.add(new Jugador("Marco", "Asensio Willemsen", Posicion.MediaPunta, false, 1.80, 75.00, 20, 21, 23, 0, 0, 3, 0, 0, 7, "Real Madrid"));
+        menuJugador.jugadores.add(new Jugador("Cristiano", "Ronaldo", Posicion.MediaPunta, false, 1.80, 75.00, 7, 25, 23, 0, 0, 8, 7, 0, 10, "Real Madrid"));
+        menuJugador.jugadores.add(new Jugador("Sergio", "Busquets Burgos", Posicion.Centrocampista, false, 1.89, 76.00, 5, 28, 32, 8, 0, 2, 0, 0, 4, "Barcelona"));
+        menuJugador.jugadores.add(new Jugador("Paco", "wew erw", Posicion.Centrocampista, false, 1.89, 76.00, 5, 28, 32, 8, 0, 7, 0, 0, 4, "Cádiz F.C"));
     }
 
     private void cargarPartidos(){
-        partidos.add(new Partido("Real Madrid", "Barcelona","Santiago Bernagéu","Pepito", Competicion.PRIMERA, 5, 0,20));
-        partidos.add(new Partido("Real Madrid", "Sevilla","Santiago Bernagéu","Paco", Competicion.PRIMERA, 3, 1,10));
-        partidos.add(new Partido("Betis", "Real Madrid","Benito Villamarín","Juan", Competicion.PRIMERA, 2, 5,30));
+        menuPartido.partidos.add(new Partido("Real Madrid", "Barcelona","Santiago Bernagéu","Pepito", Competicion.PRIMERA, 5, 0,20));
+        menuPartido.partidos.add(new Partido("Real Madrid", "Sevilla","Santiago Bernagéu","Paco", Competicion.PRIMERA, 3, 1,10));
+        menuPartido.partidos.add(new Partido("Betis", "Real Madrid","Benito Villamarín","Juan", Competicion.PRIMERA, 2, 5,30));
     }
 
     //Inicializacion
@@ -58,7 +57,7 @@ public class FutbolApp {
     public void AppCompeticion() {
         int opcion;
 
-        menuEquipo.llenarPrimeraOSegunda();
+
 
         while ((opcion = menuCompeticion()) != 0) {
             switch (opcion) {

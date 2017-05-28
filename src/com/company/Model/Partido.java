@@ -54,6 +54,19 @@ public class Partido extends Equipo {
         this.jornada = jornada;
     }
 
+    public Partido(Equipo equipoLocal, String nombreEquipoLocal, Equipo equipoVisitante, String nombreEquipoVisitante, String estadio, String arbitro, Competicion competicion, int golLocal, int golVisitante, int jornada) {
+        this.equipoLocal = equipoLocal;
+        this.nombreEquipoLocal = nombreEquipoLocal;
+        this.equipoVisitante = equipoVisitante;
+        this.nombreEquipoVisitante = nombreEquipoVisitante;
+        this.estadio = estadio;
+        this.arbitro = arbitro;
+        this.competicion = competicion;
+        this.golLocal = golLocal;
+        this.golVisitante = golVisitante;
+        this.jornada = jornada;
+    }
+
     // Accesores
 
 

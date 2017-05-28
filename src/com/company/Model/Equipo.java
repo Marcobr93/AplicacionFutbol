@@ -22,14 +22,6 @@ public class Equipo extends Jugador{
    public Equipo() {
    }
 
-   public Equipo(String nombreEquipo, String presidente, String entrenador, String estadio, int añoFundacion, int puntos) {
-      this.setNombreEquipo(nombreEquipo);
-      this.setPresidente(presidente);
-      this.setEntrenador(entrenador);
-      this.setEstadio(estadio);
-      this.setAñoFundacion(añoFundacion);
-      this.setPuntos(puntos);
-   }
 
    public Equipo(String nombreEquipo, String presidente, String entrenador, String estadio, int añoFundacion, int puntos, Competicion competicion) {
       this.setNombreEquipo(nombreEquipo);
@@ -41,26 +33,6 @@ public class Equipo extends Jugador{
       this.setCompeticion(competicion);
    }
 
-   public Equipo(String nombreEquipo, String presidente, String entrenador, String estadio, int añoFundacion, int puntos, Competicion competicion, ArrayList<Jugador> jugadores) {
-      this.setNombreEquipo(nombreEquipo);
-      this.setPresidente(presidente);
-      this.setEntrenador(entrenador);
-      this.setEstadio(estadio);
-      this.setAñoFundacion(añoFundacion);
-      this.setPuntos(puntos);
-      this.setCompeticion(competicion);
-      this.setJugadores(jugadores);
-   }
-
-   public Equipo(String nombreEquipo, String presidente, String entrenador, String estadio, int añoFundacion, int puntos, String nombreCompeticion) {
-      this.setNombreEquipo(nombreEquipo);
-      this.setPresidente(presidente);
-      this.setEntrenador(entrenador);
-      this.setEstadio(estadio);
-      this.setAñoFundacion(añoFundacion);
-      this.setPuntos(puntos);
-      this.setNombreCompeticion(nombreCompeticion);
-   }
 
    // Accesores
 
