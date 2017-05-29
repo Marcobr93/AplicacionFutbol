@@ -14,24 +14,24 @@ public class FutbolApp {
 
 
      MenuEquipo menuEquipo;
-     MenuEquipoPrimera menuEquipoPrimera;
-     MenuEquipoSegunda menuEquipoSegunda;
      MenuJugador menuJugador;
      MenuPartido menuPartido;
+     MenuLiga menuLiga;
 
 
     public FutbolApp() {
         menuEquipo = new MenuEquipo(equipos);
-        menuEquipoPrimera = new MenuEquipoPrimera(equipos);
-        menuEquipoSegunda = new MenuEquipoSegunda(equipos);
         menuJugador = new MenuJugador(equipos);
         menuPartido = new MenuPartido(equipos);
+        menuLiga = new MenuLiga(equipos);
 
         cargarEquipos();
         cargarJugadores();
         cargarPartidos();
         menuEquipo.llenarPrimeraOSegunda();
         menuPartido.llenarPartidoPrimeraOSegunda();
+
+
     }
 
     private void cargarEquipos() {
@@ -93,7 +93,7 @@ public class FutbolApp {
                     AppPartidosPrimera();
                     break;
                 case 4:
-                    menuJugador.ordenacionPorGoles();
+
                     break;
             }
         }
@@ -127,7 +127,7 @@ public class FutbolApp {
         while ((opcion = menuEleccionEquipo()) != 0) {
             switch (opcion) {
                 case 1:
-                    menuJugador.buscarEquipo();
+                    AppEquipos();
                     break;
                 case 2:
                     menuEquipo.crearEquipo();
@@ -175,65 +175,64 @@ public class FutbolApp {
                     menuEquipo.mostrarInformacionEquipo();
                     break;
                 case 2:
-                    menuJugador.elegirEquipo();
-                    AppPlantilla();
+                    AppPlantilla(menuJugador.elegirEquipo());
+                    break;
+                case 3:
+                    menuJugador.crearJugador();
                     break;
             }
         }
     }
 
-    public void AppPlantilla() {
+    public void AppPlantilla(ArrayList<Jugador> jugadors) {
         int opcion;
 
         while ((opcion = menuPlantilla()) != 0) {
             switch (opcion) {
                 case 1:
-                    menuJugador.ordenacionPorNombre();
+                    menuJugador.ordenacionPorNombre(jugadors);
                     break;
                 case 2:
-                    menuJugador.ordenacionPorApellidos();
+                    menuJugador.ordenacionPorApellidos(jugadors);
                     break;
                 case 3:
-                    menuJugador.ordenacionPorPosicion();
+                    menuJugador.ordenacionPorPosicion(jugadors);
                     break;
                 case 4:
-                    menuJugador.ordenacionPorDorsal();
+                    menuJugador.ordenacionPorDorsal(jugadors);
                     break;
                 case 5:
-                    menuJugador.ordenacionPorAltura();
+                    menuJugador.ordenacionPorAltura(jugadors);
                     break;
                 case 6:
-                    menuJugador.ordenacionPorPeso();
+                    menuJugador.ordenacionPorPeso(jugadors);
                     break;
                 case 7:
-                    menuJugador.ordenacionPorEdad();
+                    menuJugador.ordenacionPorEdad(jugadors);
                     break;
                 case 8:
-                    menuJugador.ordenacionPorPartidosJugados();
+                    menuJugador.ordenacionPorPartidosJugados(jugadors);
                     break;
                 case 9:
-                    menuJugador.ordenacionPorTarjetasAmarillas();
+                    menuJugador.ordenacionPorTarjetasAmarillas(jugadors);
                     break;
                 case 10:
-                    menuJugador.ordenacionPorTarjetasRojas();
+                    menuJugador.ordenacionPorTarjetasRojas(jugadors);
                     break;
                 case 11:
-                    menuJugador.ordenacionPorGoles();
+                    menuJugador.ordenacionPorGoles(jugadors);
                     break;
                 case 12:
-                    menuJugador.ordenacionPorGolesEnPropia();
+                    menuJugador.ordenacionPorGolesEnPropia(jugadors);
                     break;
                 case 13:
-                    menuJugador.ordenacionPorGolesRecibidos();
+                    menuJugador.ordenacionPorGolesRecibidos(jugadors);
                     break;
                 case 14:
-                    menuJugador.ordenacionPorAsistencias();
+                    menuJugador.ordenacionPorAsistencias(jugadors);
                     break;
                 case 15:
-                    menuJugador.crearJugador();
-                    break;
-                case 16:
-                    menuJugador.eliminarJugador();
+                    menuJugador.eliminarJugador(jugadors);
             }
         }
     }
@@ -244,28 +243,28 @@ public class FutbolApp {
    while ((opcion = menuClasificacion()) != 0) {
        switch (opcion) {
            case 1:
-               menuEquipoPrimera.ordenacionPorPuntos();
+
                break;
            case 2:
-               menuEquipoPrimera.ordenacionPorNombre();
+
                break;
            case 3:
-               menuEquipoPrimera.ordenacionPorPartidosJugados();
+
                break;
            case 4:
-               menuEquipoPrimera.ordenacionPorTarjetasAmarillas();
+
                break;
            case 5:
-               menuEquipoPrimera.ordenacionPorTarjeasRojas();
+
                break;
            case 6:
-               menuEquipoPrimera.ordenacionPorDiferenciaDeGoles();
+
                break;
            case 7:
-               menuEquipoPrimera.ordenacionPorGolesAFavor();
+
                break;
            case 8:
-               menuEquipoPrimera.ordenacionPorGolesEnContra();
+
                break;
        }
    }
@@ -277,28 +276,28 @@ public class FutbolApp {
      while ((opcion = menuClasificacion()) != 0) {
          switch (opcion) {
              case 1:
-                 menuEquipoSegunda.ordenacionPorPuntos();
+
                  break;
              case 2:
-                 menuEquipoSegunda.ordenacionPorNombre();
+
                  break;
              case 3:
-                 menuEquipoSegunda.ordenacionPorPartidosJugados();
+
                  break;
              case 4:
-                 menuEquipoSegunda.ordenacionPorTarjetasAmarillas();
+
                  break;
              case 5:
-                 menuEquipoSegunda.ordenacionPorTarjeasRojas();
+
                  break;
              case 6:
-                 menuEquipoSegunda.ordenacionPorDiferenciaDeGoles();
+
                  break;
              case 7:
-                 menuEquipoSegunda.ordenacionPorGolesAFavor();
+
                  break;
              case 8:
-                 menuEquipoSegunda.ordenacionPorGolesEnContra();
+
                  break;
          }
      }
@@ -415,7 +414,7 @@ public class FutbolApp {
         System.out.println("*********************");
         System.out.println("* 1 - Equipos       *");
         System.out.println("* 2 - Clasificación *");
-        System.out.println("* 3 - Partidos    *");
+        System.out.println("* 3 - Partidos      *");
         System.out.println("* 4 - Trofeos       *");
         System.out.println("* 0 - Salir         *");
         System.out.println("*********************");
@@ -451,6 +450,7 @@ public class FutbolApp {
         System.out.println("******************************");
         System.out.println("* 1 - Información del equipo *");
         System.out.println("* 2 - Plantilla              *");
+        System.out.println("* 3 - Añadir jugador         *");
         System.out.println("* 0 - Salir                  *");
         System.out.println("******************************");
         System.out.println("Opción: ");
@@ -479,8 +479,7 @@ public class FutbolApp {
         System.out.println("* 12- Ordenar por goles en propia    *");
         System.out.println("* 13- Ordenar por goles recibidos    *");
         System.out.println("* 14- Asistencias                    *");
-        System.out.println("* 15- Añadir jugador                 *");
-        System.out.println("* 16- Eliminar jugador               *");
+        System.out.println("* 15- Eliminar jugador               *");
         System.out.println("* 0 - Salir                          *");
         System.out.println("**************************************");
         System.out.println("Opción: ");
@@ -602,3 +601,73 @@ public class FutbolApp {
     }
     */
 
+/*
+public void AppClasificacionPrimera() {
+      int opcion;
+
+   while ((opcion = menuClasificacion()) != 0) {
+       switch (opcion) {
+           case 1:
+               menuEquipoPrimera.ordenacionPorPuntos();
+               break;
+           case 2:
+               menuEquipoPrimera.ordenacionPorNombre();
+               break;
+           case 3:
+               menuEquipoPrimera.ordenacionPorPartidosJugados();
+               break;
+           case 4:
+               menuEquipoPrimera.ordenacionPorTarjetasAmarillas();
+               break;
+           case 5:
+               menuEquipoPrimera.ordenacionPorTarjeasRojas();
+               break;
+           case 6:
+               menuEquipoPrimera.ordenacionPorDiferenciaDeGoles();
+               break;
+           case 7:
+               menuEquipoPrimera.ordenacionPorGolesAFavor();
+               break;
+           case 8:
+               menuEquipoPrimera.ordenacionPorGolesEnContra();
+               break;
+       }
+   }
+ }
+ */
+
+/*
+
+ public void AppClasificacionSegunda() {
+     int opcion;
+
+     while ((opcion = menuClasificacion()) != 0) {
+         switch (opcion) {
+             case 1:
+                 menuEquipoSegunda.ordenacionPorPuntos();
+                 break;
+             case 2:
+                 menuEquipoSegunda.ordenacionPorNombre();
+                 break;
+             case 3:
+                 menuEquipoSegunda.ordenacionPorPartidosJugados();
+                 break;
+             case 4:
+                 menuEquipoSegunda.ordenacionPorTarjetasAmarillas();
+                 break;
+             case 5:
+                 menuEquipoSegunda.ordenacionPorTarjeasRojas();
+                 break;
+             case 6:
+                 menuEquipoSegunda.ordenacionPorDiferenciaDeGoles();
+                 break;
+             case 7:
+                 menuEquipoSegunda.ordenacionPorGolesAFavor();
+                 break;
+             case 8:
+                 menuEquipoSegunda.ordenacionPorGolesEnContra();
+                 break;
+         }
+     }
+ }
+ */

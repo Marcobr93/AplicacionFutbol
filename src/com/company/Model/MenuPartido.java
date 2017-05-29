@@ -211,24 +211,6 @@ public class MenuPartido {
         }
     }
 
-    public void buscarPorEquipo() {
-        String nombreEquipo;
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println();
-        System.out.printf("Introduzca el nombre del equipo que juega el partido: ");
-        nombreEquipo = scanner.nextLine().toLowerCase().replace(" ", "").replace("-", "").replace("_", "").replace(".", "");
-
-        for (Partido partido : partidos) {
-            if (nombreEquipo.equals(partido.getNombreEquipoLocal().toLowerCase().replace(" ", "").replace("-", "").replace("_", "").replace(".", ""))) {
-                System.out.println(partido);
-            } else if (nombreEquipo.equals(partido.getNombreEquipoVisitante().toLowerCase().replace(" ", "").replace("-", "").replace("_", "").replace(".", ""))) {
-                System.out.println(partido);
-                System.out.println();
-            }
-        }
-    }
-
     public void buscarPorEquipoPrimera() {
         String nombreEquipo;
         Scanner scanner = new Scanner(System.in);

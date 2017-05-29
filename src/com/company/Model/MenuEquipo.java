@@ -227,8 +227,11 @@ public class MenuEquipo  {
 
         listaEquipos();
     }
+}
 
-    public void ordenacionPorPartidosJugados() {
+
+/*
+public void ordenacionPorPartidosJugados() {
         Collections.sort(equipos, Equipo.comparadorPorPartidosJugados);
     }
 
@@ -261,6 +264,6 @@ public class MenuEquipo  {
 
         listaEquipos();
     }
-}
+ */
 
 

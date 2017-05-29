@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * Created by MarcoAntonio on 15/05/2017.
  */
-public class Equipo extends Jugador{
+public class Equipo {
    private String nombreEquipo;
    private String presidente;
    private String entrenador;
@@ -117,9 +117,6 @@ public class Equipo extends Jugador{
       this.competicion = competicion;
    }
 
-   public int getDiferenciaDeGoles() {
-      return getGoles() - getGolesRecibidos();
-   }
 
    public ArrayList<Jugador> getJugadores() {
       return jugadores;
@@ -166,6 +163,63 @@ public class Equipo extends Jugador{
          return res;
       }
    };
+
+   public static Comparator<Equipo> comparadorPorEstadio = new Comparator<Equipo>() {
+      @Override
+      public int compare(Equipo equipo1, Equipo equipo2) {
+         int res;
+
+         res = equipo1.getEstadio().compareToIgnoreCase(equipo2.getEstadio());
+         return res;
+      }
+   };
+
+   public static Comparator<Equipo> comparadorPorCompeticion = new Comparator<Equipo>() {
+      @Override
+      public int compare(Equipo equipo1, Equipo equipo2) {
+         int res;
+
+         res = equipo1.getCompeticion().compareTo(equipo2.getCompeticion());
+         return res;
+      }
+   };
+
+   public static Comparator<Equipo> comparadorPorPuntos = new Comparator<Equipo>() {
+      @Override
+      public int compare(Equipo equipo1, Equipo equipo2) {
+         return (equipo2.getPuntos() - equipo1.getPuntos());
+      }
+   };
+
+
+   @Override
+   public boolean equals(Object obj) {
+      if( this == obj ) { return true; }
+
+      if ( obj == null ) { return false; }
+
+      if ( this.getClass() != obj.getClass() ) { return false; }
+
+      Equipo equipo = (Equipo) obj;
+
+      // Se consideran dos equipos iguales si tienen el mismo nombre
+      return Objects.equals(this.getNombreEquipo(), equipo.getNombreEquipo());
+   }
+
+}
+
+
+/*
+
+public static Comparator<Equipo> comparadorPorNombre = new Comparator<Equipo>() {
+   @Override
+   public int compare(Equipo equipo1, Equipo equipo2) {
+      int res;
+
+      res = equipo1.getNombreEquipo().compareToIgnoreCase(equipo2.getNombreEquipo());
+      return res;
+   }
+};
 
    public static Comparator<Equipo> comparadorPorCompeticion = new Comparator<Equipo>() {
       @Override
@@ -225,21 +279,4 @@ public class Equipo extends Jugador{
          return (equipo2.getTarjetasRoja() - equipo1.getTarjetasRoja());
       }
    };
-
-
-   @Override
-   public boolean equals(Object obj) {
-      if( this == obj ) { return true; }
-
-      if ( obj == null ) { return false; }
-
-      if ( this.getClass() != obj.getClass() ) { return false; }
-
-      Equipo equipo = (Equipo) obj;
-
-      // Se consideran dos equipos iguales si tienen el mismo nombre
-      return Objects.equals(this.getNombreEquipo(), equipo.getNombreEquipo());
-   }
-
-
-}
+ */

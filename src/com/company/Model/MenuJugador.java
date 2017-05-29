@@ -12,6 +12,7 @@ public class MenuJugador {
 
     public ArrayList<Jugador> jugadores = new ArrayList<>();
     public ArrayList<Equipo> equipos = new ArrayList<>();
+    public ArrayList<Jugador> jugadors = new ArrayList<>();
 
     // Constructores
 
@@ -26,7 +27,7 @@ public class MenuJugador {
 
 
     // Métodos
-
+/*
     public boolean existeJugadorEnArrayEquipo(String nombreEquipo){
         for (Equipo equipo: equipos) {
             if (equipo.getJugadores().equals(nombreEquipo)){
@@ -35,8 +36,8 @@ public class MenuJugador {
         }
         return false;
     }
-
-
+*/
+/*
     public void llenarEquipoDeJugadores(Jugador jugador){
 
         for (Equipo equipo: equipos) {
@@ -45,7 +46,7 @@ public class MenuJugador {
             }
         }
     }
-
+*/
     public void crearJugador(){
 
         Scanner scanner = new Scanner(System.in);
@@ -67,7 +68,6 @@ public class MenuJugador {
         int golesRecibidos;
         int asistencias;
         String equipoNombre;
-        Equipo equipo = null;
         Jugador jugador;
 
         do {
@@ -108,7 +108,6 @@ public class MenuJugador {
         }else {
             capitan = false;
         }
-
 
         do {
             System.out.println("Altura del jugador: ");
@@ -161,45 +160,45 @@ public class MenuJugador {
         } while (golesRecibidos < 0);
 
         do {
-            System.out.println("Asistenciass del jugador: ");
+            System.out.println("Asistencias del jugador: ");
             asistencias = scanner.nextInt();
         } while (asistencias < 0);
 
+        scanner.nextLine();
         do {
             System.out.println("Introduzca el nombre del equipo");
-            equipoNombre = scanner.next().trim().replaceAll("\\s+", " ");
-            if (existeJugadorEnArrayEquipo(equipoNombre)){
-                System.out.println("El jugador ya existe en ese equipo");
-                scanner.nextLine();
-            }
+            equipoNombre = scanner.nextLine();
+           // if (existeJugadorEnArrayEquipo(equipoNombre)){
+           //     System.out.println("El jugador ya existe en ese equipo");
+           //     scanner.nextLine();
+           // }
 
             for (Equipo equip : equipos) {
                 if (equip.getNombreEquipo().toLowerCase().replace(" ", "").equals(equipoNombre.toLowerCase().replace(" ", ""))) {
-                    equipo = equip;
+                    equipoNombre = equip.getNombreEquipo();
                 }
             }
-        }while (existeJugadorEnArrayEquipo(equipoNombre));
+        }while(equipoNombre == null);
 
 
-        jugador = new Jugador(nombreJugador,apellidosJugador,posicion,capitan,altura,peso,dorsal,edad,partidosJugados,tarjetasAmarillas,tarjetasRoja,goles,golesEnPropia,golesRecibidos,asistencias,equipo);
+        jugador = new Jugador(nombreJugador,apellidosJugador,posicion,capitan,altura,peso,dorsal,edad,partidosJugados,tarjetasAmarillas,tarjetasRoja,goles,golesEnPropia,golesRecibidos,asistencias,equipoNombre);
 
         if (jugador!= null) {
             jugadores.add(jugador);
         }
-        llenarEquipoDeJugadores(jugador);
     }
 
-    public void eliminarJugador(){
+    public void eliminarJugador(ArrayList<Jugador> jugadors){
         Scanner scanner = new Scanner(System.in);
         int dorsal;
 
-        Iterator<Jugador> itJugador = jugadores.iterator();
+        Iterator<Jugador> itJugador = jugadors.iterator();
 
-        listaJugadores();
+        listaJugadoresEquipo();
 
         System.out.println();
 
-        System.out.println("Introduzca el dorsal del jugador que desea borrar");
+        System.out.println("Introduzca el dorsal del jugador que desea borrar: ");
         dorsal = scanner.nextInt();
 
         while (itJugador.hasNext()){
@@ -262,10 +261,6 @@ public class MenuJugador {
             System.out.println("No hay");
         }
 
-        System.out.println();
-        input.nextLine();
-        System.out.println("Pulse Enter para continuar");
-        input.nextLine();
     }
 
     public void listaJugadores(){
@@ -275,138 +270,115 @@ public class MenuJugador {
         }
     }
 
-    public void elegirEquipo() {
+    public void listaJugadoresEquipo(){
+        int indice = 0;
+        for (Jugador jugador: jugadors){
+            System.out.println((indice++) + " - " + jugador);
+        }
+    }
+
+    public ArrayList<Jugador> elegirEquipo() {
+
         Scanner scanner = new Scanner(System.in);
         String nombreIntroducido;
 
         System.out.println();
         System.out.printf("Introduzca el nombre del equipo: ");
-        nombreIntroducido = scanner.nextLine().toLowerCase().replace(" ","").replace("-", "");
+        nombreIntroducido = scanner.nextLine();
 
         for (Jugador jugador: jugadores){
-            if (nombreIntroducido.equals(jugador.getEquipo())) {
+            if (nombreIntroducido.equals(jugador.getsEquipo())) {
                 System.out.println(jugador);
+                jugadors.add(jugador);
             }
         }
+        return jugadors;
     }
 
 
     // Ordenación
 
-    public void ordenacionPorNombre(){
-        Collections.sort(jugadores, Jugador.comparadorPorNombre);
+    public void ordenacionPorNombre(ArrayList<Jugador> jugadors){
+        Collections.sort(jugadors, Jugador.comparadorPorNombre);
+
+        listaJugadoresEquipo();
+    }
+
+    public void ordenacionPorApellidos(ArrayList<Jugador> jugadors){
+        Collections.sort(jugadors, Jugador.comparadorPorApellidos);
+
+        listaJugadoresEquipo();
+    }
+
+    public void ordenacionPorPosicion(ArrayList<Jugador> jugadors){
+        Collections.sort(jugadors, Jugador.comparadorPorPosicion);
+
+        listaJugadoresEquipo();
+    }
+
+    public void ordenacionPorDorsal(ArrayList<Jugador> jugadors){
+        Collections.sort(jugadors, Jugador.comparadorPorDorsal);
+
+        listaJugadoresEquipo();
+    }
+
+    public void ordenacionPorAltura(ArrayList<Jugador> jugadors){
+        Collections.sort(jugadors, Jugador.comparadorPorAltura);
+
+        listaJugadoresEquipo();
+    }
+
+    public void ordenacionPorPeso(ArrayList<Jugador> jugadors){
+        Collections.sort(jugadors, Jugador.comparadorPorPeso);
+
+        listaJugadoresEquipo();
+    }
+
+    public void ordenacionPorEdad(ArrayList<Jugador> jugadors){
+        Collections.sort(jugadors, Jugador.comparadorPorEdad);
 
         listaJugadores();
     }
 
-    public void ordenacionPorApellidos(){
-        Collections.sort(jugadores, Jugador.comparadorPorApellidos);
+    public void ordenacionPorPartidosJugados(ArrayList<Jugador> jugadors){
+        Collections.sort(jugadors, Jugador.comparadorPorPartidosJugados);
 
-        listaJugadores();
+        listaJugadoresEquipo();
     }
 
-    public void ordenacionPorPosicion(){
-        Collections.sort(jugadores, Jugador.comparadorPorPosicion);
+    public void ordenacionPorTarjetasAmarillas(ArrayList<Jugador> jugadors){
+        Collections.sort(jugadors, Jugador.comparadorPorTarjetasAmarillas);
 
-        listaJugadores();
+        listaJugadoresEquipo();
     }
 
-    public void ordenacionPorDorsal(){
-        Collections.sort(jugadores, Jugador.comparadorPorDorsal);
+    public void ordenacionPorTarjetasRojas(ArrayList<Jugador> jugadors){
+        Collections.sort(jugadors, Jugador.comparadorPorTarjetasRojas);
 
-        listaJugadores();
+        listaJugadoresEquipo();
     }
 
-    public void ordenacionPorAltura(){
-        Collections.sort(jugadores, Jugador.comparadorPorAltura);
+    public void ordenacionPorGoles(ArrayList<Jugador> jugadors){
+        Collections.sort(jugadors, Jugador.comparadorPorGoles);
 
-        listaJugadores();
+        listaJugadoresEquipo();
     }
 
-    public void ordenacionPorPeso(){
-        Collections.sort(jugadores, Jugador.comparadorPorPeso);
+    public void ordenacionPorGolesEnPropia(ArrayList<Jugador> jugadors){
+        Collections.sort(jugadors, Jugador.comparadorPorGolesEnPropia);
 
-        listaJugadores();
+        listaJugadoresEquipo();
     }
 
-    public void ordenacionPorEdad(){
-        Collections.sort(jugadores, Jugador.comparadorPorEdad);
+    public void ordenacionPorGolesRecibidos(ArrayList<Jugador> jugadors){
+        Collections.sort(jugadors, Jugador.comparadorPorGolesRecibidos);
 
-        listaJugadores();
+        listaJugadoresEquipo();
     }
 
-    public void ordenacionPorPartidosJugados(){
-        Collections.sort(jugadores, Jugador.comparadorPorPartidosJugados);
+    public void ordenacionPorAsistencias(ArrayList<Jugador> jugadors){
+        Collections.sort(jugadors, Jugador.comparadorPorAsistencias);
 
-        listaJugadores();
+        listaJugadoresEquipo();
     }
-
-    public void ordenacionPorTarjetasAmarillas(){
-        Collections.sort(jugadores, Jugador.comparadorPorTarjetasAmarillas);
-
-        listaJugadores();
-    }
-
-    public void ordenacionPorTarjetasRojas(){
-        Collections.sort(jugadores, Jugador.comparadorPorTarjetasRojas);
-
-        listaJugadores();
-    }
-
-    public void ordenacionPorGoles(){
-        Collections.sort(jugadores, Jugador.comparadorPorGoles);
-
-        listaJugadores();
-    }
-
-    public void ordenacionPorGolesEnPropia(){
-        Collections.sort(jugadores, Jugador.comparadorPorGolesEnPropia);
-
-        listaJugadores();
-    }
-
-    public void ordenacionPorGolesRecibidos(){
-        Collections.sort(jugadores, Jugador.comparadorPorGolesRecibidos);
-
-        listaJugadores();
-    }
-
-    public void ordenacionPorAsistencias(){
-        Collections.sort(jugadores, Jugador.comparadorPorAsistencias);
-
-        listaJugadores();
-    }
-
-    public void ordenacionPorEquipo(){
-        Collections.sort(jugadores, Jugador.comparadorPorEquipo);
-
-        listaJugadores();
-    }
-
 }
-
-
-/*
-if (jugador!= null) {
-            for (Jugador jugador1 : jugadores) {
-                if (jugador1.getEquipo().toLowerCase().replace(" ", "").replace("-", "").replace("_", "").equals(jugador.getEquipo().toLowerCase().replace(" ", "").replace("-", "").replace("_", ""))) {
-                    noCreado = false;
-                }
-            }
-            if (noCreado) {
-                jugadores.add(jugador);
-                equipos.add((Equipo) jugador);
-            }
-        }
- */
-
-/*
-public void llenarEquipoDeJugadores(Jugador jugador){
-
-        for (Equipo equipo: equipos) {
-            if (equipo.getNombreEquipo().equals(jugador.getEquipo())){
-                equipo.getJugadores().add(jugador);
-            }
-        }
-    }
- */
