@@ -26,7 +26,7 @@ public class MenuClasificacion {
 
     // Métodos
 
-    public void llenarClasificacionPrimeraOSegunda(){
+    public void añadirClasificacionPrimeraOSegunda(){
         for (Clasificacion clasificacion: clasificacion) {
             if (clasificacion.getCompeticion().equals(Competicion.PRIMERA)){
                 clasificacionPrimera.add(clasificacion);

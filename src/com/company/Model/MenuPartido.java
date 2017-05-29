@@ -25,7 +25,7 @@ public class MenuPartido {
 
     // Métodos
 
-    public void llenarPartidoPrimeraOSegunda(){
+    public void añadirPartidoPrimeraOSegunda(){
         for (Partido partido: partidos) {
             if (partido.getCompeticion().equals(Competicion.PRIMERA)){
                 partidosPrimera.add(partido);

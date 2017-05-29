@@ -24,7 +24,7 @@ public class MenuEquipo  {
 
     // Métodos
 
-    public void llenarPrimeraOSegunda(){
+    public void añadirPrimeraOSegunda(){
         for (Equipo equipo: equipos) {
             if (equipo.getCompeticion().equals(Competicion.PRIMERA)){
                     equiposPrimera.add(equipo);

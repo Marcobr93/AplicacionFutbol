@@ -255,6 +255,10 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
       }
    }
 
+   public double getPromedioDeGoles() {
+      return (double) getGolesRecibidos() / (double) getPartidosJugados();
+   }
+
    public int getAsistencias() {
       return asistencias;
    }
@@ -292,6 +296,8 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
       this.competicion = competicion;
    }
 
+
+
    @Override
    public String toString() {
       return "Jugador{" +
@@ -309,6 +315,7 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
               ", goles=" + goles +
               ", golesEnPropia=" + golesEnPropia +
               ", golesRecibidos=" + golesRecibidos +
+              ", promedio de goles recibidos: " + getPromedioDeGoles() +
               ", asistencias=" + asistencias +
               ", sEquipo='" + sEquipo + '\'' +
               '}';
@@ -471,7 +478,7 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
    public static Comparator<Jugador> comparadorPorGolesRecibidos = new Comparator<Jugador>() {
       @Override
       public int compare(Jugador j1, Jugador j2) {
-         return (j2.getGolesRecibidos() - j1.getGolesRecibidos());
+         return (int)(j1.getPromedioDeGoles() - j2.getPromedioDeGoles());
       }
    };
    /**
