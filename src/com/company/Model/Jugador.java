@@ -24,6 +24,7 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
    private int asistencias;
    private Equipo equipo;
    private String sEquipo;
+   private Competicion competicion;
 
 
    // Constructores
@@ -71,7 +72,7 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
       this.setEquipo(equipo);
    }
 
-   public Jugador(String nombreJugador, String apellidosJugador, Posicion posicion, boolean capitan, double altura, double peso, int dorsal, int edad, int partidosJugados, int tarjetasAmarillas, int tarjetasRoja, int goles, int golesEnPropia, int golesRecibidos, int asistencias, String sEquipo) {
+   public Jugador(String nombreJugador, String apellidosJugador, Posicion posicion, boolean capitan, double altura, double peso, int dorsal, int edad, int partidosJugados, int tarjetasAmarillas, int tarjetasRoja, int goles, int golesEnPropia, int golesRecibidos, int asistencias, String sEquipo, Competicion competicion) {
       this.setNombreJugador(nombreJugador);
       this.setApellidosJugador(apellidosJugador);
       this.setPosicion(posicion);
@@ -88,6 +89,7 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
       this.setGolesRecibidos(golesRecibidos);
       this.setAsistencias(asistencias);
       this.setsEquipo(sEquipo);
+      this.setCompeticion(competicion);
    }
 
    // Accesores
@@ -246,7 +248,7 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
    }
 
    public void setGolesRecibidos(int golesRecibidos) {
-      if (golesRecibidos < 0){
+      if (golesRecibidos <= 0){
          this.golesRecibidos = 0;
       }else {
          this.golesRecibidos = golesRecibidos;
@@ -280,6 +282,14 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
 
    public void setsEquipo(String sEquipo) {
       this.sEquipo = sEquipo;
+   }
+
+   public Competicion getCompeticion() {
+      return competicion;
+   }
+
+   public void setCompeticion(Competicion competicion) {
+      this.competicion = competicion;
    }
 
    @Override

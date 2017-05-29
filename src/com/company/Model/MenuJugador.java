@@ -9,10 +9,11 @@ import java.util.Scanner;
  * Created by MarcoAntonio on 15/05/2017.
  */
 public class MenuJugador {
-
-    public ArrayList<Jugador> jugadores = new ArrayList<>();
     public ArrayList<Equipo> equipos = new ArrayList<>();
-    public ArrayList<Jugador> jugadors = new ArrayList<>();
+    public ArrayList<Jugador> jugadores = new ArrayList<>();
+    public ArrayList<Jugador> jugadoresPrimera = new ArrayList<>();
+    public ArrayList<Jugador> jugadoresSegunda = new ArrayList<>();
+    public ArrayList<Jugador> jugadoresEquipo = new ArrayList<>();
 
     // Constructores
 
@@ -27,26 +28,19 @@ public class MenuJugador {
 
 
     // Métodos
-/*
-    public boolean existeJugadorEnArrayEquipo(String nombreEquipo){
-        for (Equipo equipo: equipos) {
-            if (equipo.getJugadores().equals(nombreEquipo)){
-                return true;
-            }
-        }
-        return false;
-    }
-*/
-/*
-    public void llenarEquipoDeJugadores(Jugador jugador){
 
-        for (Equipo equipo: equipos) {
-            if (equipo.getNombreEquipo().equals(jugador.getEquipo())){
-                equipos.add((Equipo) jugador);
+
+    public void llenarJugadoresPrimeraSegunda() {
+        for (Jugador jugador : jugadores) {
+            if (jugador.getCompeticion().equals(Competicion.PRIMERA)) {
+                jugadoresPrimera.add(jugador);
+            } else if (jugador.getCompeticion().equals(Competicion.SEGUNDA)) {
+                jugadoresSegunda.add(jugador);
             }
         }
     }
-*/
+
+
     public void crearJugador(){
 
         Scanner scanner = new Scanner(System.in);
@@ -65,10 +59,12 @@ public class MenuJugador {
         int tarjetasRoja;
         int goles;
         int golesEnPropia;
-        int golesRecibidos;
+        int golesRecibidos = 0;
         int asistencias;
         String equipoNombre;
         Jugador jugador;
+        String nombreCompeticion;
+        Competicion competicion = null;
 
         do {
             System.out.println("Nombre del jugador: ");
@@ -154,10 +150,12 @@ public class MenuJugador {
             golesEnPropia = scanner.nextInt();
         } while (golesEnPropia < 0);
 
-        do {
-            System.out.println("Goles recibidos del jugador: ");
-            golesRecibidos = scanner.nextInt();
-        } while (golesRecibidos < 0);
+        if (posicionElegida.toLowerCase().replace(" ", "").equals("portero")) {
+            do {
+                System.out.println("Goles recibidos del jugador: ");
+                golesRecibidos = scanner.nextInt();
+            } while (golesRecibidos < 0);
+        }
 
         do {
             System.out.println("Asistencias del jugador: ");
@@ -168,10 +166,6 @@ public class MenuJugador {
         do {
             System.out.println("Introduzca el nombre del equipo");
             equipoNombre = scanner.nextLine();
-           // if (existeJugadorEnArrayEquipo(equipoNombre)){
-           //     System.out.println("El jugador ya existe en ese equipo");
-           //     scanner.nextLine();
-           // }
 
             for (Equipo equip : equipos) {
                 if (equip.getNombreEquipo().toLowerCase().replace(" ", "").equals(equipoNombre.toLowerCase().replace(" ", ""))) {
@@ -180,8 +174,16 @@ public class MenuJugador {
             }
         }while(equipoNombre == null);
 
+        System.out.println("Introduzca si el equipo juega en Primera o en Segunda: ");
+        nombreCompeticion = scanner.next();
+        if (nombreCompeticion.toLowerCase().replace(" ", "").equals("primera")){
+            competicion = Competicion.PRIMERA;
+        }else if(nombreCompeticion.toLowerCase().replace(" ", "").equals("segunda")){
+            competicion = Competicion.SEGUNDA;
+        }
 
-        jugador = new Jugador(nombreJugador,apellidosJugador,posicion,capitan,altura,peso,dorsal,edad,partidosJugados,tarjetasAmarillas,tarjetasRoja,goles,golesEnPropia,golesRecibidos,asistencias,equipoNombre);
+
+        jugador = new Jugador(nombreJugador,apellidosJugador,posicion,capitan,altura,peso,dorsal,edad,partidosJugados,tarjetasAmarillas,tarjetasRoja,goles,golesEnPropia,golesRecibidos,asistencias,equipoNombre,competicion);
 
         if (jugador!= null) {
             jugadores.add(jugador);
@@ -244,7 +246,21 @@ public class MenuJugador {
 
     public void listaJugadoresEquipo(){
         int indice = 0;
-        for (Jugador jugador: jugadors){
+        for (Jugador jugador: jugadoresEquipo){
+            System.out.println((indice++) + " - " + jugador);
+        }
+    }
+
+    public void listaJugadoresEquiposPrimera(){
+        int indice = 0;
+        for (Jugador jugador: jugadoresPrimera){
+            System.out.println((indice++) + " - " + jugador);
+        }
+    }
+
+    public void listaJugadoresEquiposSegunda(){
+        int indice = 0;
+        for (Jugador jugador: jugadoresSegunda){
             System.out.println((indice++) + " - " + jugador);
         }
     }
@@ -261,103 +277,120 @@ public class MenuJugador {
         for (Jugador jugador: jugadores){
             if (nombreIntroducido.equals(jugador.getsEquipo())) {
                 System.out.println(jugador);
-                jugadors.add(jugador);
+                jugadoresEquipo.add(jugador);
             }
         }
-        return jugadors;
+        return jugadoresEquipo;
     }
 
-    public void pichichiPrimera(){
-        int indice = 0;
-
-        for (Jugador jugador: jugadores) {
-
-        }
-    }
 
     // Ordenación
 
-    public void ordenacionPorNombre(ArrayList<Jugador> jugadors){
-        Collections.sort(jugadors, Jugador.comparadorPorNombre);
+    public void ordenacionPorNombre(ArrayList<Jugador> jugadoresEquipo){
+        Collections.sort(jugadoresEquipo, Jugador.comparadorPorNombre);
 
         listaJugadoresEquipo();
     }
 
-    public void ordenacionPorApellidos(ArrayList<Jugador> jugadors){
-        Collections.sort(jugadors, Jugador.comparadorPorApellidos);
+    public void ordenacionPorApellidos(ArrayList<Jugador> jugadoresEquipo){
+        Collections.sort(jugadoresEquipo, Jugador.comparadorPorApellidos);
 
         listaJugadoresEquipo();
     }
 
-    public void ordenacionPorPosicion(ArrayList<Jugador> jugadors){
-        Collections.sort(jugadors, Jugador.comparadorPorPosicion);
+    public void ordenacionPorPosicion(ArrayList<Jugador> jugadoresEquipo){
+        Collections.sort(jugadoresEquipo, Jugador.comparadorPorPosicion);
 
         listaJugadoresEquipo();
     }
 
-    public void ordenacionPorDorsal(ArrayList<Jugador> jugadors){
-        Collections.sort(jugadors, Jugador.comparadorPorDorsal);
+    public void ordenacionPorDorsal(ArrayList<Jugador> jugadoresEquipo){
+        Collections.sort(jugadoresEquipo, Jugador.comparadorPorDorsal);
 
         listaJugadoresEquipo();
     }
 
-    public void ordenacionPorAltura(ArrayList<Jugador> jugadors){
-        Collections.sort(jugadors, Jugador.comparadorPorAltura);
+    public void ordenacionPorAltura(ArrayList<Jugador> jugadoresEquipo){
+        Collections.sort(jugadoresEquipo, Jugador.comparadorPorAltura);
 
         listaJugadoresEquipo();
     }
 
-    public void ordenacionPorPeso(ArrayList<Jugador> jugadors){
-        Collections.sort(jugadors, Jugador.comparadorPorPeso);
+    public void ordenacionPorPeso(ArrayList<Jugador> jugadoresEquipo){
+        Collections.sort(jugadoresEquipo, Jugador.comparadorPorPeso);
 
         listaJugadoresEquipo();
     }
 
-    public void ordenacionPorEdad(ArrayList<Jugador> jugadors){
-        Collections.sort(jugadors, Jugador.comparadorPorEdad);
+    public void ordenacionPorEdad(ArrayList<Jugador> jugadoresEquipo){
+        Collections.sort(jugadoresEquipo, Jugador.comparadorPorEdad);
 
         listaJugadores();
     }
 
-    public void ordenacionPorPartidosJugados(ArrayList<Jugador> jugadors){
-        Collections.sort(jugadors, Jugador.comparadorPorPartidosJugados);
+    public void ordenacionPorPartidosJugados(ArrayList<Jugador> jugadoresEquipo){
+        Collections.sort(jugadoresEquipo, Jugador.comparadorPorPartidosJugados);
 
         listaJugadoresEquipo();
     }
 
-    public void ordenacionPorTarjetasAmarillas(ArrayList<Jugador> jugadors){
-        Collections.sort(jugadors, Jugador.comparadorPorTarjetasAmarillas);
+    public void ordenacionPorTarjetasAmarillas(ArrayList<Jugador> jugadoresEquipo){
+        Collections.sort(jugadoresEquipo, Jugador.comparadorPorTarjetasAmarillas);
 
         listaJugadoresEquipo();
     }
 
-    public void ordenacionPorTarjetasRojas(ArrayList<Jugador> jugadors){
-        Collections.sort(jugadors, Jugador.comparadorPorTarjetasRojas);
+    public void ordenacionPorTarjetasRojas(ArrayList<Jugador> jugadoresEquipo){
+        Collections.sort(jugadoresEquipo, Jugador.comparadorPorTarjetasRojas);
 
         listaJugadoresEquipo();
     }
 
-    public void ordenacionPorGoles(ArrayList<Jugador> jugadors){
-        Collections.sort(jugadors, Jugador.comparadorPorGoles);
+    public void ordenacionPorGoles(ArrayList<Jugador> jugadoresEquipo){
+        Collections.sort(jugadoresEquipo, Jugador.comparadorPorGoles);
 
         listaJugadoresEquipo();
     }
 
-    public void ordenacionPorGolesEnPropia(ArrayList<Jugador> jugadors){
-        Collections.sort(jugadors, Jugador.comparadorPorGolesEnPropia);
+    public void ordenacionPorGolesEnPropia(ArrayList<Jugador> jugadoresEquipo){
+        Collections.sort(jugadoresEquipo, Jugador.comparadorPorGolesEnPropia);
 
         listaJugadoresEquipo();
     }
 
-    public void ordenacionPorGolesRecibidos(ArrayList<Jugador> jugadors){
-        Collections.sort(jugadors, Jugador.comparadorPorGolesRecibidos);
+    public void ordenacionPorGolesRecibidos(ArrayList<Jugador> jugadoresEquipo){
+        Collections.sort(jugadoresEquipo, Jugador.comparadorPorGolesRecibidos);
 
         listaJugadoresEquipo();
     }
 
-    public void ordenacionPorAsistencias(ArrayList<Jugador> jugadors){
-        Collections.sort(jugadors, Jugador.comparadorPorAsistencias);
+    public void ordenacionPorAsistencias(ArrayList<Jugador> jugadoresEquipo){
+        Collections.sort(jugadoresEquipo, Jugador.comparadorPorAsistencias);
 
         listaJugadoresEquipo();
+    }
+
+    public void ordenacionPorPichichiPrimera(){
+        Collections.sort(jugadoresPrimera, Jugador.comparadorPorGoles);
+
+        listaJugadoresEquiposPrimera();
+    }
+
+    public void ordenacionPorPichichiSegunda(){
+        Collections.sort(jugadoresSegunda, Jugador.comparadorPorGoles);
+
+        listaJugadoresEquiposSegunda();
+    }
+
+    public void ordenacionPorZamoraPrimera(){
+        Collections.sort(jugadoresPrimera, Jugador.comparadorPorGolesRecibidos);
+
+        listaJugadoresEquiposPrimera();
+    }
+
+    public void ordenacionPorZamoraSegunda(){
+        Collections.sort(jugadoresSegunda, Jugador.comparadorPorGolesRecibidos);
+
+        listaJugadoresEquiposSegunda();
     }
 }

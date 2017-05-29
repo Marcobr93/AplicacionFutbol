@@ -6,8 +6,8 @@ import java.util.ArrayList;
  * Created by marco on 18/05/2017.
  */
 public enum Competicion {
-    PRIMERA("Primera División"),
-    SEGUNDA("Segunda División");
+    PRIMERA("Primera"),
+    SEGUNDA("Segunda");
 
     private final String competicion;
 

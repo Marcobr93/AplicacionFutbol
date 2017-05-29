@@ -132,6 +132,7 @@ public class Clasificacion {
                 ", partidosPerdidos=" + partidosPerdidos +
                 ", golesAFavor=" + golesAFavor +
                 ", golesEnContra=" + golesEnContra +
+                ", Diferencia de Goles: " + getDiferenciaDeGoles() +
                 ", puntos=" + puntos +
                 '}';
     }

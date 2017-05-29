@@ -33,6 +33,7 @@ public class FutbolApp {
         menuEquipo.llenarPrimeraOSegunda();
         menuPartido.llenarPartidoPrimeraOSegunda();
         menuClasificacion.llenarClasificacionPrimeraOSegunda();
+        menuJugador.llenarJugadoresPrimeraSegunda();
     }
 
     private void cargarEquipos() {
@@ -43,12 +44,12 @@ public class FutbolApp {
     }
 
     private void cargarJugadores() {
-        menuJugador.jugadores.add(new Jugador("Marco", "Asensio Willemsen", Posicion.MediaPunta, false, 1.80, 75.00, 20, 21, 23, 0, 0, 3, 0, 0, 7, "Real Madrid"));
-        menuJugador.jugadores.add(new Jugador("Cristiano", "Ronaldo", Posicion.MediaPunta, false, 1.80, 75.00, 7, 25, 23, 0, 0, 8, 7, 0, 10, "Real Madrid"));
-        menuJugador.jugadores.add(new Jugador("Sergio", "Ramos", Posicion.MediaPunta, false, 1.80, 75.00, 7, 25, 23, 0, 0, 8, 7, 0, 10, "Real Madrid"));
-        menuJugador.jugadores.add(new Jugador("Sergio", "Busquets Burgos", Posicion.Centrocampista, false, 1.89, 76.00, 5, 28, 32, 8, 0, 2, 0, 0, 4, "Barcelona"));
-        menuJugador.jugadores.add(new Jugador("Paco", "wew erw", Posicion.Centrocampista, false, 1.89, 76.00, 5, 28, 32, 8, 0, 7, 0, 0, 4, "Cádiz F.C"));
-        menuJugador.jugadores.add(new Jugador("Pedro", "caca erw", Posicion.Delantero, true, 199, 99.00, 10, 44, 38, 15, 2, 15, 4, 0, 7, "Zaragoza F.C")); }
+        menuJugador.jugadores.add(new Jugador("Marco", "Asensio Willemsen", Posicion.MediaPunta, false, 1.80, 75.00, 20, 21, 23, 0, 0, 3, 0, 0, 7, "Real Madrid",Competicion.PRIMERA));
+        menuJugador.jugadores.add(new Jugador("Cristiano", "Ronaldo", Posicion.MediaPunta, false, 1.80, 75.00, 7, 25, 23, 0, 0, 8, 7, 0, 10, "Real Madrid",Competicion.PRIMERA));
+        menuJugador.jugadores.add(new Jugador("Sergio", "Ramos", Posicion.MediaPunta, false, 1.80, 75.00, 7, 25, 23, 0, 0, 8, 7, 0, 10, "Real Madrid",Competicion.PRIMERA));
+        menuJugador.jugadores.add(new Jugador("Sergio", "Busquets Burgos", Posicion.Centrocampista, false, 1.89, 76.00, 5, 28, 32, 8, 0, 2, 0, 0, 4, "Barcelona",Competicion.PRIMERA));
+        menuJugador.jugadores.add(new Jugador("Paco", "wew erw", Posicion.Centrocampista, false, 1.89, 76.00, 5, 28, 32, 8, 0, 7, 0, 0, 4, "Cádiz",Competicion.SEGUNDA));
+        menuJugador.jugadores.add(new Jugador("Pedro", "caca erw", Posicion.Delantero, true, 199, 99.00, 10, 44, 38, 15, 2, 15, 4, 0, 7, "Zaragoza",Competicion.SEGUNDA)); }
 
     private void cargarPartidos(){
         menuPartido.partidos.add(new Partido("Real Madrid", "Barcelona","Santiago Bernagéu","Pepito", Competicion.PRIMERA, 5, 0,20));
@@ -198,55 +199,55 @@ public class FutbolApp {
         }
     }
 
-    public void AppPlantilla(ArrayList<Jugador> jugadors) {
+    public void AppPlantilla(ArrayList<Jugador> jugadoresEquipo) {
         int opcion;
 
         while ((opcion = menuPlantilla()) != 0) {
             switch (opcion) {
                 case 1:
-                    menuJugador.ordenacionPorNombre(jugadors);
+                    menuJugador.ordenacionPorNombre(jugadoresEquipo);
                     break;
                 case 2:
-                    menuJugador.ordenacionPorApellidos(jugadors);
+                    menuJugador.ordenacionPorApellidos(jugadoresEquipo);
                     break;
                 case 3:
-                    menuJugador.ordenacionPorPosicion(jugadors);
+                    menuJugador.ordenacionPorPosicion(jugadoresEquipo);
                     break;
                 case 4:
-                    menuJugador.ordenacionPorDorsal(jugadors);
+                    menuJugador.ordenacionPorDorsal(jugadoresEquipo);
                     break;
                 case 5:
-                    menuJugador.ordenacionPorAltura(jugadors);
+                    menuJugador.ordenacionPorAltura(jugadoresEquipo);
                     break;
                 case 6:
-                    menuJugador.ordenacionPorPeso(jugadors);
+                    menuJugador.ordenacionPorPeso(jugadoresEquipo);
                     break;
                 case 7:
-                    menuJugador.ordenacionPorEdad(jugadors);
+                    menuJugador.ordenacionPorEdad(jugadoresEquipo);
                     break;
                 case 8:
-                    menuJugador.ordenacionPorPartidosJugados(jugadors);
+                    menuJugador.ordenacionPorPartidosJugados(jugadoresEquipo);
                     break;
                 case 9:
-                    menuJugador.ordenacionPorTarjetasAmarillas(jugadors);
+                    menuJugador.ordenacionPorTarjetasAmarillas(jugadoresEquipo);
                     break;
                 case 10:
-                    menuJugador.ordenacionPorTarjetasRojas(jugadors);
+                    menuJugador.ordenacionPorTarjetasRojas(jugadoresEquipo);
                     break;
                 case 11:
-                    menuJugador.ordenacionPorGoles(jugadors);
+                    menuJugador.ordenacionPorGoles(jugadoresEquipo);
                     break;
                 case 12:
-                    menuJugador.ordenacionPorGolesEnPropia(jugadors);
+                    menuJugador.ordenacionPorGolesEnPropia(jugadoresEquipo);
                     break;
                 case 13:
-                    menuJugador.ordenacionPorGolesRecibidos(jugadors);
+                    menuJugador.ordenacionPorGolesRecibidos(jugadoresEquipo);
                     break;
                 case 14:
-                    menuJugador.ordenacionPorAsistencias(jugadors);
+                    menuJugador.ordenacionPorAsistencias(jugadoresEquipo);
                     break;
                 case 15:
-                    menuJugador.eliminarJugador(jugadors);
+                    menuJugador.eliminarJugador(jugadoresEquipo);
             }
         }
     }
@@ -399,10 +400,10 @@ public class FutbolApp {
         while ((opcion = menuTrofeos()) != 0) {
             switch (opcion) {
                 case 1:
-                // pichichi
+                menuJugador.ordenacionPorPichichiPrimera();
                     break;
                 case 2:
-                // zamora
+                menuJugador.ordenacionPorGolesRecibidos();
                     break;
             }
         }
@@ -414,7 +415,7 @@ public class FutbolApp {
         while ((opcion = menuTrofeos()) != 0) {
             switch (opcion) {
                 case 1:
-
+                menuJugador.ordenacionPorPichichiSegunda();
                     break;
                 case 2:
 
