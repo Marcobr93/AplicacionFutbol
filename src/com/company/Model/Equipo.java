@@ -150,6 +150,8 @@ public class Equipo extends Jugador{
               '}';
    }
 
+
+
    // Comparadores
 
    /**

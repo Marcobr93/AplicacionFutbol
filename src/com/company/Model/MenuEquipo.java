@@ -152,7 +152,11 @@ public class MenuEquipo  {
         int indice = 0;
         Scanner input = new Scanner(System.in);
 
-        for (Equipo equipo: equipos){
+        for (Equipo equipo: equiposPrimera){
+            System.out.println(equipo.getNombreEquipo());
+        }
+
+        for (Equipo equipo: equiposSegunda){
             System.out.println(equipo.getNombreEquipo());
         }
 
@@ -160,7 +164,13 @@ public class MenuEquipo  {
         System.out.printf("Introduzca el nombre del equipo: ");
         nombre = input.nextLine().toLowerCase().replace(" ","").replace("-", "");
 
-        for (Equipo equipo: equipos){
+        for (Equipo equipo: equiposPrimera){
+            if (nombre.equals(equipo.getNombreEquipo().toLowerCase().replace(" ","").replace("-", ""))) {
+                System.out.println(equipo);
+                indice++;
+            }
+        }
+        for (Equipo equipo: equiposSegunda){
             if (nombre.equals(equipo.getNombreEquipo().toLowerCase().replace(" ","").replace("-", ""))) {
                 System.out.println(equipo);
                 indice++;

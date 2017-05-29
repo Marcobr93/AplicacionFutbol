@@ -11,15 +11,29 @@ import java.util.Scanner;
 public class MenuPartido {
     public ArrayList<Partido> partidos = new ArrayList<>();
     public ArrayList<Equipo> equipos = new ArrayList<>();
-
+    public ArrayList<Partido> partidosPrimera= new ArrayList<>();
+    public ArrayList<Partido> partidosSegunda= new ArrayList<>();
     // Constructores
 
+    public MenuPartido() {
+    }
 
     public MenuPartido(ArrayList<Equipo> equipos) {
         this.equipos = equipos;
     }
 
+
     // Métodos
+
+    public void llenarPartidoPrimeraOSegunda(){
+        for (Partido partido: partidos) {
+            if (partido.getCompeticion().equals(Competicion.PRIMERA)){
+                partidosPrimera.add(partido);
+            }else if (partido.getCompeticion().equals(Competicion.SEGUNDA)) {
+                partidosSegunda.add(partido);
+            }
+        }
+    }
 
     public void crearPartido() {
         boolean noCreado=true;  //Booleano que permite crear un Partido si no existe ya
@@ -108,6 +122,11 @@ public class MenuPartido {
                     }
                 }
                 if (noCreado == true) {
+                    if (competicion.equals(Competicion.PRIMERA)){
+                        partidosPrimera.add(partido);
+                    }else if (competicion.equals(Competicion.SEGUNDA)){
+                        partidosSegunda.add(partido);
+                    }
                     partidos.add(partido);
                 }
             }
@@ -125,10 +144,25 @@ public class MenuPartido {
         jornada = input.nextInt();
 
         Iterator<Partido> ItPartido = partidos.iterator();
+        Iterator<Partido> ITPartidoP = partidosPrimera.iterator();
+        Iterator<Partido> ITPartidoS = partidosSegunda.iterator();
+
         while ( ItPartido.hasNext() ){
             Partido partido = ItPartido.next();
             if (partido.getJornada() == (jornada)) {
                 ItPartido.remove();
+            }
+        }
+        while ( ITPartidoP.hasNext() ){
+            Partido partido = ITPartidoP.next();
+            if (partido.getJornada() == (jornada)) {
+                ITPartidoP.remove();
+            }
+        }
+        while ( ITPartidoS.hasNext() ){
+            Partido partido = ITPartidoS.next();
+            if (partido.getJornada() == (jornada)) {
+                ITPartidoS.remove();
             }
         }
     }
@@ -148,6 +182,35 @@ public class MenuPartido {
         }
     }
 
+    public void buscarPorJornadaPrimera() {
+        int jornada;
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.printf("Introduzca la jornada del partido: ");
+        jornada = scanner.nextInt();
+
+        for (Partido partido: partidosPrimera){
+            if (jornada == partido.getJornada()) {
+                System.out.println(partido);
+            }
+        }
+    }
+
+    public void buscarPorJornadaSegunda() {
+        int jornada;
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.printf("Introduzca la jornada del partido: ");
+        jornada = scanner.nextInt();
+
+        for (Partido partido: partidosSegunda){
+            if (jornada == partido.getJornada()) {
+                System.out.println(partido);
+                System.out.println();
+            }
+        }
+    }
+
     public void buscarPorEquipo() {
         String nombreEquipo;
         Scanner scanner = new Scanner(System.in);
@@ -161,11 +224,61 @@ public class MenuPartido {
                 System.out.println(partido);
             } else if (nombreEquipo.equals(partido.getNombreEquipoVisitante().toLowerCase().replace(" ", "").replace("-", "").replace("_", "").replace(".", ""))) {
                 System.out.println(partido);
+                System.out.println();
             }
         }
     }
+
+    public void buscarPorEquipoPrimera() {
+        String nombreEquipo;
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println();
+        System.out.printf("Introduzca el nombre del equipo que juega el partido: ");
+        nombreEquipo = scanner.nextLine().toLowerCase().replace(" ", "").replace("-", "").replace("_", "").replace(".", "");
+
+        for (Partido partido : partidosPrimera) {
+            if (nombreEquipo.equals(partido.getNombreEquipoLocal().toLowerCase().replace(" ", "").replace("-", "").replace("_", "").replace(".", ""))) {
+                System.out.println(partido);
+            } else if (nombreEquipo.equals(partido.getNombreEquipoVisitante().toLowerCase().replace(" ", "").replace("-", "").replace("_", "").replace(".", ""))) {
+                System.out.println(partido);
+            }
+        }
+    }
+
+    public void buscarPorEquipoSegunda() {
+        String nombreEquipo;
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println();
+        System.out.printf("Introduzca el nombre del equipo que juega el partido: ");
+        nombreEquipo = scanner.nextLine().toLowerCase().replace(" ", "").replace("-", "").replace("_", "").replace(".", "");
+
+        for (Partido partido : partidosSegunda) {
+            if (nombreEquipo.equals(partido.getNombreEquipoLocal().toLowerCase().replace(" ", "").replace("-", "").replace("_", "").replace(".", ""))) {
+                System.out.println(partido);
+                System.out.println();
+            } else if (nombreEquipo.equals(partido.getNombreEquipoVisitante().toLowerCase().replace(" ", "").replace("-", "").replace("_", "").replace(".", ""))) {
+                System.out.println(partido);
+            }
+        }
+    }
+
+
     public void listaPartidos(){
         for (Partido partido: partidos){
+            System.out.println(partido);
+        }
+    }
+
+    public void listaPartidosPrimera(){
+        for (Partido partido: partidosPrimera){
+            System.out.println(partido);
+        }
+    }
+
+    public void listaPartidosSegunda(){
+        for (Partido partido: partidosSegunda){
             System.out.println(partido);
         }
     }

@@ -12,12 +12,12 @@ public class FutbolApp {
 
     public ArrayList<Equipo> equipos = new ArrayList<>();
 
+
      MenuEquipo menuEquipo;
      MenuEquipoPrimera menuEquipoPrimera;
      MenuEquipoSegunda menuEquipoSegunda;
      MenuJugador menuJugador;
      MenuPartido menuPartido;
-
 
 
     public FutbolApp() {
@@ -27,16 +27,18 @@ public class FutbolApp {
         menuJugador = new MenuJugador(equipos);
         menuPartido = new MenuPartido(equipos);
 
-
         cargarEquipos();
         cargarJugadores();
         cargarPartidos();
+        menuEquipo.llenarPrimeraOSegunda();
+        menuPartido.llenarPartidoPrimeraOSegunda();
     }
 
     private void cargarEquipos() {
         menuEquipo.equipos.add(new Equipo("Real Madrid", "Florentino Pérez", "Zinedine Zidane", "Santiago Bernabéu", 1902, 90, Competicion.PRIMERA));
         menuEquipo.equipos.add(new Equipo("Barcelona", "Bartomeu", "Luis Enrique", "Campo Nuevo", 1899, 87, Competicion.PRIMERA));
         menuEquipo.equipos.add(new Equipo("Cádiz C.F", "Manuel Vizcaíno", "Álvaro Cervera", "Ramón de Carranza", 1910, 87, Competicion.SEGUNDA));
+        menuEquipo.equipos.add(new Equipo("Zaragoza", "Pepe el presi", "Paco er entrenadó", "Er campo", 1940, 57, Competicion.SEGUNDA));
     }
 
     private void cargarJugadores() {
@@ -44,20 +46,19 @@ public class FutbolApp {
         menuJugador.jugadores.add(new Jugador("Cristiano", "Ronaldo", Posicion.MediaPunta, false, 1.80, 75.00, 7, 25, 23, 0, 0, 8, 7, 0, 10, "Real Madrid"));
         menuJugador.jugadores.add(new Jugador("Sergio", "Busquets Burgos", Posicion.Centrocampista, false, 1.89, 76.00, 5, 28, 32, 8, 0, 2, 0, 0, 4, "Barcelona"));
         menuJugador.jugadores.add(new Jugador("Paco", "wew erw", Posicion.Centrocampista, false, 1.89, 76.00, 5, 28, 32, 8, 0, 7, 0, 0, 4, "Cádiz F.C"));
-    }
+        menuJugador.jugadores.add(new Jugador("Pedro", "caca erw", Posicion.Delantero, true, 199, 99.00, 10, 44, 38, 15, 2, 15, 4, 0, 7, "Zaragoza F.C")); }
 
     private void cargarPartidos(){
         menuPartido.partidos.add(new Partido("Real Madrid", "Barcelona","Santiago Bernagéu","Pepito", Competicion.PRIMERA, 5, 0,20));
         menuPartido.partidos.add(new Partido("Real Madrid", "Sevilla","Santiago Bernagéu","Paco", Competicion.PRIMERA, 3, 1,10));
         menuPartido.partidos.add(new Partido("Betis", "Real Madrid","Benito Villamarín","Juan", Competicion.PRIMERA, 2, 5,30));
+        menuPartido.partidos.add(new Partido("Zaragoza", "Cádiz C.F","Er campo","Luis", Competicion.SEGUNDA, 4, 2,40));
     }
 
     //Inicializacion
 
     public void AppCompeticion() {
         int opcion;
-
-
 
         while ((opcion = menuCompeticion()) != 0) {
             switch (opcion) {
@@ -89,7 +90,7 @@ public class FutbolApp {
                     AppClasificacionPrimera();
                     break;
                 case 3:
-                    AppPartidos();
+                    AppPartidosPrimera();
                     break;
                 case 4:
                     menuJugador.ordenacionPorGoles();
@@ -107,7 +108,13 @@ public class FutbolApp {
                     AppEleccionEquipoSegunda();
                     break;
                 case 2:
-                 //   AppClasificacionSegunda();
+                    AppClasificacionSegunda();
+                    break;
+                case 3:
+                    AppPartidosSegunda();
+                    break;
+                case 4:
+
                     break;
             }
         }
@@ -264,46 +271,63 @@ public class FutbolApp {
    }
  }
 
-// public void AppClasificacionSegunda() {
-//     int opcion;
+ public void AppClasificacionSegunda() {
+     int opcion;
 
-//     while ((opcion = menuClasificacion()) != 0) {
-//         switch (opcion) {
-//             case 1:
-//                 menuEquipoSegunda.ordenacionPorPuntos();
-//                 break;
-//             case 2:
-//                 menuEquipoSegunda.ordenacionPorNombre();
-//                 break;
-//             case 3:
-//                 menuEquipoSegunda.ordenacionPorPartidosJugados();
-//                 break;
-//             case 4:
-//                 menuEquipoSegunda.ordenacionPorTarjetasAmarillas();
-//                 break;
-//             case 5:
-//                 menuEquipoSegunda.ordenacionPorTarjeasRojas();
-//                 break;
-//             case 6:
-//                 menuEquipoSegunda.ordenacionPorDiferenciaDeGoles();
-//                 break;
-//             case 7:
-//                 menuEquipoSegunda.ordenacionPorGolesAFavor();
-//                 break;
-//             case 8:
-//                 menuEquipoSegunda.ordenacionPorGolesEnContra();
-//                 break;
-//         }
-//     }
-// }
+     while ((opcion = menuClasificacion()) != 0) {
+         switch (opcion) {
+             case 1:
+                 menuEquipoSegunda.ordenacionPorPuntos();
+                 break;
+             case 2:
+                 menuEquipoSegunda.ordenacionPorNombre();
+                 break;
+             case 3:
+                 menuEquipoSegunda.ordenacionPorPartidosJugados();
+                 break;
+             case 4:
+                 menuEquipoSegunda.ordenacionPorTarjetasAmarillas();
+                 break;
+             case 5:
+                 menuEquipoSegunda.ordenacionPorTarjeasRojas();
+                 break;
+             case 6:
+                 menuEquipoSegunda.ordenacionPorDiferenciaDeGoles();
+                 break;
+             case 7:
+                 menuEquipoSegunda.ordenacionPorGolesAFavor();
+                 break;
+             case 8:
+                 menuEquipoSegunda.ordenacionPorGolesEnContra();
+                 break;
+         }
+     }
+ }
 
-    public void AppPartidos() {
+    public void AppPartidosPrimera() {
         int opcion;
 
         while ((opcion = menuPartidos()) != 0) {
             switch (opcion) {
                 case 1:
-                    AppCalendario();
+                    AppCalendarioPrimera();
+                    break;
+                case 2:
+                    menuPartido.crearPartido();
+                    break;
+                case 4:
+                    menuPartido.eliminarPartido();
+            }
+        }
+    }
+
+    public void AppPartidosSegunda() {
+        int opcion;
+
+        while ((opcion = menuPartidos()) != 0) {
+            switch (opcion) {
+                case 1:
+                    AppCalendarioSegunda();
                     break;
                 case 2:
                     menuPartido.crearPartido();
@@ -316,19 +340,36 @@ public class FutbolApp {
 
 
 
-    public void AppCalendario(){
+    public void AppCalendarioPrimera(){
         int opcion;
 
         while ((opcion = menuCalendario()) != 0) {
             switch (opcion) {
                 case 1:
-                    menuPartido.listaPartidos();
+                    menuPartido.listaPartidosPrimera();
                     break;
                 case 2:
-                    menuPartido.buscarPorJornada();
+                    menuPartido.buscarPorJornadaPrimera();
                     break;
                 case 3:
-                    menuPartido.buscarPorEquipo();
+                    menuPartido.buscarPorEquipoPrimera();
+            }
+        }
+    }
+
+    public void AppCalendarioSegunda(){
+        int opcion;
+
+        while ((opcion = menuCalendario()) != 0) {
+            switch (opcion) {
+                case 1:
+                    menuPartido.listaPartidosSegunda();
+                    break;
+                case 2:
+                    menuPartido.buscarPorJornadaSegunda();
+                    break;
+                case 3:
+                    menuPartido.buscarPorEquipoSegunda();
             }
         }
     }

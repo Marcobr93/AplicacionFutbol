@@ -14,6 +14,7 @@ public class MenuEquipoSegunda extends MenuEquipo {
     }
 
     public MenuEquipoSegunda(ArrayList<Equipo> equipos) {
+        this.equiposSegunda = equipos;
     }
 
     // Ordenación

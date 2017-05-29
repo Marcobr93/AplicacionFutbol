@@ -326,6 +326,8 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
               '}';
    }
 
+
+
    // Comparadores
 
    @Override

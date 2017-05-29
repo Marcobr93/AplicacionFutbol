@@ -8,13 +8,13 @@ import java.util.Collections;
  */
 public class MenuEquipoPrimera extends MenuEquipo{
 
-
     // Constructor
 
     public MenuEquipoPrimera() {
     }
 
     public MenuEquipoPrimera(ArrayList<Equipo> equipos) {
+        this.equiposPrimera = equipos;
     }
 
 
