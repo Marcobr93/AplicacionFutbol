@@ -51,7 +51,6 @@ public class MenuEquipo  {
         String entrenador;
         String estadio;
         int añoFundacion;
-        int puntos;
         String nombreCompeticion;
         Competicion competicion = null;
         Equipo equipo;
@@ -86,10 +85,6 @@ public class MenuEquipo  {
             añoFundacion = scanner.nextInt();
         } while (añoFundacion < 0);
 
-        do {
-            System.out.println("Puntos del equipo: ");
-            puntos = scanner.nextInt();
-        } while (puntos < 0);
 
         System.out.println("Competición del equipo: ");
         nombreCompeticion = scanner.next();
@@ -99,7 +94,7 @@ public class MenuEquipo  {
             competicion = Competicion.SEGUNDA;
         }
 
-        equipo = new Equipo(nombreEquipo, presidente, entrenador, estadio, añoFundacion, puntos, competicion);
+        equipo = new Equipo(nombreEquipo, presidente, entrenador, estadio, añoFundacion, competicion);
 
         if (competicion.equals(Competicion.PRIMERA)) {
             equiposPrimera.add(equipo);
@@ -206,64 +201,6 @@ public class MenuEquipo  {
             System.out.println((indice++) + " - " + equipo);
         }
     }
-
-
-    // Ordenación
-
-    public void ordenacionPorNombre() {
-        Collections.sort(equipos, Equipo.comparadorPorNombre);
-
-        listaEquipos();
-    }
-
-    public void ordenacionPorCompeticion() {
-        Collections.sort(equipos, Equipo.comparadorPorCompeticion);
-
-        listaEquipos();
-    }
-
-    public void ordenacionPorPuntos() {
-        Collections.sort(equipos, Equipo.comparadorPorPuntos);
-
-        listaEquipos();
-    }
 }
-
-
-/*
-public void ordenacionPorPartidosJugados() {
-        Collections.sort(equipos, Equipo.comparadorPorPartidosJugados);
-    }
-
-    public void ordenacionPorGolesAFavor() {
-        Collections.sort(equipos, Equipo.comparadorPorGolesAFavor);
-
-        listaEquipos();
-    }
-
-    public void ordenacionPorGolesEnContra() {
-        Collections.sort(equipos, Equipo.comparadorPorGolesEnContra);
-
-        listaEquipos();
-    }
-
-    public void ordenacionPorDiferenciaDeGoles() {
-        Collections.sort(equipos, Equipo.comparadorPorDiferenciaDeGoles);
-
-        listaEquipos();
-    }
-
-    public void ordenacionPorTarjetasAmarillas() {
-        Collections.sort(equipos, Equipo.comparadorPorTarjetasAmarillas);
-
-        listaEquipos();
-    }
-
-    public void ordenacionPorTarjeasRojas() {
-        Collections.sort(equipos, Equipo.comparadorPorTarjetasRojas);
-
-        listaEquipos();
-    }
- */
 
 

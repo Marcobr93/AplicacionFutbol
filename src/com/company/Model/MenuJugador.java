@@ -234,34 +234,6 @@ public class MenuJugador {
         }
     }
 
-    public void buscarEquipo() {
-        int index=0;
-        String equipo;
-        Scanner input = new Scanner(System.in);
-
-        for (Equipo equipoe: equipos) {
-            System.out.println(equipoe);
-        }
-
-        System.out.println();
-        System.out.printf("Introduzca el equipo del jugador: ");
-        equipo = input.nextLine().toLowerCase().replace(" ","").replace("-", "");
-
-        for (Jugador jugador: jugadores){
-            try {
-                if (equipo.equals(jugador.getEquipo().getNombreEquipo().toLowerCase().replace(" ","").replace("-", ""))) {
-                    System.out.println(jugador);
-                    index++;
-                }
-            } catch (NullPointerException e) {
-                break;
-            }
-        }
-        if (index==0) {
-            System.out.println("No hay");
-        }
-
-    }
 
     public void listaJugadores(){
         int indice = 0;
@@ -295,6 +267,13 @@ public class MenuJugador {
         return jugadors;
     }
 
+    public void pichichiPrimera(){
+        int indice = 0;
+
+        for (Jugador jugador: jugadores) {
+
+        }
+    }
 
     // Ordenación
 

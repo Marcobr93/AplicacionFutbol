@@ -16,34 +16,36 @@ public class FutbolApp {
      MenuEquipo menuEquipo;
      MenuJugador menuJugador;
      MenuPartido menuPartido;
-     MenuLiga menuLiga;
+     MenuClasificacion menuClasificacion;
 
 
     public FutbolApp() {
         menuEquipo = new MenuEquipo(equipos);
         menuJugador = new MenuJugador(equipos);
         menuPartido = new MenuPartido(equipos);
-        menuLiga = new MenuLiga(equipos);
+        menuClasificacion = new MenuClasificacion(equipos);
 
         cargarEquipos();
         cargarJugadores();
         cargarPartidos();
+        cargarClasificación();
+
         menuEquipo.llenarPrimeraOSegunda();
         menuPartido.llenarPartidoPrimeraOSegunda();
-
-
+        menuClasificacion.llenarClasificacionPrimeraOSegunda();
     }
 
     private void cargarEquipos() {
-        menuEquipo.equipos.add(new Equipo("Real Madrid", "Florentino Pérez", "Zinedine Zidane", "Santiago Bernabéu", 1902, 90, Competicion.PRIMERA));
-        menuEquipo.equipos.add(new Equipo("Barcelona", "Bartomeu", "Luis Enrique", "Campo Nuevo", 1899, 87, Competicion.PRIMERA));
-        menuEquipo.equipos.add(new Equipo("Cádiz C.F", "Manuel Vizcaíno", "Álvaro Cervera", "Ramón de Carranza", 1910, 87, Competicion.SEGUNDA));
-        menuEquipo.equipos.add(new Equipo("Zaragoza", "Pepe el presi", "Paco er entrenadó", "Er campo", 1940, 57, Competicion.SEGUNDA));
+        menuEquipo.equipos.add(new Equipo("Real Madrid", "Florentino Pérez", "Zinedine Zidane", "Santiago Bernabéu", 1902, Competicion.PRIMERA));
+        menuEquipo.equipos.add(new Equipo("Barcelona", "Bartomeu", "Luis Enrique", "Campo Nuevo", 1899,  Competicion.PRIMERA));
+        menuEquipo.equipos.add(new Equipo("Cádiz", "Manuel Vizcaíno", "Álvaro Cervera", "Ramón de Carranza", 1910,  Competicion.SEGUNDA));
+        menuEquipo.equipos.add(new Equipo("Zaragoza", "Pepe el presi", "Paco er entrenadó", "Er campo", 1940,  Competicion.SEGUNDA));
     }
 
     private void cargarJugadores() {
         menuJugador.jugadores.add(new Jugador("Marco", "Asensio Willemsen", Posicion.MediaPunta, false, 1.80, 75.00, 20, 21, 23, 0, 0, 3, 0, 0, 7, "Real Madrid"));
         menuJugador.jugadores.add(new Jugador("Cristiano", "Ronaldo", Posicion.MediaPunta, false, 1.80, 75.00, 7, 25, 23, 0, 0, 8, 7, 0, 10, "Real Madrid"));
+        menuJugador.jugadores.add(new Jugador("Sergio", "Ramos", Posicion.MediaPunta, false, 1.80, 75.00, 7, 25, 23, 0, 0, 8, 7, 0, 10, "Real Madrid"));
         menuJugador.jugadores.add(new Jugador("Sergio", "Busquets Burgos", Posicion.Centrocampista, false, 1.89, 76.00, 5, 28, 32, 8, 0, 2, 0, 0, 4, "Barcelona"));
         menuJugador.jugadores.add(new Jugador("Paco", "wew erw", Posicion.Centrocampista, false, 1.89, 76.00, 5, 28, 32, 8, 0, 7, 0, 0, 4, "Cádiz F.C"));
         menuJugador.jugadores.add(new Jugador("Pedro", "caca erw", Posicion.Delantero, true, 199, 99.00, 10, 44, 38, 15, 2, 15, 4, 0, 7, "Zaragoza F.C")); }
@@ -53,6 +55,18 @@ public class FutbolApp {
         menuPartido.partidos.add(new Partido("Real Madrid", "Sevilla","Santiago Bernagéu","Paco", Competicion.PRIMERA, 3, 1,10));
         menuPartido.partidos.add(new Partido("Betis", "Real Madrid","Benito Villamarín","Juan", Competicion.PRIMERA, 2, 5,30));
         menuPartido.partidos.add(new Partido("Zaragoza", "Cádiz C.F","Er campo","Luis", Competicion.SEGUNDA, 4, 2,40));
+    }
+    public void cargarClasificación(){
+        menuClasificacion.clasificacion.add(new Clasificacion("Real Madrid", 38, 29,6,3,106,41,93,Competicion.PRIMERA));
+        menuClasificacion.clasificacion.add(new Clasificacion("Barcelona", 38, 28,6,4,116,37,90,Competicion.PRIMERA));
+        menuClasificacion.clasificacion.add(new Clasificacion("Atlético de Madrid", 38, 23,9,6,70,27,78,Competicion.PRIMERA));
+
+        menuClasificacion.clasificacion.add(new Clasificacion("Levante", 40, 25,9,6,56,29,84,Competicion.SEGUNDA));
+        menuClasificacion.clasificacion.add(new Clasificacion("Girona", 40, 20,9,11,64,43,69,Competicion.SEGUNDA));
+        menuClasificacion.clasificacion.add(new Clasificacion("Getafe", 40, 17,13,10,48,40,64,Competicion.SEGUNDA));
+
+
+
     }
 
     //Inicializacion
@@ -93,7 +107,7 @@ public class FutbolApp {
                     AppPartidosPrimera();
                     break;
                 case 4:
-
+                    AppTrofeosPrimera();
                     break;
             }
         }
@@ -114,7 +128,7 @@ public class FutbolApp {
                     AppPartidosSegunda();
                     break;
                 case 4:
-
+                    AppTrofeosSegunda();
                     break;
             }
         }
@@ -243,28 +257,31 @@ public class FutbolApp {
    while ((opcion = menuClasificacion()) != 0) {
        switch (opcion) {
            case 1:
-
+               menuClasificacion.ordenacionPorNombreEquipoPrimera();
                break;
            case 2:
-
+               menuClasificacion.ordenacionPorPartidosJugadosEquipoPrimera();
                break;
            case 3:
-
+               menuClasificacion.ordenacionPorPartidosGanadosEquipoPrimera();
                break;
            case 4:
-
+               menuClasificacion.ordenacionPorPartidosEmpatadosEquipoPrimera();
                break;
            case 5:
-
+               menuClasificacion.ordenacionPorPartidosPerdidosEquipoPrimera();
                break;
            case 6:
-
+                menuClasificacion.ordenacionPorGolesAFavorEquipoPrimera();
                break;
            case 7:
-
+                menuClasificacion.ordenacionPorGolesEnContraEquipoPrimera();
                break;
            case 8:
-
+                menuClasificacion.ordenacionPorDiferenciaDeGolesquipoPrimera();
+               break;
+           case 9:
+               menuClasificacion.ordenacionPorPuntosEquipoPrimera();
                break;
        }
    }
@@ -276,28 +293,31 @@ public class FutbolApp {
      while ((opcion = menuClasificacion()) != 0) {
          switch (opcion) {
              case 1:
-
+                menuClasificacion.ordenacionPorNombreEquipoSegunda();
                  break;
              case 2:
-
+                menuClasificacion.ordenacionPorPartidosJugadosEquipoSegunda();
                  break;
              case 3:
-
+                menuClasificacion.ordenacionPorPartidosGanadosEquipoSegunda();
                  break;
              case 4:
-
+                menuClasificacion.ordenacionPorPartidosEmpatadosEquipoSegunda();
                  break;
              case 5:
-
+                menuClasificacion.ordenacionPorPartidosPerdidosEquipoSegunda();
                  break;
              case 6:
-
+                menuClasificacion.ordenacionPorGolesAFavorEquipoSegunda();
                  break;
              case 7:
-
+                menuClasificacion.ordenacionPorGolesEnContraEquipoSegunda();
                  break;
              case 8:
-
+                menuClasificacion.ordenacionPorDiferenciaDeGolesquipoSegunda();
+                 break;
+             case 9:
+                 menuClasificacion.ordenacionPorDiferenciaDeGolesquipoSegunda();
                  break;
          }
      }
@@ -373,7 +393,22 @@ public class FutbolApp {
         }
     }
 
-    public void AppTrofeos() {
+    public void AppTrofeosPrimera() {
+        int opcion;
+
+        while ((opcion = menuTrofeos()) != 0) {
+            switch (opcion) {
+                case 1:
+                // pichichi
+                    break;
+                case 2:
+                // zamora
+                    break;
+            }
+        }
+    }
+
+    public void AppTrofeosSegunda() {
         int opcion;
 
         while ((opcion = menuTrofeos()) != 0) {
@@ -494,14 +529,15 @@ public class FutbolApp {
         int opcion;
 
         System.out.println("****************************************");
-        System.out.println("* 1 - Ordenar por puntos               *");
-        System.out.println("* 2 - Ordenar por nombre               *");
-        System.out.println("* 3 - Ordenar por partidos jugados     *");
-        System.out.println("* 4 - Ordenar por tarjetas amarillas   *");
-        System.out.println("* 5 - Ordenar por tarjetas rojas       *");
+        System.out.println("* 1 - Ordenar por nombre               *");
+        System.out.println("* 2 - Ordenar por partidos jugados     *");
+        System.out.println("* 3 - Ordenar por partidos ganados     *");
+        System.out.println("* 4 - Ordenar por partidos empatado    *");
+        System.out.println("* 5 - Ordenar por partidos perdidos    *");
         System.out.println("* 6 - Ordenar por goles a favor        *");
         System.out.println("* 7 - Ordenar por goles en contra      *");
         System.out.println("* 8 - Ordenar por diferencia de goles  *");
+        System.out.println("* 9 - Ordenar por puntos               *");
         System.out.println("* 0 - Salir                            *");
         System.out.println("****************************************");
         System.out.println("Opción: ");

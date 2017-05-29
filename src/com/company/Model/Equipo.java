@@ -11,7 +11,6 @@ public class Equipo {
    private String entrenador;
    private String estadio;
    private int añoFundacion;
-   private int puntos;
    private Competicion competicion;
    private ArrayList<Jugador> jugadores;
    private String nombreCompeticion;
@@ -23,13 +22,12 @@ public class Equipo {
    }
 
 
-   public Equipo(String nombreEquipo, String presidente, String entrenador, String estadio, int añoFundacion, int puntos, Competicion competicion) {
+   public Equipo(String nombreEquipo, String presidente, String entrenador, String estadio, int añoFundacion, Competicion competicion) {
       this.setNombreEquipo(nombreEquipo);
       this.setPresidente(presidente);
       this.setEntrenador(entrenador);
       this.setEstadio(estadio);
       this.setAñoFundacion(añoFundacion);
-      this.setPuntos(puntos);
       this.setCompeticion(competicion);
    }
 
@@ -97,17 +95,6 @@ public class Equipo {
       }
    }
 
-   public int getPuntos() {
-      return puntos;
-   }
-
-   public void setPuntos(int puntos) {
-      if (puntos < 0){
-         this.puntos = 0;
-      }else{
-         this.puntos = puntos;
-      }
-   }
 
    public Competicion getCompeticion() {
       return competicion;
@@ -142,7 +129,6 @@ public class Equipo {
               ", entrenador='" + entrenador + '\'' +
               ", estadio='" + estadio + '\'' +
               ", añoFundacion=" + añoFundacion +
-              ", puntos=" + puntos +
               ", competicion=" + competicion +
               '}';
    }
@@ -184,12 +170,6 @@ public class Equipo {
       }
    };
 
-   public static Comparator<Equipo> comparadorPorPuntos = new Comparator<Equipo>() {
-      @Override
-      public int compare(Equipo equipo1, Equipo equipo2) {
-         return (equipo2.getPuntos() - equipo1.getPuntos());
-      }
-   };
 
 
    @Override
@@ -207,76 +187,3 @@ public class Equipo {
    }
 
 }
-
-
-/*
-
-public static Comparator<Equipo> comparadorPorNombre = new Comparator<Equipo>() {
-   @Override
-   public int compare(Equipo equipo1, Equipo equipo2) {
-      int res;
-
-      res = equipo1.getNombreEquipo().compareToIgnoreCase(equipo2.getNombreEquipo());
-      return res;
-   }
-};
-
-   public static Comparator<Equipo> comparadorPorCompeticion = new Comparator<Equipo>() {
-      @Override
-      public int compare(Equipo equipo1, Equipo equipo2) {
-         int res;
-
-         res = equipo1.getCompeticion().compareTo(equipo2.getCompeticion());
-         return res;
-      }
-   };
-
-   public static Comparator<Equipo> comparadorPorPuntos = new Comparator<Equipo>() {
-      @Override
-      public int compare(Equipo equipo1, Equipo equipo2) {
-         return (equipo2.getPuntos() - equipo1.getPuntos());
-      }
-   };
-
-   public static Comparator<Equipo> comparadorPorPartidosJugados = new Comparator<Equipo>() {
-      @Override
-      public int compare(Equipo equipo1, Equipo equipo2) {
-         return (equipo2.getPartidosJugados() - equipo1.getPartidosJugados());
-      }
-   };
-
-   public static Comparator<Equipo> comparadorPorGolesAFavor = new Comparator<Equipo>() {
-      @Override
-      public int compare(Equipo equipo1, Equipo equipo2) {
-         return (equipo2.getGoles() - equipo1.getGoles());
-      }
-   };
-
-   public static Comparator<Equipo> comparadorPorGolesEnContra = new Comparator<Equipo>() {
-      @Override
-      public int compare(Equipo equipo1, Equipo equipo2) {
-         return (equipo2.getGolesRecibidos() - equipo1.getGolesRecibidos());
-      }
-   };
-
-   public static Comparator<Equipo> comparadorPorDiferenciaDeGoles = new Comparator<Equipo>() {
-      @Override
-      public int compare(Equipo equipo1, Equipo equipo2) {
-         return (equipo2.getDiferenciaDeGoles() - equipo1.getDiferenciaDeGoles());
-      }
-   };
-
-   public static Comparator<Equipo> comparadorPorTarjetasAmarillas = new Comparator<Equipo>() {
-      @Override
-      public int compare(Equipo equipo1, Equipo equipo2) {
-         return (equipo2.getTarjetasAmarillas() - equipo1.getTarjetasAmarillas());
-      }
-   };
-
-   public static Comparator<Equipo> comparadorPorTarjetasRojas = new Comparator<Equipo>() {
-      @Override
-      public int compare(Equipo equipo1, Equipo equipo2) {
-         return (equipo2.getTarjetasRoja() - equipo1.getTarjetasRoja());
-      }
-   };
- */
