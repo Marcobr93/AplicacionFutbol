@@ -134,7 +134,6 @@ public class Equipo {
    }
 
 
-
    // Comparadores
 
    /**
@@ -169,7 +168,6 @@ public class Equipo {
          return res;
       }
    };
-
 
 
    @Override

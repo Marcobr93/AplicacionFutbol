@@ -206,16 +206,4 @@ public class Clasificacion {
             return (clasificacion2.getDiferenciaDeGoles() - clasificacion1.getDiferenciaDeGoles());
         }
     };
-
-    public static Comparator<Clasificacion> comparadorPorCompeticion = new Comparator<Clasificacion>() {
-        @Override
-        public int compare(Clasificacion clasificacion1, Clasificacion clasificacion2) {
-            int res;
-
-            res = clasificacion1.getCompeticion().compareTo(clasificacion2.getCompeticion());
-            return res;
-        }
-    };
-
-
 }

@@ -136,9 +136,39 @@ public class MenuEquipo  {
     }
 
 
-    public void mostrarInformacionEquipo() {
-        for (Equipo equipo : equipos) {
-            System.out.println(equipo);
+    public void mostrarInformacionEquipoPrimera() {
+        String nombre;
+        Scanner scanner = new Scanner(System.in);
+
+        for (Equipo equipo: equiposPrimera) {
+            System.out.println(equipo.getNombreEquipo());
+        }
+
+        System.out.printf("Introduzca el nombre del equipo: ");
+        nombre = scanner.nextLine().replace(" ", "").replace("-", "");
+
+        for (Equipo equipo : equiposPrimera) {
+            if (equipo.getNombreEquipo().replace(" ", "").replace("-", "").equals(nombre)){
+                System.out.println(equipo);
+            }
+        }
+    }
+
+    public void mostrarInformacionEquipoSegunda() {
+        String nombre;
+        Scanner scanner = new Scanner(System.in);
+
+        for (Equipo equipo: equiposSegunda) {
+            System.out.println(equipo.getNombreEquipo());
+        }
+
+        System.out.printf("Introduzca el nombre del equipo: ");
+        nombre = scanner.nextLine().replace(" ", "").replace("-", "");
+
+        for (Equipo equipo : equiposSegunda) {
+            if (equipo.getNombreEquipo().replace(" ", "").replace("-", "").equals(nombre)){
+                System.out.println(equipo);
+            }
         }
     }
 

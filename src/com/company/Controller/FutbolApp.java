@@ -77,6 +77,7 @@ public class FutbolApp {
 
     //Inicializacion
 
+
     public void AppCompeticion() {
         int opcion;
 
@@ -147,7 +148,7 @@ public class FutbolApp {
         while ((opcion = menuEleccionEquipo()) != 0) {
             switch (opcion) {
                 case 1:
-                    AppEquipos();
+                    AppEquiposPrimera();
                     break;
                 case 2:
                     menuEquipo.crearEquipo();
@@ -170,7 +171,7 @@ public class FutbolApp {
             switch (opcion) {
                 case 1:
 
-                    AppEquipos();
+                    AppEquiposSegunda();
                     break;
                 case 2:
                     menuEquipo.crearEquipo();
@@ -186,13 +187,31 @@ public class FutbolApp {
         }
     }
 
-    public void AppEquipos() {
+    public void AppEquiposPrimera() {
         int opcion;
 
         while ((opcion = menuEquipos()) != 0) {
             switch (opcion) {
                 case 1:
-                    menuEquipo.mostrarInformacionEquipo();
+                    menuEquipo.mostrarInformacionEquipoPrimera();
+                    break;
+                case 2:
+                    AppPlantilla(menuJugador.elegirEquipo());
+                    break;
+                case 3:
+                    menuJugador.crearJugador();
+                    break;
+            }
+        }
+    }
+
+    public void AppEquiposSegunda() {
+        int opcion;
+
+        while ((opcion = menuEquipos()) != 0) {
+            switch (opcion) {
+                case 1:
+                    menuEquipo.mostrarInformacionEquipoSegunda();
                     break;
                 case 2:
                     AppPlantilla(menuJugador.elegirEquipo());
@@ -435,6 +454,36 @@ public class FutbolApp {
         int opcion;
 
         System.out.println("*************************");
+        System.out.println("─────────────────────────────────────────────────────────────────────────\n" +
+                "─────────────────────────██████████████─██████████████─██████████████────\n" +
+                "────────────────────────██░░░░░░░░░░██─██░░░░░░░░░░██─██░░░░░░░░░░██────\n" +
+                "────────────────────────██░░███████░░██─██░░███████░░██─█░░██████░░██────\n" +
+                "────────────────────────██░░██──████░░██─██░░██──████░░██─█░░██──███░░██────\n" +
+                "────────────────────────██░░███████░░██─██░░███████░░██─█░░██████░░██────\n" +
+                "────────────────────────██░░░░░░░░░░░██─█░░░░░░░░░░██─██░░░░░░░░░░██────\n" +
+                "────────────────────────██░░███████░░██─██░░██████████─██░░██████████────\n" +
+                "────────────────────────██░░██──████░░██─██░░██────────██████░░██────────────\n" +
+                "────────────────────────██░░██──████░░██─██░░██────────██████░░██────────────\n" +
+                "────────────────────────██░░██──████░░██─██░░██────────██████░░██────────────\n" +
+                "─────────────────────────██████──██████─██████─────────██████────────────\n" +
+                "─────────────────────────────────────────────────────────────────────────\n" +
+                "─────────────────────────────────────────────────────────────────────────────────────────────\n" +
+                "─████████████───────█████───────────██────────████████████──────███████─────────────████████████──────█████───────────\n" +
+                "─██░░░░░░░░░█─────█░░██──────────█░░██─░░░░░░░░░░░░██─░░░░░░░██─────────█░░░░░░░░░░█─────█░░██─────────\n" +
+                "─██░░█████████───█░░██──────────█░░██─████░░██████───────░░████░░██─────██░░██───────────░░██──█░░██─────────\n" +
+                "─██░░█████████────░░██──────────█░░███████░░██──────────██░░██──██░░██────██░░██──────███░░██─█░░██─────────\n" +
+                "─██░░█████████───░░██──────────█░░██───────█░░██───────────██░░██████░░████─█░░██──────███░░██─█░░██─────────\n" +
+                "─██░░░░░░░░░█──█░░██──────────█░░██─────██░░██───────────██░░░░░░░░░░░░█──█░░██─────███░░██──█░░██─────────\n" +
+                "─██░░████████───█░░██────────██░░██─────██░░██───────────██░░█████████░░██──░░██─────███░░██──█░░██─────────\n" +
+                "─██░░██────────────██░░██─     ─██░░██─────██░░██───────────██░░██────█████░░█─█░░██─────███░░██───█░░██─────────\n" +
+                "─██░░██────────────██░░████████░░██─────██░░██───────────██░░█████████░░██───░░███████░░██───█░░█████████─\n" +
+                "─██░░██────────────███░░░░░░░░░░██─────██░░██────────────██░░░░░░░░░░░░██───█░░░░░░░░░██─────█░░░░░░░░░█─\n" +
+                "─██████──────────────────███████████──────────████───────────────███████████████──────────█████████──────────███████████\n" +
+                "─────────────────────────────────────────────────────────────────────────────────────────────");
+
+
+        System.out.println("Pulse Enter para comenzar el programa");
+        scanner.nextLine();
         System.out.println("* 1 - Primera División  *");
         System.out.println("* 2 - Segunda División  *");
         System.out.println("* 3 - Buscar Equipo     *");
@@ -457,7 +506,7 @@ public class FutbolApp {
         System.out.println("* 2 - Clasificación *");
         System.out.println("* 3 - Partidos      *");
         System.out.println("* 4 - Trofeos       *");
-        System.out.println("* 0 - Salir         *");
+        System.out.println("* 0 - Atrás         *");
         System.out.println("*********************");
         System.out.println("Opción: ");
 
@@ -475,7 +524,7 @@ public class FutbolApp {
         System.out.println("* 2 - Añadir equipo    *");
         System.out.println("* 3 - Eliminar equipo  *");
         System.out.println("* 4 - Mostrar equipos  *");
-        System.out.println("* 0 - Salir            *");
+        System.out.println("* 0 - Atrás            *");
         System.out.println("************************");
         System.out.println("Opción: ");
 
@@ -492,7 +541,7 @@ public class FutbolApp {
         System.out.println("* 1 - Información del equipo *");
         System.out.println("* 2 - Plantilla              *");
         System.out.println("* 3 - Añadir jugador         *");
-        System.out.println("* 0 - Salir                  *");
+        System.out.println("* 0 - Atrás                  *");
         System.out.println("******************************");
         System.out.println("Opción: ");
 
@@ -521,7 +570,7 @@ public class FutbolApp {
         System.out.println("* 13- Ordenar por goles recibidos    *");
         System.out.println("* 14- Asistencias                    *");
         System.out.println("* 15- Eliminar jugador               *");
-        System.out.println("* 0 - Salir                          *");
+        System.out.println("* 0 - Atrás                          *");
         System.out.println("**************************************");
         System.out.println("Opción: ");
 
@@ -544,7 +593,7 @@ public class FutbolApp {
         System.out.println("* 7 - Ordenar por goles en contra      *");
         System.out.println("* 8 - Ordenar por diferencia de goles  *");
         System.out.println("* 9 - Ordenar por puntos               *");
-        System.out.println("* 0 - Salir                            *");
+        System.out.println("* 0 - Atrás                            *");
         System.out.println("****************************************");
         System.out.println("Opción: ");
 
@@ -561,7 +610,7 @@ public class FutbolApp {
         System.out.println("* 1 - Ver jornadas     *");
         System.out.println("* 2 - Añadir jornada   *");
         System.out.println("* 3 - Eliminar jornada *");
-        System.out.println("* 0 - Salir            *");
+        System.out.println("* 0 - Atrás            *");
         System.out.println("************************");
         System.out.println("Opción: ");
 
@@ -578,7 +627,7 @@ public class FutbolApp {
         System.out.println("* 1 - Todos los partidos *");
         System.out.println("* 2 - Buscar jornada     *");
         System.out.println("* 3 - Buscar equipo      *");
-        System.out.println("* 0 - Salir              *");
+        System.out.println("* 0 - Atrás              *");
         System.out.println("**************************");
         System.out.println("Opción: ");
 
@@ -594,7 +643,7 @@ public class FutbolApp {
         System.out.println("****************");
         System.out.println("* 1 - Pichichi *");
         System.out.println("* 2 - Zamora   *");
-        System.out.println("* 0 - Salir    *");
+        System.out.println("* 0 - Atrás    *");
         System.out.println("****************");
         System.out.println("Opción: ");
 
@@ -602,5 +651,5 @@ public class FutbolApp {
 
         return opcion;
     }
-
 }
+

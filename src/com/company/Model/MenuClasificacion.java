@@ -36,13 +36,6 @@ public class MenuClasificacion {
         }
     }
 
-    public void listaClasificacion(){
-        int indice = 0;
-
-        for (Clasificacion clasificacion: clasificacion) {
-            System.out.println((indice++) + " - " + clasificacion);
-        }
-    }
 
     public void listaClasificacionPrimera(){
         int indice = 0;
@@ -115,8 +108,6 @@ public class MenuClasificacion {
 
         listaClasificacionPrimera();
     }
-
-
 
 
 

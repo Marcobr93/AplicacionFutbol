@@ -53,24 +53,6 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
     * @param golesRecibidos
     * @param asistencias
     */
-   public Jugador(String nombreJugador, String apellidosJugador, Posicion posicion, boolean capitan, double altura, double peso, int dorsal, int edad, int partidosJugados, int tarjetasAmarillas, int tarjetasRoja, int goles, int golesEnPropia, int golesRecibidos, int asistencias, Equipo equipo) {
-      this.setNombreJugador(nombreJugador);
-      this.setApellidosJugador(apellidosJugador);
-      this.setPosicion(posicion);
-      this.setCapitan(capitan);
-      this.setAltura(altura);
-      this.setPeso(peso);
-      this.setDorsal(dorsal);
-      this.setEdad(edad);
-      this.setPartidosJugados(partidosJugados);
-      this.setTarjetasAmarillas(tarjetasAmarillas);
-      this.setTarjetasRoja(tarjetasRoja);
-      this.setGoles(goles);
-      this.setGolesEnPropia(golesEnPropia);
-      this.setGolesRecibidos(golesRecibidos);
-      this.setAsistencias(asistencias);
-      this.setEquipo(equipo);
-   }
 
    public Jugador(String nombreJugador, String apellidosJugador, Posicion posicion, boolean capitan, double altura, double peso, int dorsal, int edad, int partidosJugados, int tarjetasAmarillas, int tarjetasRoja, int goles, int golesEnPropia, int golesRecibidos, int asistencias, String sEquipo, Competicion competicion) {
       this.setNombreJugador(nombreJugador);
@@ -509,15 +491,5 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
 
       return Objects.equals(this.getDorsal(), jugador.getDorsal());
    }
-
 }
 
-/*
- public static Comparator<Jugador> comparadorPorEquipo = new Comparator<Jugador>() {
-      @Override
-      public int compare(Jugador jugador1, Jugador jugador2) {
-         int res = jugador1.getEquipo().compareTo(jugador2.getEquipo());
-         return res;
-      }
-   };
- */
