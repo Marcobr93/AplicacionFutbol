@@ -50,7 +50,7 @@ public class MenuEquipo  {
         String presidente;
         String entrenador;
         String estadio;
-        int añoFundacion;
+        int añoFundacion = 1856;
         String nombreCompeticion;
         Competicion competicion = null;
         Equipo equipo;
@@ -80,19 +80,28 @@ public class MenuEquipo  {
             estadio = scanner.next().trim().replaceAll("\\s+", " ");
         } while (estadio.equals(""));
 
+
         do {
             System.out.println("Año de fundación del equipo: ");
-            añoFundacion = scanner.nextInt();
-        } while (añoFundacion < 0);
+            try {
+                añoFundacion = scanner.nextInt();
+            }catch (InputMismatchException e){
+                System.out.println("Por favor, introduzca un año válido.");
+                scanner.next();
+            }
+        } while (añoFundacion <= 1856 || añoFundacion > 2017);
 
 
-        System.out.println("Competición del equipo: ");
-        nombreCompeticion = scanner.next();
-        if (nombreCompeticion.toLowerCase().replace(" ", "").equals("primera")){
-             competicion = Competicion.PRIMERA;
-        }else if(nombreCompeticion.toLowerCase().replace(" ", "").equals("segunda")){
-            competicion = Competicion.SEGUNDA;
-        }
+       do {
+           System.out.println("Introduzca si el equipo juega en primera o en segunda: ");
+           nombreCompeticion = scanner.next();
+           if (nombreCompeticion.toLowerCase().replace(" ", "").equals("primera")){
+               competicion = Competicion.PRIMERA;
+           }else if(nombreCompeticion.toLowerCase().replace(" ", "").equals("segunda")){
+               competicion = Competicion.SEGUNDA;
+           }
+       }while (nombreCompeticion !="primera" || nombreCompeticion != "segunda");
+
 
         equipo = new Equipo(nombreEquipo, presidente, entrenador, estadio, añoFundacion, competicion);
 
@@ -107,32 +116,33 @@ public class MenuEquipo  {
         String nombre;
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("");
-        System.out.printf("Introduzca el nombre del equipo: ");
-        nombre = scanner.nextLine().replace(" ", "").replace("-", "");
+        do {
+            System.out.printf("Introduzca el nombre del equipo: ");
+            nombre = scanner.nextLine().replace(" ", "").replace("-", "");
 
-        Iterator<Equipo> iTEquipo = equipos.iterator();
-        Iterator<Equipo> iTEquipoP = equiposPrimera.iterator();
-        Iterator<Equipo> iTEquipoS = equiposSegunda.iterator();
+            Iterator<Equipo> iTEquipo = equipos.iterator();
+            Iterator<Equipo> iTEquipoP = equiposPrimera.iterator();
+            Iterator<Equipo> iTEquipoS = equiposSegunda.iterator();
 
-        while (iTEquipo.hasNext()) {
-            Equipo equipo = iTEquipo.next();
-            if (equipo.getNombreEquipo().replace(" ", "").replace("-", "").equals(nombre)) {
-                iTEquipo.remove();
+            while (iTEquipo.hasNext()) {
+                Equipo equipo = iTEquipo.next();
+                if (equipo.getNombreEquipo().replace(" ", "").replace("-", "").equals(nombre)) {
+                    iTEquipo.remove();
+                }
             }
-        }
-        while (iTEquipoP.hasNext()){
-            Equipo equipo = iTEquipoP.next();
-             if (equipo.getNombreEquipo().replace(" ", "").replace("-", "").equals(nombre)) {
-                iTEquipoP.remove();
+            while (iTEquipoP.hasNext()){
+                Equipo equipo = iTEquipoP.next();
+                if (equipo.getNombreEquipo().replace(" ", "").replace("-", "").equals(nombre)) {
+                    iTEquipoP.remove();
+                }
             }
-        }
-        while (iTEquipoS.hasNext()){
-            Equipo equipo = iTEquipoS.next();
-            if (equipo.getNombreEquipo().replace(" ", "").replace("-", "").equals(nombre)) {
-                iTEquipoS.remove();
+            while (iTEquipoS.hasNext()){
+                Equipo equipo = iTEquipoS.next();
+                if (equipo.getNombreEquipo().replace(" ", "").replace("-", "").equals(nombre)) {
+                    iTEquipoS.remove();
+                }
             }
-        }
+        } while (nombre.equals(""));
     }
 
 
@@ -140,9 +150,7 @@ public class MenuEquipo  {
         String nombre;
         Scanner scanner = new Scanner(System.in);
 
-        for (Equipo equipo: equiposPrimera) {
-            System.out.println(equipo.getNombreEquipo());
-        }
+        listaEquiposPrimera();
 
         System.out.printf("Introduzca el nombre del equipo: ");
         nombre = scanner.nextLine().replace(" ", "").replace("-", "");
@@ -158,9 +166,7 @@ public class MenuEquipo  {
         String nombre;
         Scanner scanner = new Scanner(System.in);
 
-        for (Equipo equipo: equiposSegunda) {
-            System.out.println(equipo.getNombreEquipo());
-        }
+        listaEquiposSegunda();
 
         System.out.printf("Introduzca el nombre del equipo: ");
         nombre = scanner.nextLine().replace(" ", "").replace("-", "");
@@ -177,13 +183,7 @@ public class MenuEquipo  {
         int indice = 0;
         Scanner input = new Scanner(System.in);
 
-        for (Equipo equipo: equiposPrimera){
-            System.out.println(equipo.getNombreEquipo());
-        }
-
-        for (Equipo equipo: equiposSegunda){
-            System.out.println(equipo.getNombreEquipo());
-        }
+        listaEquipos();
 
         System.out.println();
         System.out.printf("Introduzca el nombre del equipo: ");
@@ -202,17 +202,16 @@ public class MenuEquipo  {
             }
         }
         if(indice==0) {
-            System.out.println("No existe ese equipo");
+            System.out.println("No existe un equipo con ese nombre.");
         }
     }
-
 
 
     public void listaEquipos(){
         int indice = 0;
 
         for (Equipo equipo: equipos) {
-            System.out.println((indice++) + " - " + equipo);
+            System.out.println((indice++) + " - " + equipo.getNombreEquipo());
         }
     }
 
@@ -220,7 +219,7 @@ public class MenuEquipo  {
         int indice = 0;
 
         for (Equipo equipo: equiposPrimera) {
-            System.out.println((indice++) + " - " + equipo);
+            System.out.println((indice++) + " - " + equipo.getNombreEquipo());
         }
     }
 
@@ -228,7 +227,7 @@ public class MenuEquipo  {
         int indice = 0;
 
         for (Equipo equipo: equiposSegunda) {
-            System.out.println((indice++) + " - " + equipo);
+            System.out.println((indice++) + " - " + equipo.getNombreEquipo());
         }
     }
 }

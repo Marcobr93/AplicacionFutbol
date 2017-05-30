@@ -1,9 +1,6 @@
 package com.company.Model;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by marco on 19/05/2017.
@@ -36,21 +33,22 @@ public class MenuPartido {
     }
 
     public void crearPartido() {
-        boolean noCreado=true;  //Booleano que permite crear un Partido si no existe ya
-        int jornada;
-        Equipo equipoLocal=null;   //Variable Equipo que coge el valor de un Equipo que tenga el mismo nombre con equipo1
-        String nombreEquipoLocal;         //Variable donde se indica el nombre del Equipo
-        Equipo equipoVisitante=null;   //Variable Equipo que coge el valor de un Equipo que tenga el mismo nombre con equipo2
-        String nombreEquipoVisitante;         //Variable donde se indica el nombre del Equipo
-        boolean equipoRepetido = false;
+        Scanner scanner = new Scanner(System.in);
+
+        boolean noCreado=true;
+        boolean mismoEquipo = false;
+        int jornada = 0;
+        Equipo equipoLocal=null;
+        String nombreEquipoLocal;
+        Equipo equipoVisitante=null;
+        String nombreEquipoVisitante;
         String estadio;
         String arbitro;
-        int golesLocal;
-        int golesVisitante;
+        int golesLocal = 0;
+        int golesVisitante = 0;
         Competicion competicion = null;
         String nombreCompeticion;
         Partido partido;
-        Scanner scanner = new Scanner(System.in);
 
 
         do {
@@ -75,16 +73,21 @@ public class MenuPartido {
                 }
             }
             if (nombreEquipoLocal.toLowerCase().replace(" ", "").equals(nombreEquipoVisitante.toLowerCase().replace(" ", ""))) {
-                equipoRepetido = true;
+                mismoEquipo = true;
             }
-        } while (equipoVisitante == null || equipoRepetido == true) ;
+        } while (equipoVisitante == null || mismoEquipo == true) ;
 
-
+        do {
             System.out.println("Introduzca el estadio: ");
             estadio = scanner.nextLine();
+        }while (estadio.equals(""));
 
+
+        do {
             System.out.println("Introduzca el arbitro: ");
             arbitro = scanner.nextLine();
+        }while (arbitro.equals(""));
+
 
             System.out.println("Competición del equipo: ");
             nombreCompeticion = scanner.next();
@@ -94,30 +97,46 @@ public class MenuPartido {
                 competicion = Competicion.SEGUNDA;
             }
 
-            System.out.println("Introduzca los goles del equipo local: ");
-            try {
-                golesLocal = scanner.nextInt();
-            } catch (NullPointerException e) {
-                System.out.println("No ha introducido un numero, se le asignara 0");
-                golesLocal = 0;
-            }
 
-            System.out.println("Introduzca los goles del equipo visitante: ");
-            try {
-                golesVisitante = scanner.nextInt();
-            } catch (NullPointerException e) {
-                System.out.println("No ha introducido un numero, se le asignara 0");
-                golesVisitante = 0;
-            }
+            do {
+                System.out.println("Introduzca los goles del equipo local: ");
+                try {
+                    golesLocal = scanner.nextInt();
+                } catch (InputMismatchException e) {
+                    System.out.println("Por favor, introduzca un número válido de goles");
+                    scanner.next();
+                }
+            }while (golesLocal <= 0);
 
-            System.out.println("Introduzca la jornada del partido: ");
-            jornada = scanner.nextInt();
+
+            do {
+                System.out.println("Introduzca los goles del equipo visitante: ");
+                try {
+                    golesVisitante = scanner.nextInt();
+                } catch (NullPointerException e) {
+                    System.out.println("Por favor, introduzca un número válido de goles");
+                    scanner.next();
+                }
+            }while (golesVisitante <= 0);
+
+
+            do {
+                System.out.println("Introduzca la jornada del partido: ");
+                try {
+                    jornada = scanner.nextInt();
+                }catch (InputMismatchException e){
+                    System.out.println("Por favor, introduzca una jornada válida.");
+                    scanner.next();
+                }
+            }while (jornada <= 0);
+
+
 
             partido = new Partido(equipoLocal,nombreEquipoLocal, equipoVisitante,nombreEquipoVisitante, estadio, arbitro, competicion, golesLocal, golesVisitante, jornada);
 
             if (partido != null) {
                 for (Partido partid : partidos) {
-                    if ((partido.getJornada() == (partid.getJornada())) || partido.getEquipoLocal().equals(partid.getEquipoLocal())) {
+                    if ((partido.getJornada() == (partid.getJornada())) && partido.getEquipoLocal().equals(partid.getEquipoLocal())) {
                         noCreado = false;
                     }
                 }
@@ -132,83 +151,106 @@ public class MenuPartido {
             }
     }
 
-    public void eliminarPartido(){
-        int jornada;
-        Scanner input = new Scanner(System.in);
+    public void eliminarPartido() {
+        Scanner scanner = new Scanner(System.in);
+        int jornada = 0;
 
-        for (Partido partido: partidos){
-            System.out.println(partido);
-        }
 
-        System.out.printf("Introduzca la jornada del partido: ");
-        jornada = input.nextInt();
-
-        Iterator<Partido> ItPartido = partidos.iterator();
-        Iterator<Partido> ITPartidoP = partidosPrimera.iterator();
-        Iterator<Partido> ITPartidoS = partidosSegunda.iterator();
-
-        while ( ItPartido.hasNext() ){
-            Partido partido = ItPartido.next();
-            if (partido.getJornada() == (jornada)) {
-                ItPartido.remove();
+        do {
+            System.out.printf("Introduzca la jornada del partido: ");
+            try {
+                jornada = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Por favor, introduzca una jornada válida.");
+                scanner.next();
             }
-        }
-        while ( ITPartidoP.hasNext() ){
-            Partido partido = ITPartidoP.next();
-            if (partido.getJornada() == (jornada)) {
-                ITPartidoP.remove();
+            Iterator<Partido> ITPartido = partidos.iterator();
+            Iterator<Partido> ITPartidoP = partidosPrimera.iterator();
+            Iterator<Partido> ITPartidoS = partidosSegunda.iterator();
+
+            while (ITPartido.hasNext()) {
+                Partido partido = ITPartido.next();
+                if (partido.getJornada() == (jornada)) {
+                    ITPartido.remove();
+                }
             }
-        }
-        while ( ITPartidoS.hasNext() ){
-            Partido partido = ITPartidoS.next();
-            if (partido.getJornada() == (jornada)) {
-                ITPartidoS.remove();
+
+            while (ITPartidoP.hasNext()) {
+                Partido partido = ITPartidoP.next();
+                if (partido.getJornada() == (jornada)) {
+                    ITPartidoP.remove();
+                }
             }
-        }
+            while (ITPartidoS.hasNext()) {
+                Partido partido = ITPartidoS.next();
+                if (partido.getJornada() == (jornada)) {
+                    ITPartidoS.remove();
+                }
+            }
+        } while (jornada <= 0);
     }
 
     public void buscarPorJornada() {
-        int jornada;
+        int jornada = 0;
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println();
-        System.out.printf("Introduzca la jornada del partido: ");
-        jornada = scanner.nextInt();
-
-        for (Partido partido: partidos){
-            if (jornada == partido.getJornada()) {
-                System.out.println(partido);
+        do {
+            System.out.printf("Introduzca la jornada del partido: ");
+            try {
+                jornada = scanner.nextInt();
+            }catch (InputMismatchException e){
+                System.out.println("Por favor, introduzca una jornada válida.");
+                scanner.next();
+                System.out.println();
             }
-        }
+            for (Partido partido: partidos){
+                if (jornada == partido.getJornada()) {
+                    System.out.println(partido);
+                }
+            }
+        }while (jornada <= 0);
     }
 
     public void buscarPorJornadaPrimera() {
-        int jornada;
+        int jornada = 0;
         Scanner scanner = new Scanner(System.in);
 
-        System.out.printf("Introduzca la jornada del partido: ");
-        jornada = scanner.nextInt();
-
-        for (Partido partido: partidosPrimera){
-            if (jornada == partido.getJornada()) {
-                System.out.println(partido);
+        do {
+            System.out.printf("Introduzca la jornada del partido: ");
+            try {
+                jornada = scanner.nextInt();
+            }catch (InputMismatchException e){
+                System.out.println("Por favor, introduzca una jornada válida.");
+                scanner.next();
             }
-        }
+            for (Partido partido: partidosPrimera){
+                if (jornada == partido.getJornada()) {
+                    System.out.println(partido);
+                }
+            }
+        }while (jornada <= 0);
     }
 
     public void buscarPorJornadaSegunda() {
-        int jornada;
+        int jornada = 0;
         Scanner scanner = new Scanner(System.in);
 
-        System.out.printf("Introduzca la jornada del partido: ");
-        jornada = scanner.nextInt();
-
-        for (Partido partido: partidosSegunda){
-            if (jornada == partido.getJornada()) {
-                System.out.println(partido);
-                System.out.println();
+        do {
+            System.out.printf("Introduzca la jornada del partido: ");
+            try {
+                jornada = scanner.nextInt();
+            }catch (InputMismatchException e){
+                System.out.println("Por favor, introduzca una jornada válida.");
+                scanner.next();
             }
-        }
+            for (Partido partido: partidosSegunda){
+                if (jornada == partido.getJornada()) {
+                    System.out.println(partido);
+                    System.out.println();
+                }
+            }
+        }while (jornada <= 0);
+
     }
 
     public void buscarPorEquipoPrimera() {

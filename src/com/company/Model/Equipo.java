@@ -12,7 +12,6 @@ public class Equipo {
    private String estadio;
    private int añoFundacion;
    private Competicion competicion;
-   private ArrayList<Jugador> jugadores;
    private String nombreCompeticion;
 
 
@@ -104,15 +103,6 @@ public class Equipo {
       this.competicion = competicion;
    }
 
-
-   public ArrayList<Jugador> getJugadores() {
-      return jugadores;
-   }
-
-   public void setJugadores(ArrayList<Jugador> jugadores) {
-      this.jugadores = jugadores;
-   }
-
    public String getNombreCompeticion() {
       return nombreCompeticion;
    }
@@ -132,42 +122,6 @@ public class Equipo {
               ", competicion=" + competicion +
               '}';
    }
-
-
-   // Comparadores
-
-   /**
-    * Ordena y muestra todos los equipos por su nombre
-    */
-   public static Comparator<Equipo> comparadorPorNombre = new Comparator<Equipo>() {
-      @Override
-      public int compare(Equipo equipo1, Equipo equipo2) {
-         int res;
-
-         res = equipo1.getNombreEquipo().compareToIgnoreCase(equipo2.getNombreEquipo());
-         return res;
-      }
-   };
-
-   public static Comparator<Equipo> comparadorPorEstadio = new Comparator<Equipo>() {
-      @Override
-      public int compare(Equipo equipo1, Equipo equipo2) {
-         int res;
-
-         res = equipo1.getEstadio().compareToIgnoreCase(equipo2.getEstadio());
-         return res;
-      }
-   };
-
-   public static Comparator<Equipo> comparadorPorCompeticion = new Comparator<Equipo>() {
-      @Override
-      public int compare(Equipo equipo1, Equipo equipo2) {
-         int res;
-
-         res = equipo1.getCompeticion().compareTo(equipo2.getCompeticion());
-         return res;
-      }
-   };
 
 
    @Override

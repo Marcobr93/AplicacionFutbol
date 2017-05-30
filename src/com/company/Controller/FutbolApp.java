@@ -60,7 +60,7 @@ public class FutbolApp {
         menuPartido.partidos.add(new Partido("Real Madrid", "Barcelona","Santiago Bernagéu","Pepito", Competicion.PRIMERA, 5, 0,20));
         menuPartido.partidos.add(new Partido("Real Madrid", "Sevilla","Santiago Bernagéu","Paco", Competicion.PRIMERA, 3, 1,10));
         menuPartido.partidos.add(new Partido("Betis", "Real Madrid","Benito Villamarín","Juan", Competicion.PRIMERA, 2, 5,30));
-        menuPartido.partidos.add(new Partido("Zaragoza", "Cádiz C.F","Er campo","Luis", Competicion.SEGUNDA, 4, 2,40));
+        menuPartido.partidos.add(new Partido("Zaragoza", "Cádiz C.F","Er campo","Luis", Competicion.SEGUNDA, 4, 2,20));
     }
     public void cargarClasificación(){
         menuClasificacion.clasificacion.add(new Clasificacion("Real Madrid", 38, 29,6,3,106,41,93,Competicion.PRIMERA));
@@ -76,6 +76,18 @@ public class FutbolApp {
     }
 
     //Inicializacion
+
+    public void AppInicio() {
+        int opcion;
+
+        while ((opcion = menuInicio()) != 0) {
+            switch (opcion) {
+                case 1:
+                    AppCompeticion();
+                    break;
+            }
+        }
+    }
 
 
     public void AppCompeticion() {
@@ -95,6 +107,8 @@ public class FutbolApp {
                 case 4:
                     menuJugador.buscarJugador();
                     break;
+                case 5:
+                    menuPartido.buscarPorJornada();
             }
         }
     }
@@ -272,6 +286,7 @@ public class FutbolApp {
                     break;
                 case 15:
                     menuJugador.eliminarJugador(jugadoresEquipo);
+                    break;
             }
         }
     }
@@ -342,7 +357,7 @@ public class FutbolApp {
                 menuClasificacion.ordenacionPorDiferenciaDeGolesquipoSegunda();
                  break;
              case 9:
-                 menuClasificacion.ordenacionPorDiferenciaDeGolesquipoSegunda();
+                 menuClasificacion.ordenacionPorPuntosEquipoSegunda();
                  break;
          }
      }
@@ -359,8 +374,9 @@ public class FutbolApp {
                 case 2:
                     menuPartido.crearPartido();
                     break;
-                case 4:
+                case 3:
                     menuPartido.eliminarPartido();
+                    break;
             }
         }
     }
@@ -376,8 +392,9 @@ public class FutbolApp {
                 case 2:
                     menuPartido.crearPartido();
                     break;
-                case 4:
+                case 3:
                     menuPartido.eliminarPartido();
+                    break;
             }
         }
     }
@@ -397,6 +414,7 @@ public class FutbolApp {
                     break;
                 case 3:
                     menuPartido.buscarPorEquipoPrimera();
+                    break;
             }
         }
     }
@@ -414,6 +432,7 @@ public class FutbolApp {
                     break;
                 case 3:
                     menuPartido.buscarPorEquipoSegunda();
+                    break;
             }
         }
     }
@@ -448,10 +467,9 @@ public class FutbolApp {
         }
     }
 
-
-    private int menuCompeticion() {
+    private int menuInicio(){
         Scanner scanner = new Scanner(System.in);
-        int opcion;
+        int opcion = 0;
 
         System.out.println("*************************");
         System.out.println("─────────────────────────────────────────────────────────────────────────\n" +
@@ -484,10 +502,20 @@ public class FutbolApp {
 
         System.out.println("Pulse Enter para comenzar el programa");
         scanner.nextLine();
+        AppCompeticion();
+        return  opcion;
+    }
+
+
+    private int menuCompeticion() {
+        Scanner scanner = new Scanner(System.in);
+        int opcion;
+
         System.out.println("* 1 - Primera División  *");
         System.out.println("* 2 - Segunda División  *");
         System.out.println("* 3 - Buscar Equipo     *");
         System.out.println("* 4 - Buscar Jugador    *");
+        System.out.println("* 5 - Buscar Jornada    *");
         System.out.println("* 0 - Salir             *");
         System.out.println("*************************");
         System.out.println("Opción: ");

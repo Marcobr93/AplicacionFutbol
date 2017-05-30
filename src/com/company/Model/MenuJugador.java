@@ -1,9 +1,6 @@
 package com.company.Model;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by MarcoAntonio on 15/05/2017.
@@ -70,17 +67,17 @@ public class MenuJugador {
         String posicionElegida;
         String capitanString;
         boolean capitan;
-        double altura;
-        double peso;
-        int dorsal;
-        int edad;
-        int partidosJugados;
-        int tarjetasAmarillas;
-        int tarjetasRoja;
-        int goles;
-        int golesEnPropia;
+        double altura = 0;
+        double peso = 0;
+        int dorsal = 0;
+        int edad = 0;
+        int partidosJugados = 0;
+        int tarjetasAmarillas = 0;
+        int tarjetasRoja = 0;
+        int goles = 0;
+        int golesEnPropia = 0;
         int golesRecibidos = 0;
-        int asistencias;
+        int asistencias = 0;
         String equipoNombre;
         Jugador jugador;
         String nombreCompeticion;
@@ -95,8 +92,7 @@ public class MenuJugador {
             System.out.println("Apellido del jugador: ");
             apellidosJugador = scanner.nextLine().trim().replaceAll("\\s+", " ");
         } while (apellidosJugador.equals(""));
-        
-        
+
         System.out.println("Posición del jugador: ");
         posicionElegida = scanner.nextLine();
         if (posicionElegida.toLowerCase().replace(" ", "").equals("portero")) {
@@ -127,60 +123,116 @@ public class MenuJugador {
 
         do {
             System.out.println("Altura del jugador: ");
-            altura = scanner.nextDouble();
-        } while (altura < 0.0);
+            try{
+                altura = scanner.nextDouble();
+            }catch (InputMismatchException e){
+                System.out.println("Por favor, introduzca una altura válida.");
+                scanner.next();
+            }
+        } while (altura <= 0.0);
 
         do {
             System.out.println("Peso del jugador: ");
-            peso = scanner.nextDouble();
-        } while (peso < 0.0);
+            try{
+                peso = scanner.nextDouble();
+            }catch (InputMismatchException e){
+                System.out.println("Por favor, introduzca un peso válido.");
+                scanner.next();
+            }
+        } while (peso <= 0.0);
 
         do {
             System.out.println("Dorsal del jugador: ");
-            dorsal = scanner.nextInt();
-        } while (dorsal < 0);
+            try{
+                dorsal = scanner.nextInt();
+            }catch (InputMismatchException e){
+                System.out.println("Por favor, introduzca un dorsal válido.");
+                scanner.next();
+            }
+        } while (dorsal <= 0);
 
         do {
             System.out.println("Edad del jugador: ");
-            edad = scanner.nextInt();
-        } while (edad < 0);
+            try{
+                edad = scanner.nextInt();
+            }catch (InputMismatchException e){
+                System.out.println("Por favor, introduzca una edad válida.");
+                scanner.next();
+            }
+        } while (edad <= 0);
 
         do {
             System.out.println("Partidos jugados del jugador: ");
-            partidosJugados = scanner.nextInt();
-        } while (partidosJugados < 0);
+            try{
+                partidosJugados = scanner.nextInt();
+            }catch (InputMismatchException e){
+                System.out.println("Por favor, introduzca una cantidad válida.");
+                scanner.next();
+            }
+        } while (partidosJugados <= 0);
 
         do {
             System.out.println("Tarjetas amarillas del jugador: ");
-            tarjetasAmarillas = scanner.nextInt();
-        } while (tarjetasAmarillas < 0);
+            try{
+                tarjetasAmarillas = scanner.nextInt();
+            }catch (InputMismatchException e){
+                System.out.println("Por favor, introduzca una cantidad válida.");
+                scanner.next();
+            }
+        } while (tarjetasAmarillas <= 0);
 
         do {
             System.out.println("Tarjetas rojas del jugador: ");
-            tarjetasRoja = scanner.nextInt();
-        } while (tarjetasRoja < 0);
+            try{
+                tarjetasRoja = scanner.nextInt();
+            }catch (InputMismatchException e) {
+                System.out.println("Por favor, introduzca una cantidad válida.");
+                scanner.next();
+            }
+        } while (tarjetasRoja <= 0);
 
         do {
             System.out.println("Goles del jugador: ");
-            goles = scanner.nextInt();
-        } while (goles < 0);
+            try {
+                goles = scanner.nextInt();
+            }catch (InputMismatchException e) {
+                System.out.println("Por favor, introduzca una cantidad válida.");
+                scanner.next();
+            }
+        } while (goles <= 0);
 
         do {
             System.out.println("Goles en propia del jugador: ");
-            golesEnPropia = scanner.nextInt();
-        } while (golesEnPropia < 0);
+            try {
+                golesEnPropia = scanner.nextInt();
+            }catch (InputMismatchException e) {
+                System.out.println("Por favor, introduzca una cantidad válida.");
+                scanner.next();
+            }
+        } while (golesEnPropia <= 0);
 
+        // Solo los porteros tendrán como atributo Goles recibidos
         if (posicionElegida.toLowerCase().replace(" ", "").equals("portero")) {
             do {
                 System.out.println("Goles recibidos del jugador: ");
-                golesRecibidos = scanner.nextInt();
-            } while (golesRecibidos < 0);
+                try {
+                    golesRecibidos = scanner.nextInt();
+                }catch (InputMismatchException e) {
+                    System.out.println("Por favor, introduzca una cantidad válida.");
+                    scanner.next();
+                }
+            } while (golesRecibidos <= 0);
         }
 
         do {
             System.out.println("Asistencias del jugador: ");
-            asistencias = scanner.nextInt();
-        } while (asistencias < 0);
+            try{
+                asistencias = scanner.nextInt();
+            }catch (InputMismatchException e) {
+                System.out.println("Por favor, introduzca una cantidad válida.");
+                scanner.next();
+            }
+        } while (asistencias <= 0);
 
         scanner.nextLine();
         do {
@@ -212,7 +264,7 @@ public class MenuJugador {
 
     public void eliminarJugador(ArrayList<Jugador> jugadors){
         Scanner scanner = new Scanner(System.in);
-        int dorsal;
+        int dorsal = 0;
 
         Iterator<Jugador> itJugador = jugadors.iterator();
 
@@ -220,8 +272,16 @@ public class MenuJugador {
 
         System.out.println();
 
-        System.out.println("Introduzca el dorsal del jugador que desea borrar: ");
-        dorsal = scanner.nextInt();
+        do {
+            System.out.println("Introduzca el dorsal del jugador que desea borrar: ");
+            try {
+                dorsal = scanner.nextInt();
+            }catch (InputMismatchException e){
+                System.out.println("Por favor, introduzca un dorsal válido.");
+                scanner.next();
+            }
+        }while (dorsal <= 0);
+
 
         while (itJugador.hasNext()){
             Jugador jugador = itJugador.next();
@@ -234,26 +294,44 @@ public class MenuJugador {
 
     public void buscarJugador() {
         String nombre;
-        int indice = 0;
-        Scanner input = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
-        for (Jugador jugador: jugadores){
-           System.out.println(jugador.getNombreJugador() + " " + jugador.getApellidosJugador());
+        for (Jugador jugador : jugadores) {
+            System.out.println(jugador.getNombreJugador() + " " + jugador.getApellidosJugador());
         }
 
         System.out.println();
-        System.out.printf("Introduzca el nombre del jugador: ");
-        nombre = input.nextLine().toLowerCase().replace(" ","").replace("-", "");
+
+        System.out.printf("Introduzca solo el nombre del jugador: ");
+        nombre = scanner.nextLine().toLowerCase().replace(" ", "").replace("-", "");
+        try {
+            for (Jugador jugador : jugadores) {
+
+                if (nombre.equals(jugador.getNombreJugador().toLowerCase().replace(" ", "").replace("-", ""))) {
+                    System.out.println(jugador);
+                }
+            }
+        } catch (NullPointerException e) {
+            scanner.next();
+        }
+    }
+
+    public ArrayList<Jugador> elegirEquipo() {
+
+        Scanner scanner = new Scanner(System.in);
+        String nombreIntroducido;
+
+        System.out.println();
+        System.out.printf("Introduzca el nombre del equipo: ");
+        nombreIntroducido = scanner.nextLine();
 
         for (Jugador jugador: jugadores){
-            if (nombre.equals(jugador.getNombreJugador().toLowerCase().replace(" ","").replace("-", ""))) {
+            if (nombreIntroducido.equals(jugador.getsEquipo())) {
                 System.out.println(jugador);
-                indice++;
+                jugadoresEquipo.add(jugador);
             }
         }
-        if(indice==0) {
-            System.out.println("No existe el jugador");
-        }
+        return jugadoresEquipo;
     }
 
 
@@ -300,26 +378,6 @@ public class MenuJugador {
             System.out.println((indice++) + " - " + jugador);
         }
     }
-
-    public ArrayList<Jugador> elegirEquipo() {
-
-        Scanner scanner = new Scanner(System.in);
-        String nombreIntroducido;
-
-        System.out.println();
-        System.out.printf("Introduzca el nombre del equipo: ");
-        nombreIntroducido = scanner.nextLine();
-
-        for (Jugador jugador: jugadores){
-            if (nombreIntroducido.equals(jugador.getsEquipo())) {
-                System.out.println(jugador);
-                jugadoresEquipo.add(jugador);
-            }
-        }
-        return jugadoresEquipo;
-    }
-
-
 
     // Ordenación
 
