@@ -9,7 +9,7 @@ public enum Posicion {
     Central("Central"),
     LateralIzquierdo("Lateral izquierdo"),
     Centrocampista("Centrocampista"),
-    MediaPunta("Mediapunta"),
+    MediaPunta("Media punta"),
     Extremo("Extremo"),
     Delantero("Delantero");
 

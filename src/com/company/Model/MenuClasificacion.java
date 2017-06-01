@@ -38,7 +38,7 @@ public class MenuClasificacion {
 
 
     public void listaClasificacionPrimera(){
-        int indice = 0;
+        int indice = 1;
 
         for (Clasificacion clasificacion: clasificacionPrimera) {
             System.out.println((indice++) + " - " + clasificacion);
@@ -46,7 +46,7 @@ public class MenuClasificacion {
     }
 
     public void listaClasificacionSegunda(){
-        int indice = 0;
+        int indice = 1;
 
         for (Clasificacion clasificacion: clasificacionSegunda) {
             System.out.println((indice++) + " - " + clasificacion);

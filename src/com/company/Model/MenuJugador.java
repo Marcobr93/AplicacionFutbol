@@ -93,25 +93,42 @@ public class MenuJugador {
             apellidosJugador = scanner.nextLine().trim().replaceAll("\\s+", " ");
         } while (apellidosJugador.equals(""));
 
-        System.out.println("Posición del jugador: ");
-        posicionElegida = scanner.nextLine();
-        if (posicionElegida.toLowerCase().replace(" ", "").equals("portero")) {
-            posicion = Posicion.Portero;
-        } else if (posicionElegida.toLowerCase().replace(" ", "").replace(" ", "").equals("lateralderecho")) {
-            posicion = Posicion.LateralDerecho;
-        } else if (posicionElegida.toLowerCase().replace(" ", "").replace(" ", "").equals("central")) {
-            posicion = Posicion.Central;
-        } else if (posicionElegida.toLowerCase().replace(" ", "").replace(" ", "").equals("lateralizquierdo")) {
-            posicion = Posicion.LateralIzquierdo;
-        } else if (posicionElegida.toLowerCase().replace(" ", "").replace(" ", "").equals("centrocampista")) {
-            posicion = Posicion.Centrocampista;
-        } else if (posicionElegida.toLowerCase().replace(" ", "").replace(" ", "").equals("mediapunta")) {
-            posicion = Posicion.MediaPunta;
-        } else if (posicionElegida.toLowerCase().replace(" ", "").replace(" ", "").equals("extremo")) {
-            posicion = Posicion.Extremo;
-        } else if (posicionElegida.toLowerCase().replace(" ", "").replace(" ", "").equals("delantero")) {
-            posicion = Posicion.Delantero;
-        }
+        do {
+             System.out.println("Posición del jugador: ");
+             posicionElegida = scanner.nextLine();
+                 if (posicionElegida.toLowerCase().replace(" ", "").equals("portero")) {
+                     posicion = Posicion.Portero;
+                 } else if (posicionElegida.toLowerCase().replace(" ", "").replace(" ", "").equals("lateralderecho")) {
+                     posicion = Posicion.LateralDerecho;
+                 } else if (posicionElegida.toLowerCase().replace(" ", "").replace(" ", "").equals("central")) {
+                     posicion = Posicion.Central;
+                 } else if (posicionElegida.toLowerCase().replace(" ", "").replace(" ", "").equals("lateralizquierdo")) {
+                     posicion = Posicion.LateralIzquierdo;
+                 } else if (posicionElegida.toLowerCase().replace(" ", "").replace(" ", "").equals("centrocampista")) {
+                     posicion = Posicion.Centrocampista;
+                 } else if (posicionElegida.toLowerCase().replace(" ", "").replace(" ", "").equals("mediapunta")) {
+                     posicion = Posicion.MediaPunta;
+                 } else if (posicionElegida.toLowerCase().replace(" ", "").replace(" ", "").equals("extremo")) {
+                     posicion = Posicion.Extremo;
+                 } else if (posicionElegida.toLowerCase().replace(" ", "").replace(" ", "").equals("delantero")) {
+                     posicion = Posicion.Delantero;
+                 } else if (!posicionElegida.equals("portero")){
+                     posicion = null;
+                 } else if (!posicionElegida.equals("lateralderecho")){
+                     posicion = null;
+                 }else if (!posicionElegida.equals("lateralizquierdo")){
+                     posicion = null;
+                 } else if (!posicionElegida.equals("centrocampista")){
+                     posicion = null;
+                 }else if (!posicionElegida.equals("mediapunta")){
+                     posicion = null;
+                 } else if (!posicionElegida.equals("extremo")){
+                     posicion = null;
+                 }else if (!posicionElegida.equals("delantero")){
+                     posicion = null;
+                 }
+         }while (posicion == null);
+
 
         System.out.println("Introduzca si es o no el jugadir capitán del equipo");
         capitanString = scanner.next();
@@ -246,13 +263,20 @@ public class MenuJugador {
             }
         }while(equipoNombre == null);
 
-        System.out.println("Introduzca si el equipo juega en Primera o en Segunda: ");
-        nombreCompeticion = scanner.next();
-        if (nombreCompeticion.toLowerCase().replace(" ", "").equals("primera")){
-            competicion = Competicion.PRIMERA;
-        }else if(nombreCompeticion.toLowerCase().replace(" ", "").equals("segunda")){
-            competicion = Competicion.SEGUNDA;
-        }
+        do {
+            System.out.println("Introduzca si el equipo juega en Primera o en Segunda: ");
+            nombreCompeticion = scanner.next();
+            if (nombreCompeticion.toLowerCase().replace(" ", "").equals("primera")){
+                competicion = Competicion.PRIMERA;
+            }else if(nombreCompeticion.toLowerCase().replace(" ", "").equals("segunda")){
+                competicion = Competicion.SEGUNDA;
+            }else if (!nombreCompeticion.equals("primera")){
+                competicion = null;
+            }else if (!nombreCompeticion.equals("segunda")){
+                competicion = null;
+            }
+        }while (nombreCompeticion == null);
+
 
 
         jugador = new Jugador(nombreJugador,apellidosJugador,posicion,capitan,altura,peso,dorsal,edad,partidosJugados,tarjetasAmarillas,tarjetasRoja,goles,golesEnPropia,golesRecibidos,asistencias,equipoNombre,competicion);
@@ -336,14 +360,14 @@ public class MenuJugador {
 
 
     public void listaJugadores(){
-        int indice = 0;
+        int indice = 1;
         for (Jugador jugador: jugadores){
             System.out.println((indice++) + " - " + jugador);
         }
     }
 
     public void listaJugadoresEquipo(){
-        int indice = 0;
+        int indice = 1;
         for (Jugador jugador: jugadoresEquipo){
             System.out.println((indice++) + " - " + jugador);
         }
@@ -357,14 +381,14 @@ public class MenuJugador {
     }
 
     public void listaJugadoresEquiposSegunda(){
-        int indice = 0;
+        int indice = 1;
         for (Jugador jugador: jugadoresSegunda){
             System.out.println((indice++) + " - " + jugador);
         }
     }
 
     public void listaPorterosPrimera(){
-        int indice = 0;
+        int indice = 1;
 
         for (Jugador jugador: porterosPrimera) {
             System.out.println((indice++) + " - " + jugador);
@@ -372,7 +396,7 @@ public class MenuJugador {
     }
 
     public void listaPorterosSegunda(){
-        int indice = 0;
+        int indice = 1;
 
         for (Jugador jugador: porterosSegunda) {
             System.out.println((indice++) + " - " + jugador);

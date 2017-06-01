@@ -4,11 +4,15 @@
     <list default="true" id="1d215469-aa81-4bf8-afae-0490f9d6ee6b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Controller/FutbolApp.java" afterPath="$PROJECT_DIR$/src/com/company/Controller/FutbolApp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Main.java" afterPath="$PROJECT_DIR$/src/com/company/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Model/Clasificacion.java" afterPath="$PROJECT_DIR$/src/com/company/Model/Clasificacion.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Model/Equipo.java" afterPath="$PROJECT_DIR$/src/com/company/Model/Equipo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Model/Jugador.java" afterPath="$PROJECT_DIR$/src/com/company/Model/Jugador.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Model/MenuClasificacion.java" afterPath="$PROJECT_DIR$/src/com/company/Model/MenuClasificacion.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Model/MenuEquipo.java" afterPath="$PROJECT_DIR$/src/com/company/Model/MenuEquipo.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Model/MenuJugador.java" afterPath="$PROJECT_DIR$/src/com/company/Model/MenuJugador.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Model/MenuPartido.java" afterPath="$PROJECT_DIR$/src/com/company/Model/MenuPartido.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Model/Partido.java" afterPath="$PROJECT_DIR$/src/com/company/Model/Partido.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Model/Posicion.java" afterPath="$PROJECT_DIR$/src/com/company/Model/Posicion.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,8 +42,8 @@
       <file leaf-file-name="FutbolApp.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Controller/FutbolApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="774">
-              <caret line="366" column="19" lean-forward="true" selection-start-line="366" selection-start-column="19" selection-end-line="366" selection-end-column="19" />
+            <state relative-caret-position="442">
+              <caret line="26" column="55" lean-forward="true" selection-start-line="26" selection-start-column="55" selection-end-line="26" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -50,9 +54,23 @@
       <file leaf-file-name="MenuEquipo.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/Model/MenuEquipo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="95" column="84" lean-forward="false" selection-start-line="95" selection-start-column="84" selection-end-line="95" selection-end-column="84" />
+            <state relative-caret-position="-547">
+              <caret line="55" column="31" lean-forward="true" selection-start-line="55" selection-start-column="31" selection-end-line="55" selection-end-column="31" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Partido.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/company/Model/Partido.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="301">
+              <caret line="145" column="20" lean-forward="false" selection-start-line="145" selection-start-column="20" selection-end-line="145" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2620#2621#0" expanded="true" />
+                <element signature="e#2650#2651#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -87,7 +105,6 @@
       <list>
         <option value="$PROJECT_DIR$/src/com/company/Model/MenuCompeticion.java" />
         <option value="C:/Program Files/Java/jdk1.8.0_131/jre/lib/rt.jar!/sun/misc/Launcher.class" />
-        <option value="$PROJECT_DIR$/src/com/company/Model/Partido.java" />
         <option value="$PROJECT_DIR$/src/com/company/Model/MenuPartidoSegunda.java" />
         <option value="$PROJECT_DIR$/src/com/company/Model/MenuPartidoPrimera.java" />
         <option value="$PROJECT_DIR$/src/com/company/Model/MenuEquipoPrimera.java" />
@@ -95,15 +112,16 @@
         <option value="$PROJECT_DIR$/src/com/company/Model/Liga.java" />
         <option value="$PROJECT_DIR$/src/com/company/Model/MenuLiga.java" />
         <option value="$PROJECT_DIR$/src/com/company/Model/Competicion.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Model/MenuPartido.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Model/MenuClasificacion.java" />
         <option value="$PROJECT_DIR$/src/com/company/Model/Clasificacion.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Model/Equipo.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Model/MenuJugador.java" />
         <option value="$PROJECT_DIR$/src/com/company/Model/Jugador.java" />
         <option value="$PROJECT_DIR$/src/com/company/Model/Posicion.java" />
-        <option value="$PROJECT_DIR$/src/com/company/Main.java" />
-        <option value="$PROJECT_DIR$/src/com/company/Model/MenuJugador.java" />
-        <option value="$PROJECT_DIR$/src/com/company/Model/Equipo.java" />
-        <option value="$PROJECT_DIR$/src/com/company/Model/MenuPartido.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Model/Partido.java" />
         <option value="$PROJECT_DIR$/src/com/company/Controller/FutbolApp.java" />
-        <option value="$PROJECT_DIR$/src/com/company/Model/MenuClasificacion.java" />
         <option value="$PROJECT_DIR$/src/com/company/Model/MenuEquipo.java" />
       </list>
     </option>
@@ -234,8 +252,8 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -719,7 +737,11 @@
       <workItem from="1496062820840" duration="3627000" />
       <workItem from="1496068475277" duration="11901000" />
       <workItem from="1496089969448" duration="13276000" />
-      <workItem from="1496146018516" duration="11207000" />
+      <workItem from="1496146018516" duration="11877000" />
+      <workItem from="1496161225362" duration="7196000" />
+      <workItem from="1496233097668" duration="909000" />
+      <workItem from="1496250593650" duration="120000" />
+      <workItem from="1496345913291" duration="6201000" />
     </task>
     <task id="LOCAL-00001" summary="Comparadores de jugadores">
       <created>1495107377941</created>
@@ -847,11 +869,18 @@
       <option name="project" value="LOCAL" />
       <updated>1496103547849</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Agregadas las excepciones">
+      <created>1496159793350</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1496159793350</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="199243000" />
+    <option name="totallyTimeSpent" value="214339000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -872,7 +901,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22228146" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16791044" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -938,11 +967,12 @@
     <MESSAGE value="Pichichi y Zamora" />
     <MESSAGE value="Terminado Trofeo Zamora" />
     <MESSAGE value="Agregado un bonito menú de inicio" />
-    <option name="LAST_COMMIT_MESSAGE" value="Agregado un bonito menú de inicio" />
+    <MESSAGE value="Agregadas las excepciones" />
+    <option name="LAST_COMMIT_MESSAGE" value="Agregadas las excepciones" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="186" />
+      <option name="time" value="199" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -995,7 +1025,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2650#2651#0" expanded="true" />
+            <element signature="e#2775#2776#0" expanded="true" />
+            <element signature="e#2815#2816#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1004,8 +1039,7 @@
         <state relative-caret-position="3196">
           <caret line="265" column="64" lean-forward="false" selection-start-line="265" selection-start-column="64" selection-end-line="265" selection-end-column="64" />
           <folding>
-            <element signature="e#5503#5504#0" expanded="false" />
-            <element signature="e#5583#5584#0" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1064,7 +1098,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2650#2651#0" expanded="true" />
+            <element signature="e#2775#2776#0" expanded="true" />
+            <element signature="e#2815#2816#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1073,8 +1112,7 @@
         <state relative-caret-position="85">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding>
-            <element signature="e#5503#5504#0" expanded="false" />
-            <element signature="e#5583#5584#0" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1210,17 +1248,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="1474" column="0" lean-forward="false" selection-start-line="1474" selection-start-column="0" selection-end-line="1474" selection-end-column="0" />
-          <folding>
-            <element signature="e#62860#62861#0" expanded="false" />
-            <element signature="e#62916#62917#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/Integer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
@@ -1276,37 +1303,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Model/Jugador.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="55" column="3" lean-forward="false" selection-start-line="55" selection-start-column="3" selection-end-line="55" selection-end-column="3" />
-          <folding>
-            <element signature="e#5503#5504#0" expanded="false" />
-            <element signature="e#5583#5584#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Model/Partido.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2868">
-          <caret line="16" column="33" lean-forward="false" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Model/Posicion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="16" lean-forward="true" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
-          <folding>
-            <element signature="e#481#482#0" expanded="true" />
-            <element signature="e#514#515#0" expanded="true" />
-            <element signature="e#554#555#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1315,69 +1311,107 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Model/Equipo.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="124" column="0" lean-forward="false" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
+        <state relative-caret-position="208">
+          <caret line="1237" column="15" lean-forward="false" selection-start-line="1237" selection-start-column="15" selection-end-line="1237" selection-end-column="15" />
           <folding>
-            <element signature="e#2138#2139#0" expanded="true" />
-            <element signature="e#2169#2170#0" expanded="true" />
-            <element signature="e#2227#2228#0" expanded="true" />
-            <element signature="e#2270#2271#0" expanded="true" />
-            <element signature="e#2313#2314#0" expanded="true" />
-            <element signature="e#2350#2351#0" expanded="true" />
-            <element signature="e#2415#2416#0" expanded="true" />
-            <element signature="e#2470#2471#0" expanded="true" />
+            <element signature="e#47538#47539#0" expanded="false" />
+            <element signature="e#47602#47603#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Model/MenuJugador.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3146">
-          <caret line="278" column="46" lean-forward="false" selection-start-line="278" selection-start-column="46" selection-end-line="278" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Model/MenuPartido.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2842">
-          <caret line="63" column="22" lean-forward="false" selection-start-line="63" selection-start-column="22" selection-end-line="63" selection-end-column="22" />
+        <state relative-caret-position="3575">
+          <caret line="247" column="12" lean-forward="false" selection-start-line="247" selection-start-column="12" selection-end-line="247" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Model/MenuClasificacion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="48" column="22" lean-forward="false" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Model/Clasificacion.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2788">
-          <caret line="207" column="6" lean-forward="false" selection-start-line="207" selection-start-column="6" selection-end-line="207" selection-end-column="6" />
+        <state relative-caret-position="530">
+          <caret line="139" column="0" lean-forward="true" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Controller/FutbolApp.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/Model/Equipo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="774">
-          <caret line="366" column="19" lean-forward="true" selection-start-line="366" selection-start-column="19" selection-end-line="366" selection-end-column="19" />
+        <state relative-caret-position="318">
+          <caret line="115" column="35" lean-forward="false" selection-start-line="115" selection-start-column="35" selection-end-line="115" selection-end-column="35" />
+          <folding>
+            <element signature="e#822#823#0" expanded="true" />
+            <element signature="e#854#855#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Model/Jugador.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="289" column="46" lean-forward="false" selection-start-line="289" selection-start-column="46" selection-end-line="289" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Model/MenuClasificacion.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/Model/MenuJugador.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="28" column="53" lean-forward="true" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
+        <state relative-caret-position="46">
+          <caret line="318" column="16" lean-forward="false" selection-start-line="318" selection-start-column="16" selection-end-line="318" selection-end-column="16" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Model/Posicion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+          <folding>
+            <element signature="e#430#431#0" expanded="true" />
+            <element signature="e#482#483#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Model/Partido.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="145" column="20" lean-forward="false" selection-start-line="145" selection-start-column="20" selection-end-line="145" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2620#2621#0" expanded="true" />
+            <element signature="e#2650#2651#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Controller/FutbolApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="55" lean-forward="true" selection-start-line="26" selection-start-column="55" selection-end-line="26" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Model/MenuEquipo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="95" column="84" lean-forward="false" selection-start-line="95" selection-start-column="84" selection-end-line="95" selection-end-column="84" />
+        <state relative-caret-position="-547">
+          <caret line="55" column="31" lean-forward="true" selection-start-line="55" selection-start-column="31" selection-end-line="55" selection-end-column="31" />
           <folding />
         </state>
       </provider>

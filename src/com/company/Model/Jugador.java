@@ -282,25 +282,25 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
 
    @Override
    public String toString() {
-      return "Jugador{" +
-              "nombreJugador='" + nombreJugador + '\'' +
-              ", apellidosJugador='" + apellidosJugador + '\'' +
-              ", posicion=" + posicion +
-              ", capitan=" + capitan +
-              ", altura=" + altura +
-              ", peso=" + peso +
-              ", dorsal=" + dorsal +
-              ", edad=" + edad +
-              ", partidosJugados=" + partidosJugados +
-              ", tarjetasAmarillas=" + tarjetasAmarillas +
-              ", tarjetasRoja=" + tarjetasRoja +
-              ", goles=" + goles +
-              ", golesEnPropia=" + golesEnPropia +
-              ", golesRecibidos=" + golesRecibidos +
-              ", promedio de goles recibidos: " + getPromedioDeGoles() +
-              ", asistencias=" + asistencias +
-              ", sEquipo='" + sEquipo + '\'' +
-              '}';
+      return
+              "Nombre: '" + nombreJugador + '\'' +
+              ", Apellidos: '" + apellidosJugador + '\'' +
+              ", Posición: " + posicion +
+              ", Capitán: " + capitan +
+              ", Altura: " + altura + " metros" +
+              ", Peso: " + peso + " Kg" +
+              ", Dorsal: " + dorsal +
+              ", Edad: " + edad +
+              ", Partidos jugados: " + partidosJugados +
+              ", Tarjetas amarillas: " + tarjetasAmarillas +
+              ", Tarjetas rojas: " + tarjetasRoja +
+              ", Goles: " + goles +
+              ", Goles en propia: " + golesEnPropia +
+              ", Goles recibidos: " + golesRecibidos +
+              ", Promedio de goles recibidos: " + getPromedioDeGoles() +
+              ", Asistencias: " + asistencias +
+              ", Equipo: '" + sEquipo + '\'' +
+              '.';
    }
 
 

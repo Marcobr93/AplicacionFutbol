@@ -42,7 +42,20 @@ public class MenuEquipo  {
         }
         return false;
     }
-
+/*
+    public Competicion  elegirCompeticion(String nombreCompeticion, Competicion competicion){
+            if (nombreCompeticion.toLowerCase().replace(" ", "").equals("primera")){
+                competicion = Competicion.PRIMERA;
+            }else if(nombreCompeticion.toLowerCase().replace(" ", "").equals("segunda")){
+                competicion = Competicion.SEGUNDA;
+            }else if (!nombreCompeticion.equals("primera")){
+                competicion = null;
+            }else if (!nombreCompeticion.equals("segunda")){
+                competicion = null;
+            }
+            return competicion;
+    }
+*/
     public void crearEquipo(){
         Scanner scanner = new Scanner(System.in);
 
@@ -99,8 +112,12 @@ public class MenuEquipo  {
                competicion = Competicion.PRIMERA;
            }else if(nombreCompeticion.toLowerCase().replace(" ", "").equals("segunda")){
                competicion = Competicion.SEGUNDA;
+           }else if (!nombreCompeticion.equals("primera")){
+               competicion = null;
+           }else if (!nombreCompeticion.equals("segunda")){
+               competicion = null;
            }
-       }while (nombreCompeticion !="primera" || nombreCompeticion != "segunda");
+       }while (competicion == null);
 
 
         equipo = new Equipo(nombreEquipo, presidente, entrenador, estadio, añoFundacion, competicion);
@@ -180,7 +197,7 @@ public class MenuEquipo  {
 
     public void buscarEquipos() {
         String nombre;
-        int indice = 0;
+        int indice = 1;
         Scanner input = new Scanner(System.in);
 
         listaEquipos();
@@ -208,7 +225,7 @@ public class MenuEquipo  {
 
 
     public void listaEquipos(){
-        int indice = 0;
+        int indice = 1;
 
         for (Equipo equipo: equipos) {
             System.out.println((indice++) + " - " + equipo.getNombreEquipo());
@@ -216,7 +233,7 @@ public class MenuEquipo  {
     }
 
     public void listaEquiposPrimera(){
-        int indice = 0;
+        int indice = 1;
 
         for (Equipo equipo: equiposPrimera) {
             System.out.println((indice++) + " - " + equipo.getNombreEquipo());
@@ -224,7 +241,7 @@ public class MenuEquipo  {
     }
 
     public void listaEquiposSegunda(){
-        int indice = 0;
+        int indice = 1;
 
         for (Equipo equipo: equiposSegunda) {
             System.out.println((indice++) + " - " + equipo.getNombreEquipo());

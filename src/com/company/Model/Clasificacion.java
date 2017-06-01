@@ -124,17 +124,17 @@ public class Clasificacion {
 
     @Override
     public String toString() {
-        return "Clasificacion{" +
-                "nombreEquipo='" + nombreEquipo + '\'' +
-                ", partidosJugados=" + partidosJugados +
-                ", partidosGanados=" + partidosGanados +
-                ", partidosEmpatados=" + partidosEmpatados +
-                ", partidosPerdidos=" + partidosPerdidos +
-                ", golesAFavor=" + golesAFavor +
-                ", golesEnContra=" + golesEnContra +
+        return
+                nombreEquipo  +
+                ", Partidos jugados: " + partidosJugados +
+                ", Partidos ganados: " + partidosGanados +
+                ", Partidos empatados: " + partidosEmpatados +
+                ", Partidos perdidos: " + partidosPerdidos +
+                ", Goles a favor: " + golesAFavor +
+                ", Goles en contra: " + golesEnContra +
                 ", Diferencia de Goles: " + getDiferenciaDeGoles() +
-                ", puntos=" + puntos +
-                '}';
+                ", Puntos: " + puntos +
+                '.';
     }
 
 
