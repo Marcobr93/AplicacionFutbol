@@ -6,12 +6,17 @@ import java.util.*;
  * Created by marco on 19/05/2017.
  */
 public class MenuPartido {
-    public ArrayList<Partido> partidos = new ArrayList<>();
-    public ArrayList<Equipo> equipos = new ArrayList<>();
-    public ArrayList<Partido> partidosPrimera= new ArrayList<>();
-    public ArrayList<Partido> partidosSegunda= new ArrayList<>();
+    public ArrayList<Partido> partidos = new ArrayList<>();             // ArrayList con todos los partidos
+    public ArrayList<Equipo> equipos = new ArrayList<>();               // ArrayList con todos los equipos
+    public ArrayList<Partido> partidosPrimera= new ArrayList<>();       // ArrayList con los partidos de Primera
+    public ArrayList<Partido> partidosSegunda= new ArrayList<>();       // ArrayList con los partidos de Segunda
+
+
     // Constructores
 
+    /**
+     * Constructor por defecto
+     */
     public MenuPartido() {
     }
 
@@ -42,7 +47,8 @@ public class MenuPartido {
     }
 
     /**
-     * Método que nos permite crear un partido
+     * Método que nos permite crear un partido y lo añadirá al ArrayList partidos y si tiene como competición 'Primera',
+     * lo añadirá al ArrayList equiposPrimera y si tiene como competición 'Segunda', lo añadirá al ArrayList equiposSegunda
      */
     public void crearPartido() {
         Scanner scanner = new Scanner(System.in);
@@ -89,7 +95,7 @@ public class MenuPartido {
             }else {
                 mismoEquipo = false;
             }
-        } while (mismoEquipo);
+        } while (mismoEquipo || equipoVisitante == null);
 
         do {
             System.out.println("Introduzca el estadio: ");
@@ -125,7 +131,7 @@ public class MenuPartido {
                     System.out.println("Por favor, introduzca un número válido de goles");
                     scanner.next();
                 }
-            }while (golesLocal <= 0);
+            }while (golesLocal < 0);
 
 
             do {
@@ -136,7 +142,7 @@ public class MenuPartido {
                     System.out.println("Por favor, introduzca un número válido de goles");
                     scanner.next();
                 }
-            }while (golesVisitante <= 0);
+            }while (golesVisitante < 0);
 
 
             do {
@@ -150,15 +156,27 @@ public class MenuPartido {
             }while (jornada <= 0);
 
 
-
             partido = new Partido(equipoLocal,nombreEquipoLocal, equipoVisitante,nombreEquipoVisitante, estadio, arbitro, competicion, golesLocal, golesVisitante, jornada);
 
             if (partido != null) {
                 for (Partido partid : partidos) {
-                    if ((partido.getJornada() == (partid.getJornada())) && partido.getEquipoLocal().equals(partid.getEquipoLocal())) {
+                    if ((jornada == (partid.getJornada())) && nombreEquipoLocal.equals(partid.getNombreEquipoLocal())) {
+                        noCreado = false;
+                    }else if ((jornada == (partid.getJornada())) && nombreEquipoVisitante.equals(partid.getNombreEquipoVisitante())) {
+                        noCreado = false;
+                    }else if ((jornada == (partid.getJornada())) && nombreEquipoLocal.equals(partid.getNombreEquipoVisitante())) {
+                        noCreado = false;
+                    }else if ((jornada == (partid.getJornada())) && nombreEquipoVisitante.equals(partid.getNombreEquipoLocal())){
+                        noCreado = false;
+                    }else if(!equipoLocal.getCompeticion().equals(equipoVisitante.getCompeticion())){
                         noCreado = false;
                     }
                 }
+
+                if (noCreado == false){
+                    System.out.println("El partido no ha podido ser creado debido a que el nombre de un equipo o bien la jornada del partido, coincide con un registro ya creado.");
+                }
+
                 if (noCreado == true) {
                     if (competicion.equals(Competicion.PRIMERA)){
                         partidosPrimera.add(partido);
@@ -166,9 +184,11 @@ public class MenuPartido {
                         partidosSegunda.add(partido);
                     }
                     partidos.add(partido);
+                    System.out.println("Partido creado correctamente");
                 }
             }
     }
+
 
     /**
      * Método que nos permite eliminar un partido introduciendo la jornada de este
@@ -214,6 +234,7 @@ public class MenuPartido {
         } while (jornada <= 0);
     }
 
+
     /**
      * Método que nos permite buscar un partido por su jornada.
      */
@@ -238,6 +259,7 @@ public class MenuPartido {
         }while (jornada <= 0);
     }
 
+
     /**
      * Método que nos permite buscar un partido de primera por su jornada.
      */
@@ -260,6 +282,7 @@ public class MenuPartido {
             }
         }while (jornada <= 0);
     }
+
 
     /**
      * Método que nos permite buscar un partido de seguunda por su jornada.
@@ -286,6 +309,7 @@ public class MenuPartido {
 
     }
 
+
     /**
      * Método que nos permite buscar un partido que haya jugado el equipo de primera introducido
      */
@@ -305,6 +329,7 @@ public class MenuPartido {
             }
         }
     }
+
 
     /**
      * Método que nos permite buscar un partido que haya jugado el equipo de segunda introducido
@@ -327,6 +352,7 @@ public class MenuPartido {
         }
     }
 
+
     /**
      * Método con un foreach que recorre el ArrayList de partidos y nos muestra cada uno de ellos.
      */
@@ -336,6 +362,7 @@ public class MenuPartido {
         }
     }
 
+
     /**
      * Método con un foreach que recorre el ArrayList de partidosPrimera y nos muestra cada uno de ellos.
      */
@@ -344,6 +371,7 @@ public class MenuPartido {
             System.out.println(partido);
         }
     }
+
 
     /**
      * Método con un foreach que recorre el ArrayList de partidosSegunda y nos muestra cada uno de ellos.
@@ -357,36 +385,63 @@ public class MenuPartido {
 
     // Ordenación partidos Primera
 
+    /**
+     * Método que utiliza el comparadorPorLocal para ordenar la lista de partidos del ArrayList listaPartidosPrimera
+     */
     public void ordenacionPorLocalPrimera(){
         Collections.sort(partidosPrimera, Partido.comparadorPorLocal);
 
         listaPartidosPrimera();
     }
 
+    /**
+     * Método que utiliza el comparadorPorVisitante para ordenar la lista de partidos del ArrayList listaPartidosPrimera
+     */
     public void ordenacionPorVisitantePrimera(){
         Collections.sort(partidosPrimera, Partido.comparadorPorVisitante);
 
         listaPartidosPrimera();
     }
 
+    /**
+     * Método que utiliza el comparadorPorEstadio para ordenar la lista de partidos del ArrayList listaPartidosPrimera
+     */
     public void ordenacionPorEstadioPrimera(){
         Collections.sort(partidosPrimera, Partido.comparadorPorEstadio);
 
         listaPartidosPrimera();
     }
 
+    /**
+     * Método que utiliza el comparadorPorArbitro para ordenar la lista de partidos del ArrayList listaPartidosPrimera
+     */
+    public void ordenacionPorArbitroPrimera(){
+        Collections.sort(partidosPrimera, Partido.comparadorPorArbitro);
+
+        listaPartidosPrimera();
+    }
+
+    /**
+     * Método que utiliza el comparadorPorJornada para ordenar la lista de partidos del ArrayList listaPartidosPrimera
+     */
     public void ordenacionPorJornadaPrimera(){
         Collections.sort(partidosPrimera, Partido.comparadorPorJornada);
 
         listaPartidosPrimera();
     }
 
+    /**
+     * Método que utiliza el comparadorPorGolesLocal para ordenar la lista de partidos del ArrayList listaPartidosPrimera
+     */
     public void ordenacionPorGolesLocalPrimera(){
         Collections.sort(partidosPrimera, Partido.comparadorPorGolesLocal);
 
         listaPartidosPrimera();
     }
 
+    /**
+     * Método que utiliza el comparadorPorGolesVisitante para ordenar la lista de partidos del ArrayList listaPartidosPrimera
+     */
     public void ordenacionPorGolesVisitantePrimera(){
         Collections.sort(partidosPrimera, Partido.comparadorPorGolesVisitante);
 
@@ -397,36 +452,63 @@ public class MenuPartido {
 
     // Ordenación por partidos Segunda
 
+    /**
+     * Método que utiliza el comparadorPorLocal para ordenar la lista de partidos del ArrayList listaPartidosSegunda
+     */
     public void ordenacionPorLocalSegunda(){
         Collections.sort(partidosSegunda, Partido.comparadorPorLocal);
 
         listaPartidosSegunda();
     }
 
+    /**
+     * Método que utiliza el comparadorPorVisitante para ordenar la lista de partidos del ArrayList listaPartidosSegunda
+     */
     public void ordenacionPorVisitanteSegunda(){
         Collections.sort(partidosSegunda, Partido.comparadorPorVisitante);
 
         listaPartidosSegunda();
     }
 
+    /**
+     * Método que utiliza el comparadorPorEstadio para ordenar la lista de partidos del ArrayList listaPartidosSegunda
+     */
     public void ordenacionPorEstadioSegunda(){
         Collections.sort(partidosSegunda, Partido.comparadorPorEstadio);
 
         listaPartidosSegunda();
     }
 
+    /**
+     * Método que utiliza el comparadorPorArbitro para ordenar la lista de partidos del ArrayList listaPartidosPrimera
+     */
+    public void ordenacionPorArbitroSegunda(){
+        Collections.sort(partidosSegunda, Partido.comparadorPorArbitro);
+
+        listaPartidosSegunda();
+    }
+
+    /**
+     * Método que utiliza el comparadorPorJornada para ordenar la lista de partidos del ArrayList listaPartidosSegunda
+     */
     public void ordenacionPorJornadaSegunda(){
         Collections.sort(partidosSegunda, Partido.comparadorPorJornada);
 
         listaPartidosSegunda();
     }
 
+    /**
+     * Método que utiliza el comparadorPorGolesLocal para ordenar la lista de partidos del ArrayList listaPartidosSegunda
+     */
     public void ordenacionPorGolesLocalSegunda(){
         Collections.sort(partidosSegunda, Partido.comparadorPorGolesLocal);
 
         listaPartidosSegunda();
     }
 
+    /**
+     * Método que utiliza el comparadorPorGolesVisitante para ordenar la lista de partidos del ArrayList listaPartidosSegunda
+     */
     public void ordenacionPorGolesVisitanteSegunda(){
         Collections.sort(partidosSegunda, Partido.comparadorPorGolesVisitante);
 

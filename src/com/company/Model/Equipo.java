@@ -6,21 +6,32 @@ import java.util.*;
  * Created by MarcoAntonio on 15/05/2017.
  */
 public class Equipo {
-   private String nombreEquipo;
-   private String presidente;
-   private String entrenador;
-   private String estadio;
-   private int añoFundacion;
-   private Competicion competicion;
-   private String nombreCompeticion;
+   private String nombreEquipo;                 // nombre del equipo
+   private String presidente;                   // nombre del presidente del equipo
+   private String entrenador;                   // nombre del entrenador del equipo
+   private String estadio;                      // nombre del estadio del equipo
+   private int añoFundacion;                    // año de fundación del equipo
+   private Competicion competicion;             // competición que disputa el equipo
+   private String nombreCompeticion;            // nombre de la competición que disputa el equipo
 
 
    // Constructores
 
+   /**
+    * Constructor por defecto
+    */
    public Equipo() {
    }
 
-
+   /**
+    * Constructor con todos los atributos
+    * @param nombreEquipo
+    * @param presidente
+    * @param entrenador
+    * @param estadio
+    * @param añoFundacion
+    * @param competicion
+    */
    public Equipo(String nombreEquipo, String presidente, String entrenador, String estadio, int añoFundacion, Competicion competicion) {
       this.setNombreEquipo(nombreEquipo);
       this.setPresidente(presidente);
@@ -115,15 +126,19 @@ public class Equipo {
    public String toString() {
       return   "Nombre del equipo: "
               + nombreEquipo + '\'' +
-              ", Presidente: '" + presidente + '\'' +
-              ", Entrenador: '" + entrenador + '\'' +
-              ", Estadio: '" + estadio + '\'' +
-              ", Año de fundacion: " + añoFundacion +
-              ", Competición: '" + competicion + '\'' +
+              ",  Presidente: '" + presidente + '\'' +
+              ",  Entrenador: '" + entrenador + '\'' +
+              ",  Estadio: '" + estadio + '\'' +
+              ",  Año de fundacion: " + añoFundacion +
+              ",  Competición: '" + competicion + '\'' +
               '.';
    }
 
-
+   /**
+    *
+    * @param obj
+    * @return Se consideran dos equipos iguales si tienen el mismo nombre
+    */
    @Override
    public boolean equals(Object obj) {
       if( this == obj ) { return true; }

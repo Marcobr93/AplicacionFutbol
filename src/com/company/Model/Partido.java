@@ -7,16 +7,16 @@ import java.util.Objects;
  * Created by MarcoAntonio on 15/05/2017.
  */
 public class Partido implements Comparable<Partido>, Comparator<Partido>{
-    private Equipo equipoLocal;
-    private String nombreEquipoLocal;
-    private Equipo equipoVisitante;
-    private String nombreEquipoVisitante;
-    private String estadio;
-    private String arbitro;
-    private Competicion competicion;
-    private int golLocal;
-    private int golVisitante;
-    private int jornada;
+    private Equipo equipoLocal;                 // equipo local
+    private String nombreEquipoLocal;           // String nombre del equipo local
+    private Equipo equipoVisitante;             // equipo visitante
+    private String nombreEquipoVisitante;       // nombre del equipo visitante
+    private String estadio;                     // nombre del estadio
+    private String arbitro;                     // nombre del árbitro
+    private Competicion competicion;            // competición en la que se disputa el partido
+    private int golLocal;                       // gol del equipo local
+    private int golVisitante;                   // gol del equipo visitante
+    private int jornada;                        // jornada en la que se disputa el partido
 
     // Constructores
 
@@ -136,15 +136,15 @@ public class Partido implements Comparable<Partido>, Comparator<Partido>{
 
     @Override
     public String toString() {
-        return "Partido-->" +
+        return "Jornada: " + jornada +
+                "-->" +
                 " Local: '" + nombreEquipoLocal + '\'' +
-                ", Visitante: '" + nombreEquipoVisitante + '\'' +
-                ", Estadio: '" + estadio + '\'' +
-                ", Árbitro: '" + arbitro + '\'' +
-                ", Competición: " + competicion +
-                ", Goles local: " + golLocal +
-                ", Goles visitante: " + golVisitante +
-                ", Jornada: " + jornada +
+                ",  Visitante: '" + nombreEquipoVisitante + '\'' +
+                ",  Estadio: '" + estadio + '\'' +
+                ",  Árbitro: '" + arbitro + '\'' +
+                ",  Competición: " + competicion +
+                ",  Goles local: " + golLocal +
+                ",  Goles visitante: " + golVisitante +
                 '.';
     }
 
@@ -207,12 +207,23 @@ public class Partido implements Comparable<Partido>, Comparator<Partido>{
     };
 
     /**
+     * Ordena y muestra todos los partidos por el árbitro que dirigió el partido
+     */
+    public static Comparator<Partido> comparadorPorArbitro = new Comparator<Partido>() {
+        @Override
+        public int compare(Partido partido1, Partido partido2) {
+            int res = partido1.getArbitro().compareToIgnoreCase(partido2.getArbitro());
+            return res;
+        }
+    };
+
+    /**
      * Ordena y muestra los partidos por su jornada
      */
     public static Comparator<Partido> comparadorPorJornada = new Comparator<Partido>() {
         @Override
         public int compare(Partido partido1, Partido partido2) {
-            return (partido2.getJornada() - partido1.getJornada());
+            return (partido1.getJornada() - partido2.getJornada());
         }
     };
 
@@ -236,7 +247,11 @@ public class Partido implements Comparable<Partido>, Comparator<Partido>{
         }
     };
 
-
+    /**
+     *
+     * @param obj
+     * @return Se consideran dos partidos iguales si tienen el mismo nombre de Equipo Local
+     */
     @Override
     public boolean equals(Object obj) {
         if( this == obj ) { return true; }
@@ -248,6 +263,6 @@ public class Partido implements Comparable<Partido>, Comparator<Partido>{
         Partido partido = (Partido) obj;
 
         // Se consideran dos equipos iguales si tienen el mismo nombre
-        return Objects.equals(this.getEquipoLocal(), partido.getEquipoVisitante());
+        return Objects.equals(this.getNombreEquipoLocal(), partido.getNombreEquipoLocal());
     }
 }

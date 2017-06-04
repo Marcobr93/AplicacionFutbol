@@ -5,6 +5,10 @@ import java.util.ArrayList;
 /**
  * Created by marco on 18/05/2017.
  */
+
+/**
+ * Enum Competicion que contiene las dos competiciones contempladas en este proyecto, primera y segunda división.
+ */
 public enum Competicion {
     PRIMERA("Primera"),
     SEGUNDA("Segunda");

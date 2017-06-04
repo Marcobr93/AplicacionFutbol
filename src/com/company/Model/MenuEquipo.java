@@ -7,16 +7,22 @@ import java.util.*;
  */
 public class MenuEquipo  {
 
-    public ArrayList<Equipo> equipos = new ArrayList<>();
-    public ArrayList<Equipo> equiposPrimera = new ArrayList<>();
-    public ArrayList<Equipo> equiposSegunda = new ArrayList<>();
-
+    public ArrayList<Equipo> equipos = new ArrayList<>();                // ArrayList con todos los equipos
+    public ArrayList<Equipo> equiposPrimera = new ArrayList<>();         // ArrayList con los equipos de Primera
+    public ArrayList<Equipo> equiposSegunda = new ArrayList<>();         // ArrayList con los equipos de Segunda
 
     // Constructores
 
+    /**
+     * Constructor por defecto
+     */
     public MenuEquipo() {
     }
 
+    /**
+     * Constructor que recibe el ArrayList de Equipo desde Controller/FutbolApp
+     * @param equipos
+     */
     public MenuEquipo(ArrayList<Equipo> equipos) {
         this.equipos = equipos;
     }
@@ -24,6 +30,11 @@ public class MenuEquipo  {
 
     // Métodos
 
+    /**
+     * Método que sirve para dividir el ArrayList equipos en dos nuevos, los equipos que tengan como competición
+     * 'PRIMERA', se añadirán al ArrayList equiposPrimera y los equipos que tengan como competición 'SEGUNDA', se
+     * añadirán al ArrayList equiposSegunda
+     */
     public void añadirPrimeraOSegunda(){
         for (Equipo equipo: equipos) {
             if (equipo.getCompeticion().equals(Competicion.PRIMERA)){
@@ -34,6 +45,12 @@ public class MenuEquipo  {
         }
     }
 
+    /**
+     * Método que con un foreach recorre el ArrayList equipos para saber si existe un equipo con el mismo nombre que
+     * el introducido
+     * @param nombreEquipo parámetro que utilizamos a la hora de crear un equipo
+     * @return true si el nombreEquipo existe en el ArrayList equipos y false si no existe
+     */
     public boolean existeEnArrayEquipo(String nombreEquipo){
         for (Equipo equipo: equipos) {
            if (equipo.getNombreEquipo().equals(nombreEquipo)){
@@ -56,6 +73,10 @@ public class MenuEquipo  {
             return competicion;
     }
 */
+
+    /**
+     * Método que sirve para crear un Equipo nuevo
+     */
     public void crearEquipo(){
         Scanner scanner = new Scanner(System.in);
 
@@ -127,8 +148,15 @@ public class MenuEquipo  {
         }else if (competicion.equals(Competicion.SEGUNDA)){
             equiposSegunda.add(equipo);
         }
+        equipos.add(equipo);
     }
 
+    /**
+     * Método para eliminar un Equipo, utiliza 3 Iterator distintos, uno por cada ArrayList de Equipo que hay (equipos,
+     * equiposPrimera y equiposSegunda), de esta forma podemos borrar el equipo cuyo nombre coincida con el introducido
+     * por el usuario tanto en el ArrayList equipos como al que perteneza el equipo en cuestión, equiposPrimera o
+     * equiposSegunda
+     */
     public void eliminarEquipo() {
         String nombre;
         Scanner scanner = new Scanner(System.in);
@@ -162,7 +190,9 @@ public class MenuEquipo  {
         } while (nombre.equals(""));
     }
 
-
+    /**
+     * Método que nos muestra la información del equipo de Primera cuyo nombre hayamos introducido previamente
+     */
     public void mostrarInformacionEquipoPrimera() {
         String nombre;
         Scanner scanner = new Scanner(System.in);
@@ -179,6 +209,9 @@ public class MenuEquipo  {
         }
     }
 
+    /**
+     * Método que nos muestra la información del equipo de Segunda cuyo nombre hayamos introducido previamente
+     */
     public void mostrarInformacionEquipoSegunda() {
         String nombre;
         Scanner scanner = new Scanner(System.in);
@@ -195,35 +228,38 @@ public class MenuEquipo  {
         }
     }
 
+    /**
+     * Método que con un foreach nos permite buscar cualquier equipo registrado o creado en el ArrayList de
+     * equipos
+     */
     public void buscarEquipos() {
         String nombre;
         int indice = 1;
-        Scanner input = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         listaEquipos();
 
         System.out.println();
         System.out.printf("Introduzca el nombre del equipo: ");
-        nombre = input.nextLine().toLowerCase().replace(" ","").replace("-", "");
-
-        for (Equipo equipo: equiposPrimera){
+        nombre = scanner.nextLine().toLowerCase().replace(" ","").replace("-", "");
+        try {
+        for (Equipo equipo: equipos){
             if (nombre.equals(equipo.getNombreEquipo().toLowerCase().replace(" ","").replace("-", ""))) {
                 System.out.println(equipo);
                 indice++;
+                }
             }
-        }
-        for (Equipo equipo: equiposSegunda){
-            if (nombre.equals(equipo.getNombreEquipo().toLowerCase().replace(" ","").replace("-", ""))) {
-                System.out.println(equipo);
-                indice++;
-            }
+        } catch (NullPointerException e) {
+            scanner.next();
         }
         if(indice==0) {
             System.out.println("No existe un equipo con ese nombre.");
         }
     }
 
-
+    /**
+     * Método que con un foreach nos muestra todos lo equipos del ArrayList equiposPrimera
+     */
     public void listaEquipos(){
         int indice = 1;
 
@@ -232,6 +268,9 @@ public class MenuEquipo  {
         }
     }
 
+    /**
+     * Método que con un foreach nos muestra los equipos del ArrayList equiposPrimera
+     */
     public void listaEquiposPrimera(){
         int indice = 1;
 
@@ -240,6 +279,9 @@ public class MenuEquipo  {
         }
     }
 
+    /**
+     * Método que con un foreach nos muestra los equipos del ArrayList equiposSegunda
+     */
     public void listaEquiposSegunda(){
         int indice = 1;
 

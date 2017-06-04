@@ -6,28 +6,39 @@ import java.util.*;
  * Created by MarcoAntonio on 15/05/2017.
  */
 public class MenuJugador {
-    public ArrayList<Equipo> equipos = new ArrayList<>();
-    public ArrayList<Jugador> jugadores = new ArrayList<>();
-    public ArrayList<Jugador> jugadoresPrimera = new ArrayList<>();
-    public ArrayList<Jugador> jugadoresSegunda = new ArrayList<>();
-    public ArrayList<Jugador> jugadoresEquipo = new ArrayList<>();
-    public ArrayList<Jugador> porterosPrimera = new ArrayList<>();
-    public ArrayList<Jugador> porterosSegunda = new ArrayList<>();
+    public ArrayList<Equipo> equipos = new ArrayList<>();              // ArrayList con todos los equipos
+    public ArrayList<Jugador> jugadores = new ArrayList<>();           // ArrayList con todos los jugadores
+    public ArrayList<Jugador> jugadoresPrimera = new ArrayList<>();    // ArrayList con los jugadores de Primera
+    public ArrayList<Jugador> jugadoresSegunda = new ArrayList<>();    // ArrayList con los jugadores de Segunda
+    public ArrayList<Jugador> jugadoresEquipo = new ArrayList<>();     // ArrayList con los jugadores del equipo elegido
+    public ArrayList<Jugador> porterosPrimera = new ArrayList<>();     // ArrayList con los porteros de Primera
+    public ArrayList<Jugador> porterosSegunda = new ArrayList<>();     // ArrayList con los porteros de Segunda
 
     // Constructores
 
-
+    /**
+     * Constructor por defecto
+     */
     public MenuJugador() {
     }
 
 
+    /**
+     * Constructor que recibe el ArrayList de Equipo desde Controller/FutbolApp
+     * @param equipos
+     */
     public MenuJugador(ArrayList<Equipo> equipos) {
         this.equipos = equipos;
     }
 
 
+
     // Métodos
 
+    /**
+     * Método que sirve para dividir el ArrayList jugadoresPrimera en uno nuevo, los equipos que tengan como posición
+     * 'Portero', se añadirán al ArrayList porterosPrimera.
+     */
     public void añadirPorteroPrimera(){
 
         for (Jugador jugador: jugadoresPrimera) {
@@ -37,6 +48,10 @@ public class MenuJugador {
         }
     }
 
+    /**
+     * Método que sirve para dividir el ArrayList jugadoresSegunda en uno nuevo, los equipos que tengan como posición
+     * 'Portero', se añadirán al ArrayList porterosSegunda.
+     */
     public void añadirPorteroSegunda(){
 
         for (Jugador jugador: jugadoresSegunda) {
@@ -46,7 +61,11 @@ public class MenuJugador {
         }
     }
 
-
+    /**
+     * Método que sirve para dividir el ArrayList jugadores en dos nuevos, los jugadores que tengan como competición
+     * 'PRIMERA', se añadirán al ArrayList jugadoresPrimera y los jugadores que tengan como competición 'SEGUNDA', se
+     * añadirán al ArrayList jugadoresSegunda
+     */
     public void añadirJugadoresPrimeraSegunda() {
         for (Jugador jugador : jugadores) {
             if (jugador.getCompeticion().equals(Competicion.PRIMERA)) {
@@ -57,7 +76,9 @@ public class MenuJugador {
         }
     }
 
-
+    /**
+     * Método que nos permite crear un jugador y lo añadirá al ArrayList jugadores
+     */
     public void crearJugador(){
 
         Scanner scanner = new Scanner(System.in);
@@ -286,6 +307,9 @@ public class MenuJugador {
         }
     }
 
+    /**
+     * Método que nos permite eliminar un jugador introduciendo el dorsal de este
+     */
     public void eliminarJugador(ArrayList<Jugador> jugadors){
         Scanner scanner = new Scanner(System.in);
         int dorsal = 0;
@@ -316,6 +340,9 @@ public class MenuJugador {
         }
     }
 
+    /**
+     * Método que nos permite buscar un jugador por su nombre.
+     */
     public void buscarJugador() {
         String nombre;
         Scanner scanner = new Scanner(System.in);
@@ -340,6 +367,10 @@ public class MenuJugador {
         }
     }
 
+    /**
+     * Método que nos permite elegir un equipo introduciendo el nombre de este y devuelve el ArrayList con los jugadores
+     * del equipo que hemos introducido el nombre
+     */
     public ArrayList<Jugador> elegirEquipo() {
 
         Scanner scanner = new Scanner(System.in);
@@ -350,7 +381,7 @@ public class MenuJugador {
         nombreIntroducido = scanner.nextLine();
 
         for (Jugador jugador: jugadores){
-            if (nombreIntroducido.equals(jugador.getsEquipo())) {
+            if (nombreIntroducido.equals(jugador.getEquipo())) {
                 System.out.println(jugador);
                 jugadoresEquipo.add(jugador);
             }
@@ -358,7 +389,9 @@ public class MenuJugador {
         return jugadoresEquipo;
     }
 
-
+    /**
+     * Método el cuál con un Foreach nos muestra los jugadores del ArrayList jugadores
+     */
     public void listaJugadores(){
         int indice = 1;
         for (Jugador jugador: jugadores){
@@ -366,13 +399,19 @@ public class MenuJugador {
         }
     }
 
+    /**
+     * Método el cuál con un Foreach nos muestra los jugadores del ArrayList jugadoresEquipo
+     */
     public void listaJugadoresEquipo(){
-        int indice = 1;
+
         for (Jugador jugador: jugadoresEquipo){
-            System.out.println((indice++) + " - " + jugador);
+            System.out.println(" - " + jugador);
         }
     }
 
+    /**
+     * Método el cuál con un Foreach nos muestra los jugadores del ArrayList jugadoresPrimera
+     */
     public void listaJugadoresEquiposPrimera(){
         int indice = 0;
         for (Jugador jugador: jugadoresPrimera){
@@ -380,6 +419,9 @@ public class MenuJugador {
         }
     }
 
+    /**
+     * Método el cuál con un Foreach nos muestra los jugadores del ArrayList jugadoresSegunda
+     */
     public void listaJugadoresEquiposSegunda(){
         int indice = 1;
         for (Jugador jugador: jugadoresSegunda){
@@ -387,126 +429,219 @@ public class MenuJugador {
         }
     }
 
+    /**
+     * Método el cuál con un Foreach nos muestra los porteros del ArrayList porterosPrimera
+     */
     public void listaPorterosPrimera(){
         int indice = 1;
 
         for (Jugador jugador: porterosPrimera) {
-            System.out.println((indice++) + " - " + jugador);
+            System.out.println((indice++) + " - " + jugador.getNombreJugador() + " " + jugador.getApellidosJugador() + ", Partidos jugados: " + jugador.getPartidosJugados() + ", Goles recibidos: " + jugador.getGolesRecibidos() + ", Promedio de goles: " + jugador.getPromedioDeGoles() + " por partido" + ", Equipo: " + jugador.getEquipo() + ".");
         }
     }
 
+    /**
+     * Método el cuál con un Foreach nos muestra los porteros del ArrayList porterosSegunda
+     */
     public void listaPorterosSegunda(){
         int indice = 1;
 
         for (Jugador jugador: porterosSegunda) {
-            System.out.println((indice++) + " - " + jugador);
+            System.out.println((indice++) + " - " + jugador.getNombreJugador() + " " + jugador.getApellidosJugador() + ", Partidos jugados: " + jugador.getPartidosJugados() + ", Goles recibidos: " + jugador.getGolesRecibidos() + ", Promedio de goles: " + jugador.getPromedioDeGoles() + " por partido"  + ", Equipo: " + jugador.getEquipo() + ".");
         }
     }
 
-    // Ordenación
 
+    /**
+     * Método el cuál con un Foreach nos muestra los goles de los jugadores del ArrayList jugadoresPrimera
+     */
+    public void listaPichichiPrimera(){
+        int indice = 1;
+
+        for (Jugador jugador: jugadoresPrimera) {
+            if (jugador.getGoles() >= 7)
+            System.out.println((indice++) + " - " + jugador.getNombreJugador() + " " + jugador.getApellidosJugador() + ", " + jugador.getGoles() + " goles" + ", Equipo: " + jugador.getEquipo() + ".");
+        }
+    }
+
+    /**
+     * Método el cuál con un Foreach nos muestra los goles de los jugadores del ArrayList jugadoresSegunda
+     */
+    public void listaPichichiSegunda(){
+        int indice = 1;
+
+        for (Jugador jugador: jugadoresSegunda) {
+            if (jugador.getGoles() >= 7)
+                System.out.println((indice++) + " - " + jugador.getNombreJugador() + " " + jugador.getApellidosJugador() + ", " + jugador.getGoles() + " goles" + ", Equipo: " + jugador.getEquipo() + ".");
+        }
+    }
+
+
+    // Ordenación de los jugadores del ArrayList jugadoresEquipo que hemos elegido su equipo con el método elegirEquipo
+
+    /**
+     * Método que utiliza el comparadorPorNombre para ordenar los jugadores del ArrayList jugadoresEquipo
+     */
     public void ordenacionPorNombre(ArrayList<Jugador> jugadoresEquipo){
         Collections.sort(jugadoresEquipo, Jugador.comparadorPorNombre);
 
         listaJugadoresEquipo();
     }
 
+    /**
+     * Método que utiliza el comparadorPorApellidos para ordenar los jugadores del ArrayList jugadoresEquipo
+     */
     public void ordenacionPorApellidos(ArrayList<Jugador> jugadoresEquipo){
         Collections.sort(jugadoresEquipo, Jugador.comparadorPorApellidos);
 
         listaJugadoresEquipo();
     }
 
+    /**
+     * Método que utiliza el comparadorPorPosicion para ordenar los jugadores del ArrayList jugadoresEquipo
+     */
     public void ordenacionPorPosicion(ArrayList<Jugador> jugadoresEquipo){
         Collections.sort(jugadoresEquipo, Jugador.comparadorPorPosicion);
 
         listaJugadoresEquipo();
     }
 
+    /**
+     * Método que utiliza el comparadorPorDorsal para ordenar los jugadores del ArrayList jugadoresEquipo
+     */
     public void ordenacionPorDorsal(ArrayList<Jugador> jugadoresEquipo){
         Collections.sort(jugadoresEquipo, Jugador.comparadorPorDorsal);
 
         listaJugadoresEquipo();
     }
 
+    /**
+     * Método que utiliza el comparadorPorAltura para ordenar los jugadores del ArrayList jugadoresEquipo
+     */
     public void ordenacionPorAltura(ArrayList<Jugador> jugadoresEquipo){
         Collections.sort(jugadoresEquipo, Jugador.comparadorPorAltura);
 
         listaJugadoresEquipo();
     }
 
+    /**
+     * Método que utiliza el comparadorPorPeso para ordenar los jugadores del ArrayList jugadoresEquipo
+     */
     public void ordenacionPorPeso(ArrayList<Jugador> jugadoresEquipo){
         Collections.sort(jugadoresEquipo, Jugador.comparadorPorPeso);
 
         listaJugadoresEquipo();
     }
 
+    /**
+     * Método que utiliza el comparadorPorEdad para ordenar los jugadores del ArrayList jugadoresEquipo
+     */
     public void ordenacionPorEdad(ArrayList<Jugador> jugadoresEquipo){
         Collections.sort(jugadoresEquipo, Jugador.comparadorPorEdad);
 
-        listaJugadores();
+        listaJugadoresEquipo();
     }
 
+    /**
+     * Método que utiliza el comparadorPorPartidosJugados para ordenar los jugadores del ArrayList jugadoresEquipo
+     */
     public void ordenacionPorPartidosJugados(ArrayList<Jugador> jugadoresEquipo){
         Collections.sort(jugadoresEquipo, Jugador.comparadorPorPartidosJugados);
 
         listaJugadoresEquipo();
     }
 
+    /**
+     * Método que utiliza el comparadorPorTarjetasAmarillas para ordenar los jugadores del ArrayList jugadoresEquipo
+     */
     public void ordenacionPorTarjetasAmarillas(ArrayList<Jugador> jugadoresEquipo){
         Collections.sort(jugadoresEquipo, Jugador.comparadorPorTarjetasAmarillas);
 
         listaJugadoresEquipo();
     }
 
+    /**
+     * Método que utiliza el comparadorPorTarjetasRojas para ordenar los jugadores del ArrayList jugadoresEquipo
+     */
     public void ordenacionPorTarjetasRojas(ArrayList<Jugador> jugadoresEquipo){
         Collections.sort(jugadoresEquipo, Jugador.comparadorPorTarjetasRojas);
 
         listaJugadoresEquipo();
     }
 
+    /**
+     * Método que utiliza el comparadorPorGoles para ordenar los jugadores del ArrayList jugadoresEquipo
+     */
     public void ordenacionPorGoles(ArrayList<Jugador> jugadoresEquipo){
         Collections.sort(jugadoresEquipo, Jugador.comparadorPorGoles);
 
         listaJugadoresEquipo();
     }
 
+    /**
+     * Método que utiliza el comparadorPorGolesEnPropia para ordenar los jugadores del ArrayList jugadoresEquipo
+     */
     public void ordenacionPorGolesEnPropia(ArrayList<Jugador> jugadoresEquipo){
         Collections.sort(jugadoresEquipo, Jugador.comparadorPorGolesEnPropia);
 
         listaJugadoresEquipo();
     }
 
+    /**
+     * Método que utiliza el comparadorPorGolesRecibidos para ordenar los jugadores del ArrayList jugadoresEquipo
+     */
     public void ordenacionPorGolesRecibidos(ArrayList<Jugador> jugadoresEquipo){
         Collections.sort(jugadoresEquipo, Jugador.comparadorPorGolesRecibidos);
 
         listaJugadoresEquipo();
     }
 
+    /**
+     * Método que utiliza el comparadorPorAsistencias para ordenar los jugadores del ArrayList jugadoresEquipo
+     */
     public void ordenacionPorAsistencias(ArrayList<Jugador> jugadoresEquipo){
         Collections.sort(jugadoresEquipo, Jugador.comparadorPorAsistencias);
 
         listaJugadoresEquipo();
     }
 
+
+    // Ordenación para obtener el Trofeo "pichichi", que se le otorga al jugador con más goles anotados
+    // en la competición de Primera/Segunda
+
+    /**
+     * Método que utiliza el comparadorPorGoles para ordenar los jugadores del ArrayList jugadoresPrimera
+     */
     public void ordenacionPorPichichiPrimera(){
         Collections.sort(jugadoresPrimera, Jugador.comparadorPorGoles);
 
-        listaJugadoresEquiposPrimera();
+        listaPichichiPrimera();
     }
 
+    /**
+     * Método que utiliza el comparadorPorGoles para ordenar los jugadores del ArrayList jugadoresSegunda
+     */
     public void ordenacionPorPichichiSegunda(){
         Collections.sort(jugadoresSegunda, Jugador.comparadorPorGoles);
 
-        listaJugadoresEquiposSegunda();
+        listaPichichiSegunda();
     }
 
+
+    // Ordenación porteros de Primera/Segunda
+
+    /**
+     * Método que utiliza el comparadorPorGolesRecibidos para ordenar los porteros del ArrayList porterosPrimera
+     */
     public void ordenacionPorZamoraPrimera(){
         Collections.sort(porterosPrimera, Jugador.comparadorPorGolesRecibidos);
 
         listaPorterosPrimera();
     }
 
+    /**
+     * Método que utiliza el comparadorPorGolesRecibidos para ordenar los porteros del ArrayList porterosSegunda
+     */
     public void ordenacionPorZamoraSegunda(){
         Collections.sort(porterosSegunda, Jugador.comparadorPorGolesRecibidos);
 

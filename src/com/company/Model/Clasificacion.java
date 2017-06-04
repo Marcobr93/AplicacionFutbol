@@ -1,28 +1,41 @@
 package com.company.Model;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 
 /**
  * Created by marco on 29/05/2017.
  */
 public class Clasificacion {
-    private String nombreEquipo;
-    private int partidosJugados;
-    private int partidosGanados;
-    private int partidosEmpatados;
-    private int partidosPerdidos;
-    private int golesAFavor;
-    private int golesEnContra;
-    private int puntos;
-    private ArrayList<Equipo> equipos;
-    private Competicion competicion;
+    private String nombreEquipo;            // nombre del equipo
+    private int partidosJugados;            // nº partidos jugados
+    private int partidosGanados;            // nº partidos ganados
+    private int partidosEmpatados;          // nº partidos empatados
+    private int partidosPerdidos;           // nº partidos perdidos
+    private int golesAFavor;                // nº goles a favor
+    private int golesEnContra;              // nº goles en contra
+    private int puntos;                     // nº de puntos obtenidos en el campeonato
+    private Competicion competicion;        // competición que disputa el equipo
 
     // Constructores
 
+    /**
+     * Constructor por defecto
+     */
     public Clasificacion() {
     }
 
+    /**
+     * Constructor con todos los atributos
+     * @param nombreEquipo
+     * @param partidosJugados
+     * @param partidosGanados
+     * @param partidosEmpatados
+     * @param partidosPerdidos
+     * @param golesAFavor
+     * @param golesEnContra
+     * @param puntos
+     * @param competicion
+     */
     public Clasificacion(String nombreEquipo, int partidosJugados, int partidosGanados, int partidosEmpatados, int partidosPerdidos, int golesAFavor, int golesEnContra, int puntos,  Competicion competicion) {
         this.setNombreEquipo(nombreEquipo);
         this.setPartidosJugados(partidosJugados);
@@ -94,6 +107,10 @@ public class Clasificacion {
         this.golesEnContra = golesEnContra;
     }
 
+    /**
+     * Getter para calcular la diferencia de goles(goles a favor - goles en contra)
+     * @return
+     */
     public int getDiferenciaDeGoles() {
         return getGolesAFavor() - getGolesEnContra();
     }
@@ -106,14 +123,6 @@ public class Clasificacion {
         this.puntos = puntos;
     }
 
-    public ArrayList<Equipo> getEquipos() {
-        return equipos;
-    }
-
-    public void setEquipos(ArrayList<Equipo> equipos) {
-        this.equipos = equipos;
-    }
-
     public Competicion getCompeticion() {
         return competicion;
     }
@@ -122,25 +131,29 @@ public class Clasificacion {
         this.competicion = competicion;
     }
 
+
+
     @Override
     public String toString() {
         return
                 nombreEquipo  +
-                ", Partidos jugados: " + partidosJugados +
-                ", Partidos ganados: " + partidosGanados +
-                ", Partidos empatados: " + partidosEmpatados +
-                ", Partidos perdidos: " + partidosPerdidos +
-                ", Goles a favor: " + golesAFavor +
-                ", Goles en contra: " + golesEnContra +
-                ", Diferencia de Goles: " + getDiferenciaDeGoles() +
-                ", Puntos: " + puntos +
+                ",  Partidos jugados: " + partidosJugados +
+                ",  Partidos ganados: " + partidosGanados +
+                ",  Partidos empatados: " + partidosEmpatados +
+                ",  Partidos perdidos: " + partidosPerdidos +
+                ",  Goles a favor: " + golesAFavor +
+                ",  Goles en contra: " + golesEnContra +
+                ",  Diferencia de Goles: " + getDiferenciaDeGoles() +
+                ",  Puntos: " + puntos +
                 '.';
     }
 
 
     // Comparadores
 
-
+    /**
+     * Compara los equipos por su nombre
+     */
     public static Comparator<Clasificacion> comparadorPorNombreEquipo = new Comparator<Clasificacion>() {
         @Override
         public int compare(Clasificacion clasificacion1, Clasificacion clasificacion2) {
@@ -151,6 +164,9 @@ public class Clasificacion {
         }
     };
 
+    /**
+     * Compara los equipos por los partidos jugados
+     */
     public static Comparator<Clasificacion> comparadorPorPartidosJugados = new Comparator<Clasificacion>() {
         @Override
         public int compare(Clasificacion clasificacion1, Clasificacion clasificacion2) {
@@ -158,6 +174,9 @@ public class Clasificacion {
         }
     };
 
+    /**
+     * Compara los equipos por los partidos ganados
+     */
     public static Comparator<Clasificacion> comparadorPorPartidosGanados = new Comparator<Clasificacion>() {
         @Override
         public int compare(Clasificacion clasificacion1, Clasificacion clasificacion2) {
@@ -165,6 +184,9 @@ public class Clasificacion {
         }
     };
 
+    /**
+     * Compara los equipos por los partidos empatados
+     */
     public static Comparator<Clasificacion> comparadorPorPartidosEmpatados = new Comparator<Clasificacion>() {
         @Override
         public int compare(Clasificacion clasificacion1, Clasificacion clasificacion2) {
@@ -172,6 +194,9 @@ public class Clasificacion {
         }
     };
 
+    /**
+     * Compara los equipos por los partidos perdidos
+     */
     public static Comparator<Clasificacion> comparadorPorPartidosPerdidos = new Comparator<Clasificacion>() {
         @Override
         public int compare(Clasificacion clasificacion1, Clasificacion clasificacion2) {
@@ -179,6 +204,9 @@ public class Clasificacion {
         }
     };
 
+    /**
+     * Compara los equipos por los puntos obtenidos
+     */
     public static Comparator<Clasificacion> comparadorPorPuntos = new Comparator<Clasificacion>() {
         @Override
         public int compare(Clasificacion clasificacion1, Clasificacion clasificacion2) {
@@ -186,6 +214,9 @@ public class Clasificacion {
         }
     };
 
+    /**
+     * Compara los equipos por los goles a favor marcados
+     */
     public static Comparator<Clasificacion> comparadorPorGolesAFavor = new Comparator<Clasificacion>() {
         @Override
         public int compare(Clasificacion clasificacion1, Clasificacion clasificacion2) {
@@ -193,6 +224,9 @@ public class Clasificacion {
         }
     };
 
+    /**
+     * Compara los equipos por los goles en contra recibidos
+     */
     public static Comparator<Clasificacion> comparadorPorGolesEnContra = new Comparator<Clasificacion>() {
         @Override
         public int compare(Clasificacion clasificacion1, Clasificacion clasificacion2) {
@@ -200,6 +234,9 @@ public class Clasificacion {
         }
     };
 
+    /**
+     * Compara los equipos por la diferencia de goles(goles a favor - goles en contra)
+     */
     public static Comparator<Clasificacion> comparadorPorDiferenciaDeGoles = new Comparator<Clasificacion>() {
         @Override
         public int compare(Clasificacion clasificacion1, Clasificacion clasificacion2) {

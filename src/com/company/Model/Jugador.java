@@ -7,24 +7,23 @@ import java.util.Objects;
  * Created by MarcoAntonio on 15/05/2017.
  */
 public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
-   private String nombreJugador;
-   private String apellidosJugador;
-   private Posicion posicion;
-   private boolean capitan;
-   private double altura;
-   private double peso;
-   private int dorsal;
-   private int edad;
-   private int partidosJugados;
-   private int tarjetasAmarillas;
-   private int tarjetasRoja;
-   private int goles;
-   private int golesEnPropia;
-   private int golesRecibidos;
-   private int asistencias;
-   private Equipo equipo;
-   private String sEquipo;
-   private Competicion competicion;
+   private String nombreJugador;                   // nombre del jugador
+   private String apellidosJugador;                // apellidos del jugador
+   private Posicion posicion;                      // posición del jugador
+   private boolean capitan;                        // nos permite saber si el jugador es capitán o no del equipo
+   private double altura;                          // altura del jugador
+   private double peso;                            // peso del jugador
+   private int dorsal;                             // dorsal del jugador
+   private int edad;                               // edad del jugador
+   private int partidosJugados;                    // partidos jugados por el jugador
+   private int tarjetasAmarillas;                  // tarjetas amarillas del jugador
+   private int tarjetasRoja;                       // tarjetas rojas del jugador
+   private int goles;                              // goles del jugador
+   private int golesEnPropia;                      // goles en propia del jugador
+   private int golesRecibidos;                     // goles recibidos del jugador (portero)
+   private int asistencias;                        // asistencias del jugador
+   private String equipo;                          // nombre del equipo del jugador
+   private Competicion competicion;                // competición que disputa el jugador
 
 
    // Constructores
@@ -52,9 +51,10 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
     * @param golesEnPropia
     * @param golesRecibidos
     * @param asistencias
+    * @param equipo
+    * @param competicion
     */
-
-   public Jugador(String nombreJugador, String apellidosJugador, Posicion posicion, boolean capitan, double altura, double peso, int dorsal, int edad, int partidosJugados, int tarjetasAmarillas, int tarjetasRoja, int goles, int golesEnPropia, int golesRecibidos, int asistencias, String sEquipo, Competicion competicion) {
+   public Jugador(String nombreJugador, String apellidosJugador, Posicion posicion, boolean capitan, double altura, double peso, int dorsal, int edad, int partidosJugados, int tarjetasAmarillas, int tarjetasRoja, int goles, int golesEnPropia, int golesRecibidos, int asistencias, String equipo, Competicion competicion) {
       this.setNombreJugador(nombreJugador);
       this.setApellidosJugador(apellidosJugador);
       this.setPosicion(posicion);
@@ -70,7 +70,7 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
       this.setGolesEnPropia(golesEnPropia);
       this.setGolesRecibidos(golesRecibidos);
       this.setAsistencias(asistencias);
-      this.setsEquipo(sEquipo);
+      this.setEquipo(equipo);
       this.setCompeticion(competicion);
    }
 
@@ -253,21 +253,12 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
       }
    }
 
-   public Equipo getEquipo() {
+   public String getEquipo() {
       return equipo;
    }
 
-   public void setEquipo(Equipo equipo) {
+   public void setEquipo(String equipo) {
       this.equipo = equipo;
-
-   }
-
-   public String getsEquipo() {
-      return sEquipo;
-   }
-
-   public void setsEquipo(String sEquipo) {
-      this.sEquipo = sEquipo;
    }
 
    public Competicion getCompeticion() {
@@ -282,24 +273,23 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
 
    @Override
    public String toString() {
-      return
-              "Nombre: '" + nombreJugador + '\'' +
-              ", Apellidos: '" + apellidosJugador + '\'' +
-              ", Posición: " + posicion +
-              ", Capitán: " + capitan +
-              ", Altura: " + altura + " metros" +
-              ", Peso: " + peso + " Kg" +
-              ", Dorsal: " + dorsal +
-              ", Edad: " + edad +
-              ", Partidos jugados: " + partidosJugados +
-              ", Tarjetas amarillas: " + tarjetasAmarillas +
-              ", Tarjetas rojas: " + tarjetasRoja +
-              ", Goles: " + goles +
-              ", Goles en propia: " + golesEnPropia +
-              ", Goles recibidos: " + golesRecibidos +
-              ", Promedio de goles recibidos: " + getPromedioDeGoles() +
-              ", Asistencias: " + asistencias +
-              ", Equipo: '" + sEquipo + '\'' +
+      return  "Dorsal: " + dorsal +
+              ",  Nombre: '" + nombreJugador + '\'' +
+              ",  Apellidos: '" + apellidosJugador + '\'' +
+              ",  Posición: " + posicion +
+              ",  Capitán: " + capitan +
+              ",  Altura: " + altura + " metros" +
+              ",  Peso: " + peso + " Kg" +
+              ",  Edad: " + edad +
+              ",  Partidos jugados: " + partidosJugados +
+              ",  Tarjetas amarillas: " + tarjetasAmarillas +
+              ",  Tarjetas rojas: " + tarjetasRoja +
+              ",  Goles: " + goles +
+              ",  Goles en propia: " + golesEnPropia +
+              ",  Goles recibidos: " + golesRecibidos +
+              ",  Promedio de goles recibidos: " + getPromedioDeGoles() +
+              ",  Asistencias: " + asistencias +
+              ",  Equipo: '" + equipo + '\'' +
               '.';
    }
 
@@ -370,7 +360,7 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
    public static Comparator<Jugador> comparadorPorDorsal = new Comparator<Jugador>() {
       @Override
       public int compare(Jugador j1, Jugador j2) {
-         return (j2.getDorsal() - j1.getDorsal());
+         return (j1.getDorsal() - j2.getDorsal());
       }
    };
 
