@@ -542,6 +542,10 @@ public class MenuPartido implements Serializable{
 
     public void cargarPartidos() {
         try {
+            ObjectInputStream leerEquipos = new ObjectInputStream(new FileInputStream("datos/equipos.dat"));
+            equipos = (ArrayList<Equipo>) leerEquipos.readObject();
+            leerEquipos.close();
+
             ObjectInputStream leerPartidos = new ObjectInputStream(new FileInputStream("datos/partidos.dat"));
             partidos = (ArrayList<Partido>) leerPartidos.readObject();
             leerPartidos.close();

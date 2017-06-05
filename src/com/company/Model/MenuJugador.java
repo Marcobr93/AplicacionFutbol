@@ -687,6 +687,10 @@ public class MenuJugador implements Serializable {
 
     public void cargarJugadores() {
         try {
+            ObjectInputStream leerEquipos = new ObjectInputStream(new FileInputStream("datos/equipos.dat"));
+            equipos = (ArrayList<Equipo>) leerEquipos.readObject();
+            leerEquipos.close();
+
             ObjectInputStream leerJugadores = new ObjectInputStream(new FileInputStream("datos/jugadores.dat"));
             jugadores = (ArrayList<Jugador>) leerJugadores.readObject();
             leerJugadores.close();
