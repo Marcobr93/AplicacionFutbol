@@ -1,11 +1,14 @@
 package com.company.Model;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * Created by MarcoAntonio on 15/05/2017.
  */
-public class Equipo {
+public class Equipo implements Serializable{
+
+   private static final long serialVersionUID = -6178202918471031872L;
    private String nombreEquipo;                 // nombre del equipo
    private String presidente;                   // nombre del presidente del equipo
    private String entrenador;                   // nombre del entrenador del equipo

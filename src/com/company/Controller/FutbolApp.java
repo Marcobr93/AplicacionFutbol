@@ -11,9 +11,7 @@ import java.util.Scanner;
  */
 public class FutbolApp {
 
-    public ArrayList<Equipo> equipos = new ArrayList<>();
-
-
+    public ArrayList<Equipo> equipos;
      MenuEquipo menuEquipo;
      MenuJugador menuJugador;
      MenuPartido menuPartido;
@@ -21,23 +19,31 @@ public class FutbolApp {
 
 
     public FutbolApp() {
+        equipos = new ArrayList<>();
         menuEquipo = new MenuEquipo(equipos);
         menuJugador = new MenuJugador(equipos);
         menuPartido = new MenuPartido(equipos);
         menuClasificacion = new MenuClasificacion(equipos);
-
+/*
         cargarEquipos();
         cargarJugadores();
         cargarPartidos();
         cargarClasificación();
+*/
+        menuClasificacion.cargarClasificaciones();
+        menuEquipo.cargarEquipos();
+        menuPartido.cargarPartidos();
+        menuJugador.cargarJugadores();
 
+
+/*
         menuEquipo.añadirPrimeraOSegunda();
         menuPartido.añadirPartidoPrimeraOSegunda();
-        menuClasificacion.añadirClasificacionPrimeraOSegunda();
         menuJugador.añadirJugadoresPrimeraSegunda();
         menuJugador.añadirPorteroPrimera();
         menuJugador.añadirPorteroSegunda();
-
+        menuClasificacion.añadirClasificacionPrimeraOSegunda();
+*/
     }
 
     private void cargarEquipos() {
@@ -102,7 +108,7 @@ public class FutbolApp {
         menuJugador.jugadores.add(new Jugador("Toni", "Kroos", Posicion.Centrocampista, false, 1.82, 78.00, 8, 27, 29, 6, 0, 3, 0, 0, 11, "Real Madrid",Competicion.PRIMERA));
         menuJugador.jugadores.add(new Jugador("Carlos Henrique", "Casemiro", Posicion.Centrocampista, false, 1.84, 80.00, 14, 25, 25, 9, 0, 4, 0, 0, 0, "Real Madrid",Competicion.PRIMERA));
         menuJugador.jugadores.add(new Jugador("Mateo", "Kovacic", Posicion.Centrocampista, false, 1.78, 77.00, 16, 23, 27, 2, 0, 1, 0, 0, 3, "Real Madrid",Competicion.PRIMERA));
-        menuJugador.jugadores.add(new Jugador("Luka", "Modric", Posicion.Centrocampista, false, 1.74, 75.00, 14, 32, 25, 2, 0, 1, 0, 0, 2, "Real Madrid",Competicion.PRIMERA));
+        menuJugador.jugadores.add(new Jugador("Luka", "Modric", Posicion.Centrocampista, false, 1.74, 75.00, 19, 32, 25, 2, 0, 1, 0, 0, 2, "Real Madrid",Competicion.PRIMERA));
         menuJugador.jugadores.add(new Jugador("James", "Rodríguez", Posicion.MediaPunta, false, 1.80, 75.00, 10, 26, 22, 1, 0, 8, 0, 0, 6, "Real Madrid",Competicion.PRIMERA));
         menuJugador.jugadores.add(new Jugador("Marco", "Asensio", Posicion.MediaPunta, false, 1.80, 75.00, 20, 21, 23, 0, 0, 3, 0, 0, 1, "Real Madrid",Competicion.PRIMERA));
         menuJugador.jugadores.add(new Jugador("Isco", "Alarcón", Posicion.MediaPunta, false, 1.76, 74.00, 22, 25, 30, 4, 0, 10, 0, 0, 7, "Real Madrid",Competicion.PRIMERA));
@@ -288,6 +294,9 @@ public class FutbolApp {
                     break;
             }
         }
+
+       //  menuJugador.guardarJugadores();
+
     }
 
 
@@ -367,10 +376,12 @@ public class FutbolApp {
                     break;
                 case 2:
                     menuEquipo.crearEquipo();
+                    menuEquipo.guardarEquipos();
                     break;
                 case 3:
                     menuEquipo.listaEquiposPrimera();
                     menuEquipo.eliminarEquipo();
+                    menuEquipo.guardarEquipos();
                     break;
                 case 4:
                     menuEquipo.listaEquiposPrimera();
@@ -390,10 +401,12 @@ public class FutbolApp {
                     break;
                 case 2:
                     menuEquipo.crearEquipo();
+                    menuEquipo.guardarEquipos();
                     break;
                 case 3:
                     menuEquipo.listaEquiposSegunda();
                     menuEquipo.eliminarEquipo();
+                    menuEquipo.guardarEquipos();
                     break;
                 case 4:
                     menuEquipo.listaEquiposSegunda();
@@ -489,6 +502,7 @@ public class FutbolApp {
                     break;
                 case 15:
                     menuJugador.eliminarJugador(jugadoresEquipo);
+                    menuJugador.guardarJugadores();
                     break;
             }
         }
@@ -576,9 +590,11 @@ public class FutbolApp {
                     break;
                 case 2:
                     menuPartido.crearPartido();
+                    menuPartido.guardarPartidos();
                     break;
                 case 3:
                     menuPartido.eliminarPartido();
+                    menuPartido.guardarPartidos();
                     break;
             }
         }
@@ -594,9 +610,11 @@ public class FutbolApp {
                     break;
                 case 2:
                     menuPartido.crearPartido();
+                    menuPartido.guardarPartidos();
                     break;
                 case 3:
                     menuPartido.eliminarPartido();
+                    menuPartido.guardarPartidos();
                     break;
             }
         }
@@ -739,7 +757,6 @@ public class FutbolApp {
         Scanner scanner = new Scanner(System.in);
         int opcion = 0;
 
-        System.out.println("*************************");
         System.out.println("─────────────────────────────────────────────────────────────────────────\n" +
                 "─────────────────────────██████████████─██████████████─██████████████────\n" +
                 "────────────────────────██░░░░░░░░░░██─██░░░░░░░░░░██─██░░░░░░░░░░██────\n" +

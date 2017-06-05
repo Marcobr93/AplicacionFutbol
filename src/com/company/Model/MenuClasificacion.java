@@ -1,13 +1,15 @@
 package com.company.Model;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
 /**
  * Created by marco on 29/05/2017.
  */
-public class MenuClasificacion {
+public class MenuClasificacion implements Serializable{
 
+    private static final long serialVersionUID = -6421338347446021736L;
     public ArrayList<Equipo> equipos = new ArrayList<>();                        // ArrayList con todos los equipos
     public ArrayList<Clasificacion> clasificacion = new ArrayList<>();           // ArrayList con todos los equipos de la clasificación
     public ArrayList<Clasificacion> clasificacionPrimera = new ArrayList<>();    // ArrayList con todos los equipos de la clasificación de Primera
@@ -238,5 +240,49 @@ public class MenuClasificacion {
         Collections.sort(clasificacionSegunda, Clasificacion.comparadorPorPuntos);
 
         listaClasificacionSegunda();
+    }
+
+    // Guardado y cargado de datos
+
+    public void guardarClasificaciones() {
+        try {
+            ObjectOutputStream guardarClasificacion = new ObjectOutputStream(new FileOutputStream("datos/clasificacion.dat"));
+            guardarClasificacion.writeObject(clasificacion);
+            guardarClasificacion.close();
+
+            ObjectOutputStream guardarClasificacionPrimera = new ObjectOutputStream(new FileOutputStream("datos/clasificacionPrimera.dat"));
+            guardarClasificacionPrimera.writeObject(clasificacionPrimera);
+            guardarClasificacionPrimera.close();
+
+            ObjectOutputStream guardarClasificacionSegunda = new ObjectOutputStream(new FileOutputStream("datos/clasificacionSegunda.dat"));
+            guardarClasificacionSegunda.writeObject(clasificacionSegunda);
+            guardarClasificacionSegunda.close();
+
+        } catch (IOException e) {
+            System.out.println("Archivo no encontrado");
+            e.printStackTrace();
+        }
+    }
+
+    public void cargarClasificaciones() {
+        try {
+            ObjectInputStream leerClasificacion = new ObjectInputStream(new FileInputStream("datos/clasificacion.dat"));
+            clasificacion = (ArrayList<Clasificacion>) leerClasificacion.readObject();
+            leerClasificacion.close();
+
+            ObjectInputStream leerClasificacionPrimera = new ObjectInputStream(new FileInputStream("datos/clasificacionPrimera.dat"));
+            clasificacionPrimera = (ArrayList<Clasificacion>) leerClasificacionPrimera.readObject();
+            leerClasificacionPrimera.close();
+
+            ObjectInputStream leerClasificacionSegunda = new ObjectInputStream(new FileInputStream("datos/clasificacionSegunda.dat"));
+            clasificacionSegunda = (ArrayList<Clasificacion>) leerClasificacionSegunda.readObject();
+            leerClasificacionSegunda.close();
+
+        } catch (IOException e) {
+            System.out.println("Archivo no encontrado");
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

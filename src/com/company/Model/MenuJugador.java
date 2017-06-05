@@ -1,11 +1,14 @@
 package com.company.Model;
 
+import java.io.*;
 import java.util.*;
 
 /**
  * Created by MarcoAntonio on 15/05/2017.
  */
-public class MenuJugador {
+public class MenuJugador implements Serializable {
+
+    private static final long serialVersionUID = -9201269610245151146L;
     public ArrayList<Equipo> equipos = new ArrayList<>();              // ArrayList con todos los equipos
     public ArrayList<Jugador> jugadores = new ArrayList<>();           // ArrayList con todos los jugadores
     public ArrayList<Jugador> jugadoresPrimera = new ArrayList<>();    // ArrayList con los jugadores de Primera
@@ -207,7 +210,7 @@ public class MenuJugador {
                 System.out.println("Por favor, introduzca una cantidad válida.");
                 scanner.next();
             }
-        } while (partidosJugados <= 0);
+        } while (partidosJugados < 0);
 
         do {
             System.out.println("Tarjetas amarillas del jugador: ");
@@ -217,7 +220,7 @@ public class MenuJugador {
                 System.out.println("Por favor, introduzca una cantidad válida.");
                 scanner.next();
             }
-        } while (tarjetasAmarillas <= 0);
+        } while (tarjetasAmarillas < 0);
 
         do {
             System.out.println("Tarjetas rojas del jugador: ");
@@ -227,7 +230,7 @@ public class MenuJugador {
                 System.out.println("Por favor, introduzca una cantidad válida.");
                 scanner.next();
             }
-        } while (tarjetasRoja <= 0);
+        } while (tarjetasRoja < 0);
 
         do {
             System.out.println("Goles del jugador: ");
@@ -237,7 +240,7 @@ public class MenuJugador {
                 System.out.println("Por favor, introduzca una cantidad válida.");
                 scanner.next();
             }
-        } while (goles <= 0);
+        } while (goles < 0);
 
         do {
             System.out.println("Goles en propia del jugador: ");
@@ -247,7 +250,7 @@ public class MenuJugador {
                 System.out.println("Por favor, introduzca una cantidad válida.");
                 scanner.next();
             }
-        } while (golesEnPropia <= 0);
+        } while (golesEnPropia < 0);
 
         // Solo los porteros tendrán como atributo Goles recibidos
         if (posicionElegida.toLowerCase().replace(" ", "").equals("portero")) {
@@ -259,7 +262,7 @@ public class MenuJugador {
                     System.out.println("Por favor, introduzca una cantidad válida.");
                     scanner.next();
                 }
-            } while (golesRecibidos <= 0);
+            } while (golesRecibidos < 0);
         }
 
         do {
@@ -270,7 +273,7 @@ public class MenuJugador {
                 System.out.println("Por favor, introduzca una cantidad válida.");
                 scanner.next();
             }
-        } while (asistencias <= 0);
+        } while (asistencias < 0);
 
         scanner.nextLine();
         do {
@@ -646,5 +649,73 @@ public class MenuJugador {
         Collections.sort(porterosSegunda, Jugador.comparadorPorGolesRecibidos);
 
         listaPorterosSegunda();
+    }
+
+    // Guardado y cargado de datos
+
+    public void guardarJugadores() {
+        try {
+            ObjectOutputStream guardarJugadores = new ObjectOutputStream(new FileOutputStream("datos/jugadores.dat"));
+            guardarJugadores.writeObject(jugadores);
+            guardarJugadores.close();
+
+            ObjectOutputStream guardarJugadoresPrimera = new ObjectOutputStream(new FileOutputStream("datos/jugadoresPrimera.dat"));
+            guardarJugadoresPrimera.writeObject(jugadoresPrimera);
+            guardarJugadoresPrimera.close();
+
+            ObjectOutputStream guardarJugadoresSegunda = new ObjectOutputStream(new FileOutputStream("datos/jugadoresSegunda.dat"));
+            guardarJugadoresSegunda.writeObject(jugadoresSegunda);
+            guardarJugadoresSegunda.close();
+
+            ObjectOutputStream guardarJugadoresEquipo = new ObjectOutputStream(new FileOutputStream("datos/jugadoresEquipo.dat"));
+            guardarJugadoresEquipo.writeObject(jugadoresEquipo);
+            guardarJugadoresEquipo.close();
+
+            ObjectOutputStream guardarPorterosPrimera = new ObjectOutputStream(new FileOutputStream("datos/porterosPrimera.dat"));
+            guardarPorterosPrimera.writeObject(porterosPrimera);
+            guardarPorterosPrimera.close();
+
+            ObjectOutputStream guardarPorterosSegunda = new ObjectOutputStream(new FileOutputStream("datos/porterosSegunda.dat"));
+            guardarPorterosSegunda.writeObject(porterosSegunda);
+            guardarPorterosSegunda.close();
+
+        } catch (IOException e) {
+            System.out.println("Archivo no encontrado");
+            e.printStackTrace();
+        }
+    }
+
+    public void cargarJugadores() {
+        try {
+            ObjectInputStream leerJugadores = new ObjectInputStream(new FileInputStream("datos/jugadores.dat"));
+            jugadores = (ArrayList<Jugador>) leerJugadores.readObject();
+            leerJugadores.close();
+
+            ObjectInputStream leerJugadoresPrimera = new ObjectInputStream(new FileInputStream("datos/jugadores.dat"));
+            jugadoresPrimera = (ArrayList<Jugador>) leerJugadoresPrimera.readObject();
+            leerJugadoresPrimera.close();
+
+            ObjectInputStream leerJugadoresSegunda = new ObjectInputStream(new FileInputStream("datos/jugadoresSegunda.dat"));
+            jugadoresSegunda = (ArrayList<Jugador>) leerJugadoresSegunda.readObject();
+            leerJugadoresSegunda.close();
+
+            ObjectInputStream leerJugadoresEquipo = new ObjectInputStream(new FileInputStream("datos/jugadoresEquipo.dat"));
+            jugadoresEquipo = (ArrayList<Jugador>) leerJugadoresEquipo.readObject();
+            leerJugadoresEquipo.close();
+
+            ObjectInputStream leerPorterosPrimera = new ObjectInputStream(new FileInputStream("datos/porterosPrimera.dat"));
+            porterosPrimera = (ArrayList<Jugador>) leerPorterosPrimera.readObject();
+            leerPorterosPrimera.close();
+
+            ObjectInputStream leerPorterosSegunda = new ObjectInputStream(new FileInputStream("datos/porterosSegunda.dat"));
+            porterosSegunda = (ArrayList<Jugador>) leerPorterosSegunda.readObject();
+            leerPorterosSegunda.close();
+
+        } catch (IOException e) {
+            System.out.println("Archivo no encontrado!");
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

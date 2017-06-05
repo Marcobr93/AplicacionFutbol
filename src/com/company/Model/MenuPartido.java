@@ -1,11 +1,14 @@
 package com.company.Model;
 
+import java.io.*;
 import java.util.*;
 
 /**
  * Created by marco on 19/05/2017.
  */
-public class MenuPartido {
+public class MenuPartido implements Serializable{
+
+    private static final long serialVersionUID = -3876057605117344394L;
     public ArrayList<Partido> partidos = new ArrayList<>();             // ArrayList con todos los partidos
     public ArrayList<Equipo> equipos = new ArrayList<>();               // ArrayList con todos los equipos
     public ArrayList<Partido> partidosPrimera= new ArrayList<>();       // ArrayList con los partidos de Primera
@@ -513,5 +516,49 @@ public class MenuPartido {
         Collections.sort(partidosSegunda, Partido.comparadorPorGolesVisitante);
 
         listaPartidosSegunda();
+    }
+
+    // Guardado y cargado de datos
+
+    public void guardarPartidos() {
+        try {
+            ObjectOutputStream guardarPartidos = new ObjectOutputStream(new FileOutputStream("datos/partidos.dat"));
+            guardarPartidos.writeObject(partidos);
+            guardarPartidos.close();
+
+            ObjectOutputStream guardarPartidosPrimera = new ObjectOutputStream(new FileOutputStream("datos/partidosPrimera.dat"));
+            guardarPartidosPrimera.writeObject(partidosPrimera);
+            guardarPartidosPrimera.close();
+
+            ObjectOutputStream guardarPartidosSegunda = new ObjectOutputStream(new FileOutputStream("datos/partidosSegunda.dat"));
+            guardarPartidosSegunda.writeObject(partidosSegunda);
+            guardarPartidosSegunda.close();
+
+        } catch (IOException e) {
+            System.out.println("Archivo no encontrado");
+            e.printStackTrace();
+        }
+    }
+
+    public void cargarPartidos() {
+        try {
+            ObjectInputStream leerPartidos = new ObjectInputStream(new FileInputStream("datos/partidos.dat"));
+            partidos = (ArrayList<Partido>) leerPartidos.readObject();
+            leerPartidos.close();
+
+            ObjectInputStream leerPartidosPrimera = new ObjectInputStream(new FileInputStream("datos/partidosPrimera.dat"));
+            partidosPrimera = (ArrayList<Partido>) leerPartidosPrimera.readObject();
+            leerPartidosPrimera.close();
+
+            ObjectInputStream leerPartidosSegunda = new ObjectInputStream(new FileInputStream("datos/partidosSegunda.dat"));
+            partidosSegunda = (ArrayList<Partido>) leerPartidosSegunda.readObject();
+            leerPartidosSegunda.close();
+
+        } catch (IOException e) {
+            System.out.println("Archivo no encontrado");
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

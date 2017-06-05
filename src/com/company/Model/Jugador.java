@@ -1,12 +1,15 @@
 package com.company.Model;
 
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Objects;
 
 /**
  * Created by MarcoAntonio on 15/05/2017.
  */
-public class Jugador implements Comparable<Jugador>, Comparator<Jugador>{
+public class Jugador implements Comparable<Jugador>, Comparator<Jugador>, Serializable{
+
+   private static final long serialVersionUID = -6351584943382295397L;
    private String nombreJugador;                   // nombre del jugador
    private String apellidosJugador;                // apellidos del jugador
    private Posicion posicion;                      // posición del jugador

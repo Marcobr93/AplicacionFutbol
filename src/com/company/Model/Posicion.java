@@ -4,10 +4,12 @@ package com.company.Model;
  * Created by MarcoAntonio on 15/05/2017.
  */
 
+
+
 /**
  * Enum Posicion que contiene las posiciones contempladas de los jugadores de este proyecto.
  */
-public enum Posicion {
+public enum Posicion{
     Portero("Portero"),
     LateralDerecho("Lateral derecho"),
     Central("Central"),

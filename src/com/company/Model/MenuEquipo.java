@@ -1,12 +1,14 @@
 package com.company.Model;
 
+import java.io.*;
 import java.util.*;
 
 /**
  * Created by marco on 19/05/2017.
  */
-public class MenuEquipo  {
+public class MenuEquipo implements Serializable {
 
+    private static final long serialVersionUID = -4813635185929991798L;
     public ArrayList<Equipo> equipos = new ArrayList<>();                // ArrayList con todos los equipos
     public ArrayList<Equipo> equiposPrimera = new ArrayList<>();         // ArrayList con los equipos de Primera
     public ArrayList<Equipo> equiposSegunda = new ArrayList<>();         // ArrayList con los equipos de Segunda
@@ -287,6 +289,50 @@ public class MenuEquipo  {
 
         for (Equipo equipo: equiposSegunda) {
             System.out.println((indice++) + " - " + equipo.getNombreEquipo());
+        }
+    }
+
+    // Guardado y cargado de datos
+
+    public void guardarEquipos() {
+        try {
+            ObjectOutputStream guardarEquipos = new ObjectOutputStream(new FileOutputStream("datos/equipos.dat"));
+            guardarEquipos.writeObject(equipos);
+            guardarEquipos.close();
+
+            ObjectOutputStream guardarEquiposPrimera = new ObjectOutputStream(new FileOutputStream("datos/equiposPrimera.dat"));
+            guardarEquiposPrimera.writeObject(equiposPrimera);
+            guardarEquiposPrimera.close();
+
+            ObjectOutputStream guardarEquiposSegunda = new ObjectOutputStream(new FileOutputStream("datos/equiposSegunda.dat"));
+            guardarEquiposSegunda.writeObject(equiposSegunda);
+            guardarEquiposSegunda.close();
+
+        } catch (IOException e) {
+            System.out.println("Archivo no encontrado");
+            e.printStackTrace();
+        }
+    }
+
+    public void cargarEquipos() {
+        try {
+            ObjectInputStream leerEquipos = new ObjectInputStream(new FileInputStream("datos/equipos.dat"));
+            equipos = (ArrayList<Equipo>) leerEquipos.readObject();
+            leerEquipos.close();
+
+            ObjectInputStream leerEquiposPrimera = new ObjectInputStream(new FileInputStream("datos/equiposPrimera.dat"));
+            equiposPrimera = (ArrayList<Equipo>) leerEquiposPrimera.readObject();
+            leerEquiposPrimera.close();
+
+            ObjectInputStream leerEquiposSegunda = new ObjectInputStream(new FileInputStream("datos/equiposSegunda.dat"));
+            equiposSegunda = (ArrayList<Equipo>) leerEquiposSegunda.readObject();
+            leerEquiposSegunda.close();
+
+        } catch (IOException e) {
+            System.out.println("Archivo no encontrado");
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
 }

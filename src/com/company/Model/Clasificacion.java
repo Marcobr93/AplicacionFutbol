@@ -1,11 +1,14 @@
 package com.company.Model;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
 /**
  * Created by marco on 29/05/2017.
  */
-public class Clasificacion {
+public class Clasificacion implements Serializable {
+
+    private static final long serialVersionUID = 2988538810741190823L;
     private String nombreEquipo;            // nombre del equipo
     private int partidosJugados;            // nº partidos jugados
     private int partidosGanados;            // nº partidos ganados

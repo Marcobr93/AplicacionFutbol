@@ -1,6 +1,5 @@
 package com.company.Model;
 
-import java.util.ArrayList;
 
 /**
  * Created by marco on 18/05/2017.
@@ -9,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Enum Competicion que contiene las dos competiciones contempladas en este proyecto, primera y segunda división.
  */
-public enum Competicion {
+public enum Competicion{
     PRIMERA("Primera"),
     SEGUNDA("Segunda");
 
