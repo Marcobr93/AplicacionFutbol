@@ -317,6 +317,7 @@ public class MenuJugador implements Serializable {
         Scanner scanner = new Scanner(System.in);
         int dorsal = 0;
 
+
         Iterator<Jugador> itJugador = jugadors.iterator();
 
         listaJugadoresEquipo();
@@ -342,6 +343,7 @@ public class MenuJugador implements Serializable {
             }
         }
     }
+
 
     /**
      * Método que nos permite buscar un jugador por su nombre.
@@ -375,13 +377,25 @@ public class MenuJugador implements Serializable {
      * del equipo que hemos introducido el nombre
      */
     public ArrayList<Jugador> elegirEquipo() {
+        jugadoresEquipo.clear(); // Borramos todos los jugadores que formen parte del ArrayList, para que cuando busquemos
+                                 // busquemos en otros equipos, los jugadores de anteriores búsquedas no aparezcan de
+                                 // nuevo.
 
         Scanner scanner = new Scanner(System.in);
         String nombreIntroducido;
 
         System.out.println();
-        System.out.printf("Introduzca el nombre del equipo: ");
-        nombreIntroducido = scanner.nextLine();
+        do {
+            System.out.println("Introduzca el nombre del equipo");
+            nombreIntroducido = scanner.nextLine();
+
+            for (Equipo equip : equipos) {
+                if (equip.getNombreEquipo().toLowerCase().replace(" ", "").equals(nombreIntroducido.toLowerCase().replace(" ", ""))) {
+                    nombreIntroducido = equip.getNombreEquipo();
+                }
+            }
+        }while(nombreIntroducido == null);
+
 
         for (Jugador jugador: jugadores){
             if (nombreIntroducido.equals(jugador.getEquipo())) {
@@ -391,6 +405,7 @@ public class MenuJugador implements Serializable {
         }
         return jugadoresEquipo;
     }
+
 
     /**
      * Método el cuál con un Foreach nos muestra los jugadores del ArrayList jugadores
@@ -653,31 +668,14 @@ public class MenuJugador implements Serializable {
 
     // Guardado y cargado de datos
 
+    /**
+     * Método que guarda los jugadores en sus respectivos archivos
+     */
     public void guardarJugadores() {
         try {
             ObjectOutputStream guardarJugadores = new ObjectOutputStream(new FileOutputStream("datos/jugadores.dat"));
             guardarJugadores.writeObject(jugadores);
             guardarJugadores.close();
-
-            ObjectOutputStream guardarJugadoresPrimera = new ObjectOutputStream(new FileOutputStream("datos/jugadoresPrimera.dat"));
-            guardarJugadoresPrimera.writeObject(jugadoresPrimera);
-            guardarJugadoresPrimera.close();
-
-            ObjectOutputStream guardarJugadoresSegunda = new ObjectOutputStream(new FileOutputStream("datos/jugadoresSegunda.dat"));
-            guardarJugadoresSegunda.writeObject(jugadoresSegunda);
-            guardarJugadoresSegunda.close();
-
-            ObjectOutputStream guardarJugadoresEquipo = new ObjectOutputStream(new FileOutputStream("datos/jugadoresEquipo.dat"));
-            guardarJugadoresEquipo.writeObject(jugadoresEquipo);
-            guardarJugadoresEquipo.close();
-
-            ObjectOutputStream guardarPorterosPrimera = new ObjectOutputStream(new FileOutputStream("datos/porterosPrimera.dat"));
-            guardarPorterosPrimera.writeObject(porterosPrimera);
-            guardarPorterosPrimera.close();
-
-            ObjectOutputStream guardarPorterosSegunda = new ObjectOutputStream(new FileOutputStream("datos/porterosSegunda.dat"));
-            guardarPorterosSegunda.writeObject(porterosSegunda);
-            guardarPorterosSegunda.close();
 
         } catch (IOException e) {
             System.out.println("Archivo no encontrado");
@@ -685,6 +683,9 @@ public class MenuJugador implements Serializable {
         }
     }
 
+    /**
+     * Método que carga los jugadores de sus respectivos archivos
+     */
     public void cargarJugadores() {
         try {
             ObjectInputStream leerEquipos = new ObjectInputStream(new FileInputStream("datos/equipos.dat"));
@@ -694,26 +695,6 @@ public class MenuJugador implements Serializable {
             ObjectInputStream leerJugadores = new ObjectInputStream(new FileInputStream("datos/jugadores.dat"));
             jugadores = (ArrayList<Jugador>) leerJugadores.readObject();
             leerJugadores.close();
-
-            ObjectInputStream leerJugadoresPrimera = new ObjectInputStream(new FileInputStream("datos/jugadores.dat"));
-            jugadoresPrimera = (ArrayList<Jugador>) leerJugadoresPrimera.readObject();
-            leerJugadoresPrimera.close();
-
-            ObjectInputStream leerJugadoresSegunda = new ObjectInputStream(new FileInputStream("datos/jugadoresSegunda.dat"));
-            jugadoresSegunda = (ArrayList<Jugador>) leerJugadoresSegunda.readObject();
-            leerJugadoresSegunda.close();
-
-            ObjectInputStream leerJugadoresEquipo = new ObjectInputStream(new FileInputStream("datos/jugadoresEquipo.dat"));
-            jugadoresEquipo = (ArrayList<Jugador>) leerJugadoresEquipo.readObject();
-            leerJugadoresEquipo.close();
-
-            ObjectInputStream leerPorterosPrimera = new ObjectInputStream(new FileInputStream("datos/porterosPrimera.dat"));
-            porterosPrimera = (ArrayList<Jugador>) leerPorterosPrimera.readObject();
-            leerPorterosPrimera.close();
-
-            ObjectInputStream leerPorterosSegunda = new ObjectInputStream(new FileInputStream("datos/porterosSegunda.dat"));
-            porterosSegunda = (ArrayList<Jugador>) leerPorterosSegunda.readObject();
-            leerPorterosSegunda.close();
 
         } catch (IOException e) {
             System.out.println("Archivo no encontrado!");

@@ -294,6 +294,9 @@ public class MenuEquipo implements Serializable {
 
     // Guardado y cargado de datos
 
+    /**
+     * Método que guarda los equipos en sus respectivos archivos
+     */
     public void guardarEquipos() {
         try {
             ObjectOutputStream guardarEquipos = new ObjectOutputStream(new FileOutputStream("datos/equipos.dat"));
@@ -314,6 +317,9 @@ public class MenuEquipo implements Serializable {
         }
     }
 
+    /**
+     * Método que carga los equipos de sus respectivos archivos
+     */
     public void cargarEquipos() {
         try {
             ObjectInputStream leerEquipos = new ObjectInputStream(new FileInputStream("datos/equipos.dat"));

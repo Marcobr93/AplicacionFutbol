@@ -244,6 +244,9 @@ public class MenuClasificacion implements Serializable{
 
     // Guardado y cargado de datos
 
+    /**
+     * Método que guarda las clasificaciones en sus respectivos archivos
+     */
     public void guardarClasificaciones() {
         try {
             ObjectOutputStream guardarClasificacion = new ObjectOutputStream(new FileOutputStream("datos/clasificacion.dat"));
@@ -264,6 +267,9 @@ public class MenuClasificacion implements Serializable{
         }
     }
 
+    /**
+     * Método que carga las clasificaciones de sus respectivos archivos
+     */
     public void cargarClasificaciones() {
         try {
             ObjectInputStream leerClasificacion = new ObjectInputStream(new FileInputStream("datos/clasificacion.dat"));

@@ -520,6 +520,9 @@ public class MenuPartido implements Serializable{
 
     // Guardado y cargado de datos
 
+    /**
+     * Método para guardar los partidos en sus respectivos archivos
+     */
     public void guardarPartidos() {
         try {
             ObjectOutputStream guardarPartidos = new ObjectOutputStream(new FileOutputStream("datos/partidos.dat"));
@@ -540,6 +543,9 @@ public class MenuPartido implements Serializable{
         }
     }
 
+    /**
+     * Método que carga los partidos de sus respectivos archivos
+     */
     public void cargarPartidos() {
         try {
             ObjectInputStream leerEquipos = new ObjectInputStream(new FileInputStream("datos/equipos.dat"));
