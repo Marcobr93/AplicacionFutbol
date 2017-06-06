@@ -7,7 +7,6 @@
     <list default="true" id="1d215469-aa81-4bf8-afae-0490f9d6ee6b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Model/Jugador.java" afterPath="$PROJECT_DIR$/src/com/company/Model/Jugador.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Model/MenuJugador.java" afterPath="$PROJECT_DIR$/src/com/company/Model/MenuJugador.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MenuJugador.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MenuJugador.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Model/MenuJugador.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="530" column="0" lean-forward="false" selection-start-line="530" selection-start-column="0" selection-end-line="530" selection-end-column="0" />
+            <state relative-caret-position="80">
+              <caret line="520" column="9" lean-forward="true" selection-start-line="520" selection-start-column="9" selection-end-line="520" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -56,11 +55,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Jugador.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Jugador.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/Model/Jugador.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="231" column="0" lean-forward="false" selection-start-line="231" selection-start-column="0" selection-end-line="231" selection-end-column="0" />
+            <state relative-caret-position="658">
+              <caret line="474" column="21" lean-forward="false" selection-start-line="474" selection-start-column="21" selection-end-line="474" selection-end-column="21" />
               <folding>
                 <element signature="e#3278#3279#0" expanded="true" />
                 <element signature="e#3311#3312#0" expanded="true" />
@@ -68,6 +67,7 @@
                 <element signature="e#3601#3602#0" expanded="true" />
                 <element signature="e#4985#4986#0" expanded="true" />
                 <element signature="e#5020#5021#0" expanded="true" />
+                <element signature="e#6246#6247#0" expanded="true" />
                 <element signature="e#6280#6281#0" expanded="true" />
                 <element signature="e#6679#6680#0" expanded="true" />
                 <element signature="e#6710#6711#0" expanded="true" />
@@ -77,8 +77,6 @@
                 <element signature="e#12498#12499#0" expanded="true" />
                 <element signature="e#12745#12746#0" expanded="true" />
                 <element signature="e#12820#12821#0" expanded="true" />
-                <element signature="e#13075#13076#0" expanded="true" />
-                <element signature="e#13158#13159#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -922,7 +920,7 @@
       <workItem from="1496746365297" duration="420000" />
       <workItem from="1496761351246" duration="7940000" />
       <workItem from="1496769362294" duration="2997000" />
-      <workItem from="1496772834858" duration="6241000" />
+      <workItem from="1496772834858" duration="7134000" />
     </task>
     <task id="LOCAL-00001" summary="Comparadores de jugadores">
       <created>1495107377941</created>
@@ -1141,11 +1139,18 @@
       <option name="project" value="LOCAL" />
       <updated>1496777529345</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Arreglado pequeño bug.">
+      <created>1496780484735</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1496780484735</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="294453000" />
+    <option name="totallyTimeSpent" value="295346000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1600,10 +1605,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Model/MenuJugador.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="520" column="9" lean-forward="true" selection-start-line="520" selection-start-column="9" selection-end-line="520" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Model/Jugador.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="231" column="0" lean-forward="false" selection-start-line="231" selection-start-column="0" selection-end-line="231" selection-end-column="0" />
+        <state relative-caret-position="658">
+          <caret line="474" column="21" lean-forward="false" selection-start-line="474" selection-start-column="21" selection-end-line="474" selection-end-column="21" />
           <folding>
             <element signature="e#3278#3279#0" expanded="true" />
             <element signature="e#3311#3312#0" expanded="true" />
@@ -1611,6 +1626,7 @@
             <element signature="e#3601#3602#0" expanded="true" />
             <element signature="e#4985#4986#0" expanded="true" />
             <element signature="e#5020#5021#0" expanded="true" />
+            <element signature="e#6246#6247#0" expanded="true" />
             <element signature="e#6280#6281#0" expanded="true" />
             <element signature="e#6679#6680#0" expanded="true" />
             <element signature="e#6710#6711#0" expanded="true" />
@@ -1620,18 +1636,6 @@
             <element signature="e#12498#12499#0" expanded="true" />
             <element signature="e#12745#12746#0" expanded="true" />
             <element signature="e#12820#12821#0" expanded="true" />
-            <element signature="e#13075#13076#0" expanded="true" />
-            <element signature="e#13158#13159#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Model/MenuJugador.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="530" column="0" lean-forward="false" selection-start-line="530" selection-start-column="0" selection-end-line="530" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -464,7 +464,16 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>, Serial
    public static Comparator<Jugador> comparadorPorPromedioDeGoles = new Comparator<Jugador>() {
       @Override
       public int compare(Jugador j1, Jugador j2) {
-         return (int) (j1.getPromedioDeGoles() - j2.getPromedioDeGoles());
+       //  return (int) (j1.getPromedioDeGoles() - j2.getPromedioDeGoles());
+         double diferencia = j1.getPromedioDeGoles() - j2.getPromedioDeGoles();
+
+         if (diferencia > 0){
+            return 1;
+         }else if (diferencia < 0){
+            return -1;
+         }else {
+            return 0;
+         }
       }
    };
 
