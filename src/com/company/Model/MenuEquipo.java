@@ -91,20 +91,7 @@ public class MenuEquipo implements Serializable {
         }
         return false;
     }
-/*
-    public Competicion  elegirCompeticion(String nombreCompeticion, Competicion competicion){
-            if (nombreCompeticion.toLowerCase().replace(" ", "").equals("primera")){
-                competicion = Competicion.PRIMERA;
-            }else if(nombreCompeticion.toLowerCase().replace(" ", "").equals("segunda")){
-                competicion = Competicion.SEGUNDA;
-            }else if (!nombreCompeticion.equals("primera")){
-                competicion = null;
-            }else if (!nombreCompeticion.equals("segunda")){
-                competicion = null;
-            }
-            return competicion;
-    }
-*/
+
 
     /**
      * Método que sirve para crear un Equipo nuevo
@@ -281,7 +268,6 @@ public class MenuEquipo implements Serializable {
         do {
             System.out.printf("Introduzca el nombre del equipo: ");
             nombre = scanner.nextLine();
-
         }while (!existeEnArrayEquipo(nombre));
 
         try {

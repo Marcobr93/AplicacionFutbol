@@ -215,14 +215,14 @@ public class MenuJugador implements Serializable {
         } while (peso <= 0.0);
 
         do {
-            System.out.println("Dorsal del jugador: ");
+            System.out.println("Dorsal del jugador, entre el 1 y el 99: ");
             try{
                 dorsal = scanner.nextInt();
             }catch (InputMismatchException e){
                 System.out.println("Por favor, introduzca un dorsal válido.");
                 scanner.next();
             }
-        } while (dorsal <= 0);
+        } while (dorsal <= 0 || dorsal > 99);
 
         do {
             System.out.println("Edad del jugador: ");
@@ -311,13 +311,18 @@ public class MenuJugador implements Serializable {
         do {
             System.out.println("Introduzca el nombre del equipo");
             equipoNombre = scanner.nextLine();
+        }while(!existeEnArrayEquipos(equipoNombre));
 
+        try{
             for (Equipo equip : equipos) {
-                if (equip.getNombreEquipo().toLowerCase().replace(" ", "").equals(equipoNombre.toLowerCase().replace(" ", ""))) {
+                if (equip.getNombreEquipo().equals(equipoNombre)) {
                     equipoNombre = equip.getNombreEquipo();
                 }
             }
-        }while(equipoNombre == null);
+        }catch (NullPointerException e){
+            scanner.next();
+        }
+
 
         do {
             System.out.println("Introduzca si el equipo juega en Primera o en Segunda: ");
@@ -331,7 +336,7 @@ public class MenuJugador implements Serializable {
             }else if (!nombreCompeticion.equals("segunda")){
                 competicion = null;
             }
-        }while (nombreCompeticion == null);
+        }while (competicion == null);
 
 
 

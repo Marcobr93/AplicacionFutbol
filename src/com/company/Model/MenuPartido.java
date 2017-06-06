@@ -95,7 +95,7 @@ public class MenuPartido implements Serializable{
             nombreEquipoLocal = scanner.nextLine();
 
             for (Equipo equipo : equipos) {
-                if (equipo.getNombreEquipo().toLowerCase().replace(" ", "").equals(nombreEquipoLocal.toLowerCase().replace(" ", ""))) {
+                if (equipo.getNombreEquipo().equals(nombreEquipoLocal)) {
                     equipoLocal = equipo;
                 }
             }
@@ -107,11 +107,12 @@ public class MenuPartido implements Serializable{
             nombreEquipoVisitante = scanner.nextLine();
 
             for (Equipo equipo : equipos) {
-                if (equipo.getNombreEquipo().toLowerCase().replace(" ", "").equals(nombreEquipoVisitante.toLowerCase().replace(" ", ""))) {
+                if (equipo.getNombreEquipo().equals(nombreEquipoVisitante)) {
                     equipoVisitante = equipo;
                 }
             }
-            if (nombreEquipoLocal.toLowerCase().replace(" ", "").equals(nombreEquipoVisitante.toLowerCase().replace(" ", ""))) {
+
+            if (nombreEquipoLocal.equals(nombreEquipoVisitante)) {
                 mismoEquipo = true;
             }else {
                 mismoEquipo = false;
@@ -280,7 +281,7 @@ public class MenuPartido implements Serializable{
                     System.out.println(partido);
                 }
             }
-        }while (jornada <= 0);
+        }while (jornada <= 0 || jornada > 42);
     }
 
 
@@ -304,7 +305,7 @@ public class MenuPartido implements Serializable{
                     System.out.println(partido);
                 }
             }
-        }while (jornada <= 0);
+        }while (jornada <= 0 || jornada > 38);
     }
 
 
@@ -329,7 +330,7 @@ public class MenuPartido implements Serializable{
                     System.out.println();
                 }
             }
-        }while (jornada <= 0);
+        }while (jornada <= 0 || jornada > 42);
 
     }
 
