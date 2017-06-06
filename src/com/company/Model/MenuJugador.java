@@ -727,7 +727,7 @@ public class MenuJugador implements Serializable {
      * Método que utiliza el comparadorPorGolesRecibidos para ordenar los porteros del ArrayList porterosPrimera
      */
     public void ordenacionPorZamoraPrimera(){
-        Collections.sort(porterosPrimera, Jugador.comparadorPorGolesRecibidos);
+        Collections.sort(porterosPrimera, Jugador.comparadorPorPromedioDeGoles);
 
         listaPorterosPrimera();
     }
@@ -736,7 +736,7 @@ public class MenuJugador implements Serializable {
      * Método que utiliza el comparadorPorGolesRecibidos para ordenar los porteros del ArrayList porterosSegunda
      */
     public void ordenacionPorZamoraSegunda(){
-        Collections.sort(porterosSegunda, Jugador.comparadorPorGolesRecibidos);
+        Collections.sort(porterosSegunda, Jugador.comparadorPorPromedioDeGoles);
 
         listaPorterosSegunda();
     }

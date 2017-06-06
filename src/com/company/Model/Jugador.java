@@ -454,9 +454,20 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>, Serial
    public static Comparator<Jugador> comparadorPorGolesRecibidos = new Comparator<Jugador>() {
       @Override
       public int compare(Jugador j1, Jugador j2) {
+         return (j1.getGolesRecibidos() - j2.getGolesRecibidos());
+      }
+   };
+
+   /**
+    * Compara a los jugadores(porteros) el promedio de goles recibidos
+    */
+   public static Comparator<Jugador> comparadorPorPromedioDeGoles = new Comparator<Jugador>() {
+      @Override
+      public int compare(Jugador j1, Jugador j2) {
          return (int) (j1.getPromedioDeGoles() - j2.getPromedioDeGoles());
       }
    };
+
    /**
     * Compara las asistencias de los jugadores
     */
