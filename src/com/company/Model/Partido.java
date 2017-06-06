@@ -265,7 +265,7 @@ public class Partido implements Comparable<Partido>, Comparator<Partido>, Serial
 
         Partido partido = (Partido) obj;
 
-        // Se consideran dos equipos iguales si tienen el mismo nombre
+        // Se consideran dos equipos iguales si tienen el mismo nombre el equipo local
         return Objects.equals(this.getNombreEquipoLocal(), partido.getNombreEquipoLocal());
     }
 }

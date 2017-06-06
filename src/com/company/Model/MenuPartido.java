@@ -49,6 +49,24 @@ public class MenuPartido implements Serializable{
         }
     }
 
+
+    /**
+     * Método que con un foreach recorre el ArrayList equipos para saber si existe un equipo con el mismo nombre que
+     * el introducido
+     * @param nombreEquipo parámetro que utilizamos a la hora de buscar/crear un equipo
+     * @return true si el nombreEquipo existe en el ArrayList equipos y false si no existe
+     */
+    public boolean existeEnArrayEquipo(String nombreEquipo){
+        for (Equipo equipo: equipos) {
+            if (equipo.getNombreEquipo().equals(nombreEquipo)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
     /**
      * Método que nos permite crear un partido y lo añadirá al ArrayList partidos y si tiene como competición 'Primera',
      * lo añadirá al ArrayList equiposPrimera y si tiene como competición 'Segunda', lo añadirá al ArrayList equiposSegunda
@@ -194,7 +212,10 @@ public class MenuPartido implements Serializable{
 
 
     /**
-     * Método que nos permite eliminar un partido introduciendo la jornada de este
+     * Método para eliminar un Partido, utiliza 3 Iterator distintos, uno por cada ArrayList de Partido que hay (partidos,
+     * partidosPrimera y partidosSegunda), de esta forma podemos borrar el equipo cuyo nombre coincida con el introducido
+     * por el usuario tanto en el ArrayList partidos como al que pertenezca el partido en cuestión, partidosPrimera o
+     * partidosSegunda
      */
     public void eliminarPartido() {
         Scanner scanner = new Scanner(System.in);
@@ -321,15 +342,22 @@ public class MenuPartido implements Serializable{
         Scanner scanner = new Scanner(System.in);
 
         System.out.println();
-        System.out.printf("Introduzca el nombre del equipo que juega el partido: ");
-        nombreEquipo = scanner.nextLine().toLowerCase().replace(" ", "").replace("-", "").replace("_", "").replace(".", "");
 
-        for (Partido partido : partidosPrimera) {
-            if (nombreEquipo.equals(partido.getNombreEquipoLocal().toLowerCase().replace(" ", "").replace("-", "").replace("_", "").replace(".", ""))) {
-                System.out.println(partido);
-            } else if (nombreEquipo.equals(partido.getNombreEquipoVisitante().toLowerCase().replace(" ", "").replace("-", "").replace("_", "").replace(".", ""))) {
-                System.out.println(partido);
+        do {
+            System.out.printf("Introduzca el nombre del equipo que juega el partido: ");
+            nombreEquipo = scanner.nextLine();
+        }while (!existeEnArrayEquipo(nombreEquipo));
+
+        try {
+            for (Partido partido : partidosPrimera) {
+                if (nombreEquipo.equals(partido.getNombreEquipoLocal())) {
+                    System.out.println(partido);
+                } else if (nombreEquipo.equals(partido.getNombreEquipoVisitante())) {
+                    System.out.println(partido);
+                }
             }
+        } catch (NullPointerException e){
+            scanner.next();
         }
     }
 
@@ -342,16 +370,23 @@ public class MenuPartido implements Serializable{
         Scanner scanner = new Scanner(System.in);
 
         System.out.println();
-        System.out.printf("Introduzca el nombre del equipo que juega el partido: ");
-        nombreEquipo = scanner.nextLine().toLowerCase().replace(" ", "").replace("-", "").replace("_", "").replace(".", "");
 
-        for (Partido partido : partidosSegunda) {
-            if (nombreEquipo.equals(partido.getNombreEquipoLocal().toLowerCase().replace(" ", "").replace("-", "").replace("_", "").replace(".", ""))) {
-                System.out.println(partido);
-                System.out.println();
-            } else if (nombreEquipo.equals(partido.getNombreEquipoVisitante().toLowerCase().replace(" ", "").replace("-", "").replace("_", "").replace(".", ""))) {
-                System.out.println(partido);
+        do {
+            System.out.printf("Introduzca el nombre del equipo que juega el partido: ");
+            nombreEquipo = scanner.nextLine();
+        }while (!existeEnArrayEquipo(nombreEquipo));
+
+        try {
+            for (Partido partido : partidosSegunda) {
+                if (nombreEquipo.equals(partido.getNombreEquipoLocal())) {
+                    System.out.println(partido);
+                    System.out.println();
+                } else if (nombreEquipo.equals(partido.getNombreEquipoVisitante())) {
+                    System.out.println(partido);
+                }
             }
+        }catch (NullPointerException e){
+            scanner.next();
         }
     }
 
@@ -517,6 +552,7 @@ public class MenuPartido implements Serializable{
 
         listaPartidosSegunda();
     }
+
 
     // Guardado y cargado de datos
 

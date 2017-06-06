@@ -32,11 +32,13 @@ public class FutbolApp {
         cargarPartidos();
         cargarClasificación();
 */
+        // Cargamos los ficheros con los datos guardados
         menuClasificacion.cargarClasificaciones();
         menuEquipo.cargarEquipos();
         menuPartido.cargarPartidos();
         menuJugador.cargarJugadores();
 
+        // Utilizamos estos métodos para llenar los ArrayList correspondientes con los jugadores
         menuJugador.añadirJugadoresPrimeraSegunda();
         menuJugador.añadirPorteroPrimera();
         menuJugador.añadirPorteroSegunda();
@@ -47,6 +49,9 @@ public class FutbolApp {
 */
     }
 
+    /**
+     * Método para cargar los equipos
+     */
     private void cargarEquipos() {
         menuEquipo.equipos.add(new Equipo("Real Madrid", "Florentino Pérez", "Zinedine Zidane", "Santiago Bernabéu", 1902, Competicion.PRIMERA));
         menuEquipo.equipos.add(new Equipo("Barcelona", "Bartomeu", "Luis Enrique", "Campo Nuevo", 1899,  Competicion.PRIMERA));
@@ -94,6 +99,9 @@ public class FutbolApp {
         menuEquipo.equipos.add(new Equipo("Mirandés", "Alfredo de Miguel", "Pablo Alfaro", "Anduva", 1927,  Competicion.SEGUNDA));
     }
 
+    /**
+     * Método para cargar los jugadores
+     */
     private void cargarJugadores() {
         menuJugador.jugadores.add(new Jugador("Keylor", "Navas", Posicion.Portero, false, 1.85, 78.00, 1, 30, 27, 2, 0, 0, 0, 31, 0, "Real Madrid", Competicion.PRIMERA));
         menuJugador.jugadores.add(new Jugador("Kiko", "Casilla", Posicion.Portero, false, 1.91, 84.00, 13, 30, 11, 0, 0, 0, 0, 10, 0, "Real Madrid", Competicion.PRIMERA));
@@ -185,6 +193,10 @@ public class FutbolApp {
         menuJugador.jugadores.add(new Jugador("Dios", "wKqwiejquiwehw", Posicion.Portero, false, 1.89, 76.00, 5, 50, 38, 8, 0, 4, 0, 10, 4, "Cádiz", Competicion.SEGUNDA));
         menuJugador.jugadores.add(new Jugador("Jezú", "kakacristianomessizidane", Posicion.Portero, true, 199, 99.00, 10, 44, 38, 15, 2, 15, 4, 11, 7, "Zaragoza", Competicion.SEGUNDA));
     }
+
+    /**
+     * Método para cargar los partidos
+     */
     private void cargarPartidos(){
         menuPartido.partidos.add(new Partido("Real Sociedad", "Real Madrid","Anoeta","Martínez Munuera, Juan", Competicion.PRIMERA, 0, 3,1));
         menuPartido.partidos.add(new Partido("Real Madrid", "Celta","Santiago Bernabéu","De Burgos Bengoetxea", Competicion.PRIMERA, 2, 1,2));
@@ -234,6 +246,10 @@ public class FutbolApp {
         menuPartido.partidos.add(new Partido("Levante", "Zaragoza","Ciudad de Valencia","Medié Jiménez", Competicion.SEGUNDA, 4, 2,4));
 
     }
+
+    /**
+     * Método para cargar las clasificaciones
+     */
     public void cargarClasificación(){
         menuClasificacion.clasificacion.add(new Clasificacion("Real Madrid", 38, 29,6,3,106,41,93,Competicion.PRIMERA));
         menuClasificacion.clasificacion.add(new Clasificacion("Barcelona", 38, 28,6,4,116,37,90,Competicion.PRIMERA));
@@ -790,7 +806,7 @@ public class FutbolApp {
                 "─────────────────────────────────────────────────────────────────────────────────────────────");
 
 
-        System.out.println("Pulse Enter para comenzar el programa. ");
+        System.out.println("Pulse Enter dos veces para comenzar el programa. ");
         scanner.nextLine();
         AppCompeticion();
         return  opcion;

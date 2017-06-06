@@ -50,7 +50,7 @@ public class MenuEquipo implements Serializable {
     /**
      * Método que con un foreach recorre el ArrayList equipos para saber si existe un equipo con el mismo nombre que
      * el introducido
-     * @param nombreEquipo parámetro que utilizamos a la hora de crear un equipo
+     * @param nombreEquipo parámetro que utilizamos a la hora de buscar/crear un equipo
      * @return true si el nombreEquipo existe en el ArrayList equipos y false si no existe
      */
     public boolean existeEnArrayEquipo(String nombreEquipo){
@@ -62,6 +62,12 @@ public class MenuEquipo implements Serializable {
         return false;
     }
 
+    /**
+     * Método que con un foreach recorre el ArrayList equiposPrimera para saber si existe un equipo con el mismo nombre que
+     * el introducido
+     * @param nombreEquipo parámetro que utilizamos a la hora de crear un equipo
+     * @return true si el nombreEquipo existe en el ArrayList equipos y false si no existe
+     */
     public boolean existeEnArrayEquipoPrimera(String nombreEquipo){
         for (Equipo equipo: equiposPrimera) {
             if (equipo.getNombreEquipo().equals(nombreEquipo)){
@@ -71,6 +77,12 @@ public class MenuEquipo implements Serializable {
         return false;
     }
 
+    /**
+     * Método que con un foreach recorre el ArrayList equiposSegunda para saber si existe un equipo con el mismo nombre que
+     * el introducido
+     * @param nombreEquipo parámetro que utilizamos a la hora de crear un equipo
+     * @return true si el nombreEquipo existe en el ArrayList equipos y false si no existe
+     */
     public boolean existeEnArrayEquipoSegunda(String nombreEquipo){
         for (Equipo equipo: equiposSegunda) {
             if (equipo.getNombreEquipo().equals(nombreEquipo)){
@@ -174,7 +186,7 @@ public class MenuEquipo implements Serializable {
     /**
      * Método para eliminar un Equipo, utiliza 3 Iterator distintos, uno por cada ArrayList de Equipo que hay (equipos,
      * equiposPrimera y equiposSegunda), de esta forma podemos borrar el equipo cuyo nombre coincida con el introducido
-     * por el usuario tanto en el ArrayList equipos como al que perteneza el equipo en cuestión, equiposPrimera o
+     * por el usuario tanto en el ArrayList equipos como al que pertenezca el equipo en cuestión, equiposPrimera o
      * equiposSegunda
      */
     public void eliminarEquipo() {
@@ -253,8 +265,9 @@ public class MenuEquipo implements Serializable {
     }
 
     /**
-     * Método que con un foreach nos permite buscar cualquier equipo registrado o creado en el ArrayList de
-     * equipos
+     * Método que nos permite buscar un equipo por su nombre, solo podremos ver la información del equipo si el nombre
+     * introducido coincide con un nombre ya existente en el ArrayList equipos, para ello usamos el método
+     * existeEnArrayEquipo
      */
     public void buscarEquipos() {
         String nombre;
@@ -264,11 +277,16 @@ public class MenuEquipo implements Serializable {
         listaEquipos();
 
         System.out.println();
-        System.out.printf("Introduzca el nombre del equipo: ");
-        nombre = scanner.nextLine().toLowerCase().replace(" ","").replace("-", "");
+
+        do {
+            System.out.printf("Introduzca el nombre del equipo: ");
+            nombre = scanner.nextLine();
+
+        }while (!existeEnArrayEquipo(nombre));
+
         try {
         for (Equipo equipo: equipos){
-            if (nombre.equals(equipo.getNombreEquipo().toLowerCase().replace(" ","").replace("-", ""))) {
+            if (nombre.equals(equipo.getNombreEquipo())) {
                 System.out.println(equipo);
                 indice++;
                 }
@@ -313,6 +331,8 @@ public class MenuEquipo implements Serializable {
             System.out.println((indice++) + " - " + equipo.getNombreEquipo());
         }
     }
+
+
 
     // Guardado y cargado de datos
 

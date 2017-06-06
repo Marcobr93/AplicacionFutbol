@@ -45,8 +45,6 @@ public class Equipo implements Serializable{
    }
 
 
-
-
    // Accesores
 
 

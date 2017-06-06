@@ -71,7 +71,7 @@ public class MenuJugador implements Serializable {
      */
     public void añadirJugadoresPrimeraSegunda() {
         for (Jugador jugador : jugadores) {
-            if (jugador.getCompeticion().equals(Competicion.PRIMERA) && (noExisteEnArrayJugadores(jugador))) {
+            if (jugador.getCompeticion().equals(Competicion.PRIMERA)) {
                 jugadoresPrimera.add(jugador);
             } else if (jugador.getCompeticion().equals(Competicion.SEGUNDA)) {
                 jugadoresSegunda.add(jugador);
@@ -79,10 +79,11 @@ public class MenuJugador implements Serializable {
         }
     }
 
+
     /**
      * Método que con un foreach recorre el ArrayList equipos para saber si existe un equipo con el mismo nombre que
      * el introducido
-     * @param nombreEquipo parámetro que utilizamos a la hora de crear un equipo
+     * @param nombreEquipo parámetro que utilizamos a la hora de buscar/crear un equipo
      * @return true si el nombreEquipo existe en el ArrayList equipos y false si no existe
      */
     public boolean existeEnArrayEquipos(String nombreEquipo){
@@ -94,9 +95,15 @@ public class MenuJugador implements Serializable {
         return false;
     }
 
-    public boolean noExisteEnArrayJugadores(Jugador jugador){
-        for (Jugador jugador1: jugadores) {
-            if (jugador1.equals(jugador)){
+    /**
+     * Método que con un foreach recorre el ArrayList jugadores para saber si existe un jugador con el mismo nombre que
+     * el introducido
+     * @param nombreJugador parámetro que uttilizamos a la hora de buscar/crear un jugador
+     * @return true si nombreJugador existe en el ArrayList jugadores y false si no existe
+     */
+    public boolean existeEnArrayJugadores(String nombreJugador){
+        for (Jugador jugador: jugadores) {
+            if (jugador.getNombreJugador().equals(nombreJugador)){
                 return true;
             }
         }
@@ -340,8 +347,11 @@ public class MenuJugador implements Serializable {
 
     }
 
+
     /**
-     * Método que nos permite eliminar un jugador introduciendo el dorsal de este
+     * Método para eliminar un Jugador, utiliza 4 Iterator distintos, uno por cada ArrayList de jugador que hay (jugador,
+     * jugadores, jugadoresPrimera y jugadoresSegunda), de esta forma podemos borrar el equipo cuyo dorsal coincida con
+     * el introducido por el usuario.
      */
     public void eliminarJugador(ArrayList<Jugador> jugadors){
         Scanner scanner = new Scanner(System.in);
@@ -349,6 +359,9 @@ public class MenuJugador implements Serializable {
 
 
         Iterator<Jugador> itJugador = jugadors.iterator();
+        Iterator<Jugador> itJugadores = jugadores.iterator();
+        Iterator<Jugador> itJugadoresP = jugadoresPrimera.iterator();
+        Iterator<Jugador> itJugadoresS = jugadoresSegunda.iterator();
 
         listaJugadoresEquipo();
 
@@ -367,16 +380,38 @@ public class MenuJugador implements Serializable {
 
         while (itJugador.hasNext()){
             Jugador jugador = itJugador.next();
-
             if (dorsal == jugador.getDorsal()){
                 itJugador.remove();
+            }
+        }
+
+        while (itJugadores.hasNext()){
+            Jugador jugador = itJugadores.next();
+            if (dorsal == jugador.getDorsal()){
+                itJugadores.remove();
+            }
+        }
+
+        while (itJugadoresP.hasNext()){
+            Jugador jugador = itJugadoresP.next();
+            if (dorsal == jugador.getDorsal()){
+                itJugadoresP.remove();
+            }
+        }
+
+        while (itJugadoresS.hasNext()){
+            Jugador jugador = itJugadoresS.next();
+            if (dorsal == jugador.getDorsal()){
+                itJugadoresS.remove();
             }
         }
     }
 
 
     /**
-     * Método que nos permite buscar un jugador por su nombre.
+     * Método que nos permite buscar un jugador por su nombre, solo podremos ver la información del jugador si el nombre
+     * introducido coincide con un nombre ya existente en el ArrayList jugadores, para ello usamos el método
+     * existeEnArrayJugadores
      */
     public void buscarJugador() {
         String nombre;
@@ -388,12 +423,15 @@ public class MenuJugador implements Serializable {
 
         System.out.println();
 
-        System.out.printf("Introduzca solo el nombre del jugador: ");
-        nombre = scanner.nextLine().toLowerCase().replace(" ", "").replace("-", "");
+        do {
+            System.out.printf("Introduzca solo el nombre del jugador: ");
+            nombre = scanner.nextLine();
+        }while (!existeEnArrayJugadores(nombre));
+
         try {
             for (Jugador jugador : jugadores) {
 
-                if (nombre.equals(jugador.getNombreJugador().toLowerCase().replace(" ", "").replace("-", ""))) {
+                if (nombre.equals(jugador.getNombreJugador())) {
                     System.out.println(jugador);
                 }
             }
@@ -690,6 +728,7 @@ public class MenuJugador implements Serializable {
 
         listaPorterosSegunda();
     }
+
 
     // Guardado y cargado de datos
 
