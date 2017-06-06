@@ -241,7 +241,8 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>, Serial
    }
 
    public double getPromedioDeGoles() {
-      return (double) getGolesRecibidos() / (double) getPartidosJugados();
+      double promedioDeGoles = (double) getGolesRecibidos() / (double) getPartidosJugados();
+      return promedioDeGoles;
    }
 
    public int getAsistencias() {
@@ -453,7 +454,7 @@ public class Jugador implements Comparable<Jugador>, Comparator<Jugador>, Serial
    public static Comparator<Jugador> comparadorPorGolesRecibidos = new Comparator<Jugador>() {
       @Override
       public int compare(Jugador j1, Jugador j2) {
-         return (int)(j1.getPromedioDeGoles() - j2.getPromedioDeGoles());
+         return (int) (j1.getPromedioDeGoles() - j2.getPromedioDeGoles());
       }
    };
    /**

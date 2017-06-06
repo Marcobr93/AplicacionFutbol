@@ -242,7 +242,7 @@ public class MenuJugador implements Serializable {
                 System.out.println("Por favor, introduzca una cantidad válida.");
                 scanner.next();
             }
-        } while (partidosJugados < 0);
+        } while (partidosJugados < 0 || partidosJugados > 42);
 
         do {
             System.out.println("Tarjetas amarillas del jugador: ");
@@ -720,7 +720,8 @@ public class MenuJugador implements Serializable {
     }
 
 
-    // Ordenación porteros de Primera/Segunda
+    // Ordenación para obtener el Trofeo "Zamora", que se le otorga al portero con menor promedio de goles recibidos
+    // (goles recibidos / partidos jugados), para ello el portero deberá de jugar al menos 28 partidos.
 
     /**
      * Método que utiliza el comparadorPorGolesRecibidos para ordenar los porteros del ArrayList porterosPrimera

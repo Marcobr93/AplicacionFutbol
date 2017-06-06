@@ -175,7 +175,7 @@ public class MenuPartido implements Serializable{
                     System.out.println("Por favor, introduzca una jornada válida.");
                     scanner.next();
                 }
-            }while (jornada <= 0);
+            }while (jornada <= 0 || jornada > 42);
 
 
             partido = new Partido(equipoLocal,nombreEquipoLocal, equipoVisitante,nombreEquipoVisitante, estadio, arbitro, competicion, golesLocal, golesVisitante, jornada);
@@ -256,7 +256,7 @@ public class MenuPartido implements Serializable{
                     ITPartidoS.remove();
                 }
             }
-        } while (jornada <= 0);
+        } while (jornada <= 0 || jornada > 42);
     }
 
 
