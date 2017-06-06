@@ -344,8 +344,14 @@ public class MenuJugador implements Serializable {
 
         if (competicion.equals(Competicion.PRIMERA)) {
             jugadoresPrimera.add(jugador);
+            if (posicion.equals(Posicion.Portero)){
+                porterosPrimera.add(jugador);
+            }
         }else if (competicion.equals(Competicion.SEGUNDA)){
             jugadoresSegunda.add(jugador);
+            if (posicion.equals(Posicion.Portero)){
+                porterosSegunda.add(jugador);
+            }
         }
 
         jugadores.add(jugador);
