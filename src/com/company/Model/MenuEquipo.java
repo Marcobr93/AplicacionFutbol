@@ -61,6 +61,24 @@ public class MenuEquipo implements Serializable {
         }
         return false;
     }
+
+    public boolean existeEnArrayEquipoPrimera(String nombreEquipo){
+        for (Equipo equipo: equiposPrimera) {
+            if (equipo.getNombreEquipo().equals(nombreEquipo)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean existeEnArrayEquipoSegunda(String nombreEquipo){
+        for (Equipo equipo: equiposSegunda) {
+            if (equipo.getNombreEquipo().equals(nombreEquipo)){
+                return true;
+            }
+        }
+        return false;
+    }
 /*
     public Competicion  elegirCompeticion(String nombreCompeticion, Competicion competicion){
             if (nombreCompeticion.toLowerCase().replace(" ", "").equals("primera")){
@@ -200,12 +218,14 @@ public class MenuEquipo implements Serializable {
         Scanner scanner = new Scanner(System.in);
 
         listaEquiposPrimera();
+    do {
+    System.out.printf("Introduzca el nombre del equipo: ");
+    nombre = scanner.nextLine();
 
-        System.out.printf("Introduzca el nombre del equipo: ");
-        nombre = scanner.nextLine().replace(" ", "").replace("-", "");
+        }while (!existeEnArrayEquipoPrimera(nombre));
 
         for (Equipo equipo : equiposPrimera) {
-            if (equipo.getNombreEquipo().replace(" ", "").replace("-", "").equals(nombre)){
+            if (equipo.getNombreEquipo().equals(nombre)){
                 System.out.println(equipo);
             }
         }
@@ -219,12 +239,14 @@ public class MenuEquipo implements Serializable {
         Scanner scanner = new Scanner(System.in);
 
         listaEquiposSegunda();
+        do {
+            System.out.printf("Introduzca el nombre del equipo: ");
+            nombre = scanner.nextLine();
 
-        System.out.printf("Introduzca el nombre del equipo: ");
-        nombre = scanner.nextLine().replace(" ", "").replace("-", "");
+        }while (!existeEnArrayEquipoSegunda(nombre));
 
         for (Equipo equipo : equiposSegunda) {
-            if (equipo.getNombreEquipo().replace(" ", "").replace("-", "").equals(nombre)){
+            if (equipo.getNombreEquipo().equals(nombre)){
                 System.out.println(equipo);
             }
         }

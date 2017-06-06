@@ -71,13 +71,38 @@ public class MenuJugador implements Serializable {
      */
     public void añadirJugadoresPrimeraSegunda() {
         for (Jugador jugador : jugadores) {
-            if (jugador.getCompeticion().equals(Competicion.PRIMERA)) {
+            if (jugador.getCompeticion().equals(Competicion.PRIMERA) && (noExisteEnArrayJugadores(jugador))) {
                 jugadoresPrimera.add(jugador);
             } else if (jugador.getCompeticion().equals(Competicion.SEGUNDA)) {
                 jugadoresSegunda.add(jugador);
             }
         }
     }
+
+    /**
+     * Método que con un foreach recorre el ArrayList equipos para saber si existe un equipo con el mismo nombre que
+     * el introducido
+     * @param nombreEquipo parámetro que utilizamos a la hora de crear un equipo
+     * @return true si el nombreEquipo existe en el ArrayList equipos y false si no existe
+     */
+    public boolean existeEnArrayEquipos(String nombreEquipo){
+        for (Equipo equipo: equipos) {
+            if (equipo.getNombreEquipo().equals(nombreEquipo)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean noExisteEnArrayJugadores(Jugador jugador){
+        for (Jugador jugador1: jugadores) {
+            if (jugador1.equals(jugador)){
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     /**
      * Método que nos permite crear un jugador y lo añadirá al ArrayList jugadores
@@ -305,9 +330,14 @@ public class MenuJugador implements Serializable {
 
         jugador = new Jugador(nombreJugador,apellidosJugador,posicion,capitan,altura,peso,dorsal,edad,partidosJugados,tarjetasAmarillas,tarjetasRoja,goles,golesEnPropia,golesRecibidos,asistencias,equipoNombre,competicion);
 
-        if (jugador!= null) {
-            jugadores.add(jugador);
+        if (competicion.equals(Competicion.PRIMERA)) {
+            jugadoresPrimera.add(jugador);
+        }else if (competicion.equals(Competicion.SEGUNDA)){
+            jugadoresSegunda.add(jugador);
         }
+
+        jugadores.add(jugador);
+
     }
 
     /**
@@ -389,12 +419,7 @@ public class MenuJugador implements Serializable {
             System.out.println("Introduzca el nombre del equipo");
             nombreIntroducido = scanner.nextLine();
 
-            for (Equipo equip : equipos) {
-                if (equip.getNombreEquipo().toLowerCase().replace(" ", "").equals(nombreIntroducido.toLowerCase().replace(" ", ""))) {
-                    nombreIntroducido = equip.getNombreEquipo();
-                }
-            }
-        }while(nombreIntroducido == null);
+        }while(!existeEnArrayEquipos(nombreIntroducido));
 
 
         for (Jugador jugador: jugadores){
